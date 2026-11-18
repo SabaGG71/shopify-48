@@ -1,0 +1,334 @@
+{
+ "looks": {
+  "loud-and-bold": "Loud and bold",
+  "editorial-and-moody": "Editorial and moody",
+  "clean-minimal": "Clean minimal",
+  "playful-and-illustrated": "Playful and illustrated",
+  "warm-and-natural": "Warm and natural"
+ },
+ "stores": [
+  {
+   "name": "Fly By Jing",
+   "slug": "fly-by-jing",
+   "url": "https://flybyjing.com",
+   "look": "loud-and-bold",
+   "look_label": "Loud and bold",
+   "why": "Rich red brand color carried through every page",
+   "card_loop": "/lookbook/loud-and-bold/fly-by-jing/card-loop.mp4",
+   "poster": "/lookbook/loud-and-bold/fly-by-jing/poster.webp",
+   "stills": [
+    "/lookbook/loud-and-bold/fly-by-jing/1-home.webp",
+    "/lookbook/loud-and-bold/fly-by-jing/2-collection.webp",
+    "/lookbook/loud-and-bold/fly-by-jing/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Good Girl Snacks",
+   "slug": "good-girl-snacks",
+   "url": "https://goodgirlsnacks.com",
+   "look": "loud-and-bold",
+   "look_label": "Loud and bold",
+   "why": "Giant playful type and a hero that is all personality",
+   "card_loop": "/lookbook/loud-and-bold/good-girl-snacks/card-loop.mp4",
+   "poster": "/lookbook/loud-and-bold/good-girl-snacks/poster.webp",
+   "stills": [
+    "/lookbook/loud-and-bold/good-girl-snacks/1-home.webp",
+    "/lookbook/loud-and-bold/good-girl-snacks/2-collection.webp",
+    "/lookbook/loud-and-bold/good-girl-snacks/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Heist",
+   "slug": "heist",
+   "url": "https://heist.co",
+   "look": "loud-and-bold",
+   "look_label": "Loud and bold",
+   "why": "One huge headline and a single product shot, nothing else",
+   "card_loop": "/lookbook/loud-and-bold/heist/card-loop.mp4",
+   "poster": "/lookbook/loud-and-bold/heist/poster.webp",
+   "stills": [
+    "/lookbook/loud-and-bold/heist/1-home.webp",
+    "/lookbook/loud-and-bold/heist/2-collection.webp",
+    "/lookbook/loud-and-bold/heist/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Olipop",
+   "slug": "olipop",
+   "url": "https://drinkolipop.com",
+   "look": "loud-and-bold",
+   "look_label": "Loud and bold",
+   "why": "Bright color blocks and the can always front and center",
+   "card_loop": "/lookbook/loud-and-bold/olipop/card-loop.mp4",
+   "poster": "/lookbook/loud-and-bold/olipop/poster.webp",
+   "stills": [
+    "/lookbook/loud-and-bold/olipop/1-home.webp",
+    "/lookbook/loud-and-bold/olipop/2-collection.webp",
+    "/lookbook/loud-and-bold/olipop/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Afternoon Toast",
+   "slug": "afternoon-toast",
+   "url": "https://drinkafternoontoast.com",
+   "look": "editorial-and-moody",
+   "look_label": "Editorial and moody",
+   "why": "Moody still-life photography and a quiet, luxe layout",
+   "card_loop": "/lookbook/editorial-and-moody/afternoon-toast/card-loop.mp4",
+   "poster": "/lookbook/editorial-and-moody/afternoon-toast/poster.webp",
+   "stills": [
+    "/lookbook/editorial-and-moody/afternoon-toast/1-home.webp",
+    "/lookbook/editorial-and-moody/afternoon-toast/2-collection.webp",
+    "/lookbook/editorial-and-moody/afternoon-toast/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Flamingo Estate",
+   "slug": "flamingo-estate",
+   "url": "https://flamingoestate.com",
+   "look": "editorial-and-moody",
+   "look_label": "Editorial and moody",
+   "why": "Cinematic photos and elegant serif type, feels like a magazine",
+   "card_loop": "/lookbook/editorial-and-moody/flamingo-estate/card-loop.mp4",
+   "poster": "/lookbook/editorial-and-moody/flamingo-estate/poster.webp",
+   "stills": [
+    "/lookbook/editorial-and-moody/flamingo-estate/1-home.webp",
+    "/lookbook/editorial-and-moody/flamingo-estate/2-collection.webp",
+    "/lookbook/editorial-and-moody/flamingo-estate/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Ghia",
+   "slug": "ghia",
+   "url": "https://drinkghia.com",
+   "look": "editorial-and-moody",
+   "look_label": "Editorial and moody",
+   "why": "One deep red owns the whole site, magazine-style type",
+   "card_loop": "/lookbook/editorial-and-moody/ghia/card-loop.mp4",
+   "poster": "/lookbook/editorial-and-moody/ghia/poster.webp",
+   "stills": [
+    "/lookbook/editorial-and-moody/ghia/1-home.webp",
+    "/lookbook/editorial-and-moody/ghia/2-collection.webp",
+    "/lookbook/editorial-and-moody/ghia/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Poca",
+   "slug": "poca",
+   "url": "https://pickpoca.com",
+   "look": "editorial-and-moody",
+   "look_label": "Editorial and moody",
+   "why": "Dark chocolate tones with crisp product cards",
+   "card_loop": "/lookbook/editorial-and-moody/poca/card-loop.mp4",
+   "poster": "/lookbook/editorial-and-moody/poca/poster.webp",
+   "stills": [
+    "/lookbook/editorial-and-moody/poca/1-home.webp",
+    "/lookbook/editorial-and-moody/poca/2-collection.webp",
+    "/lookbook/editorial-and-moody/poca/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Fellow",
+   "slug": "fellow",
+   "url": "https://fellowproducts.com",
+   "look": "clean-minimal",
+   "look_label": "Clean minimal",
+   "why": "Product first, lots of white space, sharp and quiet",
+   "card_loop": "/lookbook/clean-minimal/fellow/card-loop.mp4",
+   "poster": "/lookbook/clean-minimal/fellow/poster.webp",
+   "stills": [
+    "/lookbook/clean-minimal/fellow/1-home.webp",
+    "/lookbook/clean-minimal/fellow/2-collection.webp",
+    "/lookbook/clean-minimal/fellow/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Manta Chocolate",
+   "slug": "manta-chocolate",
+   "url": "https://mantachocolate.com",
+   "look": "clean-minimal",
+   "look_label": "Clean minimal",
+   "why": "Simple type, soft colors, the packaging is the hero",
+   "card_loop": "/lookbook/clean-minimal/manta-chocolate/card-loop.mp4",
+   "poster": "/lookbook/clean-minimal/manta-chocolate/poster.webp",
+   "stills": [
+    "/lookbook/clean-minimal/manta-chocolate/1-home.webp",
+    "/lookbook/clean-minimal/manta-chocolate/2-collection.webp",
+    "/lookbook/clean-minimal/manta-chocolate/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Rocky's Matcha",
+   "slug": "rockys-matcha",
+   "url": "https://rockysmatcha.com",
+   "look": "clean-minimal",
+   "look_label": "Clean minimal",
+   "why": "Calm layout that lets the product and texture speak",
+   "card_loop": "/lookbook/clean-minimal/rockys-matcha/card-loop.mp4",
+   "poster": "/lookbook/clean-minimal/rockys-matcha/poster.webp",
+   "stills": [
+    "/lookbook/clean-minimal/rockys-matcha/1-home.webp",
+    "/lookbook/clean-minimal/rockys-matcha/2-collection.webp",
+    "/lookbook/clean-minimal/rockys-matcha/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Alec's Ice Cream",
+   "slug": "alecs-ice-cream",
+   "url": "https://alecsicecream.com",
+   "look": "playful-and-illustrated",
+   "look_label": "Playful and illustrated",
+   "why": "Playful collage of product, color and illustration",
+   "card_loop": "/lookbook/playful-and-illustrated/alecs-ice-cream/card-loop.mp4",
+   "poster": "/lookbook/playful-and-illustrated/alecs-ice-cream/poster.webp",
+   "stills": [
+    "/lookbook/playful-and-illustrated/alecs-ice-cream/1-home.webp",
+    "/lookbook/playful-and-illustrated/alecs-ice-cream/2-collection.webp",
+    "/lookbook/playful-and-illustrated/alecs-ice-cream/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Magic Spoon",
+   "slug": "magic-spoon",
+   "url": "https://magicspoon.com",
+   "look": "playful-and-illustrated",
+   "look_label": "Playful and illustrated",
+   "why": "Loud purple, cartoon energy, bundles front and center",
+   "card_loop": "/lookbook/playful-and-illustrated/magic-spoon/card-loop.mp4",
+   "poster": "/lookbook/playful-and-illustrated/magic-spoon/poster.webp",
+   "stills": [
+    "/lookbook/playful-and-illustrated/magic-spoon/1-home.webp",
+    "/lookbook/playful-and-illustrated/magic-spoon/2-collection.webp",
+    "/lookbook/playful-and-illustrated/magic-spoon/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "One Trick Pony",
+   "slug": "one-trick-pony",
+   "url": "https://onetrickponynuts.com",
+   "look": "playful-and-illustrated",
+   "look_label": "Playful and illustrated",
+   "why": "Characterful packaging and bright pastel color",
+   "card_loop": "/lookbook/playful-and-illustrated/one-trick-pony/card-loop.mp4",
+   "poster": "/lookbook/playful-and-illustrated/one-trick-pony/poster.webp",
+   "stills": [
+    "/lookbook/playful-and-illustrated/one-trick-pony/1-home.webp",
+    "/lookbook/playful-and-illustrated/one-trick-pony/2-collection.webp",
+    "/lookbook/playful-and-illustrated/one-trick-pony/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Sanzo",
+   "slug": "sanzo",
+   "url": "https://drinksanzo.com",
+   "look": "playful-and-illustrated",
+   "look_label": "Playful and illustrated",
+   "why": "Pastel pinks and fruit, bold condensed type, fun but clean",
+   "card_loop": "/lookbook/playful-and-illustrated/sanzo/card-loop.mp4",
+   "poster": "/lookbook/playful-and-illustrated/sanzo/poster.webp",
+   "stills": [
+    "/lookbook/playful-and-illustrated/sanzo/1-home.webp",
+    "/lookbook/playful-and-illustrated/sanzo/2-collection.webp",
+    "/lookbook/playful-and-illustrated/sanzo/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Cure",
+   "slug": "cure",
+   "url": "https://curehydration.com",
+   "look": "warm-and-natural",
+   "look_label": "Warm and natural",
+   "why": "Soft natural colors and lifestyle photos",
+   "card_loop": "/lookbook/warm-and-natural/cure/card-loop.mp4",
+   "poster": "/lookbook/warm-and-natural/cure/poster.webp",
+   "stills": [
+    "/lookbook/warm-and-natural/cure/1-home.webp",
+    "/lookbook/warm-and-natural/cure/2-collection.webp",
+    "/lookbook/warm-and-natural/cure/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Golde",
+   "slug": "golde",
+   "url": "https://golde.co",
+   "look": "warm-and-natural",
+   "look_label": "Warm and natural",
+   "why": "Cozy, earthy tones and slow ritual photography",
+   "card_loop": "/lookbook/warm-and-natural/golde/card-loop.mp4",
+   "poster": "/lookbook/warm-and-natural/golde/poster.webp",
+   "stills": [
+    "/lookbook/warm-and-natural/golde/1-home.webp",
+    "/lookbook/warm-and-natural/golde/2-collection.webp",
+    "/lookbook/warm-and-natural/golde/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "Graza",
+   "slug": "graza",
+   "url": "https://graza.co",
+   "look": "warm-and-natural",
+   "look_label": "Warm and natural",
+   "why": "Warm food photography and a friendly serif, feels homemade",
+   "card_loop": "/lookbook/warm-and-natural/graza/card-loop.mp4",
+   "poster": "/lookbook/warm-and-natural/graza/poster.webp",
+   "stills": [
+    "/lookbook/warm-and-natural/graza/1-home.webp",
+    "/lookbook/warm-and-natural/graza/2-collection.webp",
+    "/lookbook/warm-and-natural/graza/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  },
+  {
+   "name": "East Fork",
+   "slug": "east-fork",
+   "url": "https://eastfork.com",
+   "look": "warm-and-natural",
+   "look_label": "Warm and natural",
+   "why": "Warm food and table photography, handmade feel, friendly serif",
+   "card_loop": "/lookbook/warm-and-natural/east-fork/card-loop.mp4",
+   "poster": "/lookbook/warm-and-natural/east-fork/poster.webp",
+   "stills": [
+    "/lookbook/warm-and-natural/east-fork/1-home.webp",
+    "/lookbook/warm-and-natural/east-fork/2-collection.webp",
+    "/lookbook/warm-and-natural/east-fork/3-product.webp"
+   ],
+   "captured": "2026-11-16",
+   "recapture_after": "2026-12-02"
+  }
+ ]
+}

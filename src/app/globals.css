@@ -1,0 +1,229 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* LocalEyes brand: warm cream page, thin serif display (Ivy Presto), Manrope body,
+   gold as the only accent, hairline rules. Light only. */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope), "Manrope", Helvetica, Arial, sans-serif;
+  --font-display: var(--font-ivy), Georgia, serif;
+  --font-heading: var(--font-ivy), Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-ink: var(--ink);
+  --color-soft: var(--soft);
+  --color-tan: var(--tan);
+  --color-gold: var(--gold);
+  --color-gold-lt: var(--gold-lt);
+  --color-gold-deep: var(--gold-deep);
+  --color-cream: var(--cream);
+  --color-page: var(--page);
+  --color-panel: var(--panel);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-marquee: marquee 9s linear infinite;
+  --animate-bob: bob 2.4s ease-in-out infinite;
+  --animate-kenburns: kenburns 14s ease-in-out infinite alternate;
+  --animate-rise: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+:root {
+  --ink: #2a241c;
+  --soft: #6e6555;
+  --tan: #8c7f63;
+  --gold: #b0904f;
+  --gold-lt: #c6a66a;
+  --gold-deep: #8a6c33;
+  --cream: #ededd5;
+  --page: #f7f5ec;
+  --panel: #f7f5e8;
+  --paper: #fffdf7;
+  --line: rgba(42, 36, 28, 0.13);
+  --line-strong: rgba(42, 36, 28, 0.24);
+
+  --background: var(--page);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--page);
+  --secondary: var(--cream);
+  --secondary-foreground: var(--ink);
+  --muted: var(--cream);
+  --muted-foreground: var(--soft);
+  --accent: rgba(176, 144, 79, 0.1);
+  --accent-foreground: var(--ink);
+  --destructive: #a8321e;
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--gold);
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    color-scheme: light;
+    scroll-padding-top: 5rem;
+    scroll-padding-bottom: 6rem;
+  }
+  a,
+  button,
+  label,
+  summary,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    /* Fixed-size glows, painted once (no repeat), so tall pages never show seams. */
+    background:
+      radial-gradient(1300px 860px at 100% 0%, rgba(214, 190, 145, 0.5) 0%, rgba(214, 190, 145, 0.14) 40%, rgba(214, 190, 145, 0) 70%),
+      radial-gradient(1100px 760px at 0% 100%, rgba(206, 205, 168, 0.32) 0%, rgba(206, 205, 168, 0) 65%),
+      var(--page);
+    background-repeat: no-repeat;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  ::selection {
+    background: rgba(176, 144, 79, 0.28);
+  }
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Display face. One weight exists, never bold it. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.008em;
+    line-height: 1.04;
+    font-synthesis: none;
+  }
+  /* Tiny letterspaced caps label (brand micro-label) */
+  .micro {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--tan);
+    line-height: 1.4;
+  }
+  /* Label rule: label, then a hairline to the edge */
+  .label-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+  .label-rule::after {
+    content: "";
+    flex: 1;
+    border-top: 1px solid var(--line);
+  }
+  .label-rule.two::after {
+    order: 1;
+  }
+  .label-rule.two > :last-child {
+    order: 2;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--bob-rot, 0deg));
+  }
+  50% {
+    transform: translateY(-5%) rotate(calc(var(--bob-rot, 0deg) * -1));
+  }
+}
+@keyframes kenburns {
+  from {
+    transform: scale(1.02) translate(0, 0);
+  }
+  to {
+    transform: scale(1.12) translate(-2%, -1%);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "cdefa13a-d2c9-4d8c-9f30-24ff85f3a00b",
+  "created_at": "2026-11-18T09:40:14.175Z",
+  "application_id": "c323c6d0-d3da-4ba8-b200-a97b96d44ef7",
+  "store_url": "https://graza.co",
+  "style_pick": "warm-and-natural",
+  "reference_stores": [
+    "https://curehydration.com",
+    "https://goodgirlsnacks.com"
+  ],
+  "never_want": "Pop-ups the second someone lands",
+  "top_products": [
+    "https://graza.co/products/drizzle"
+  ],
+  "name": "Test Applicant",
+  "email": "test-applicant@example.com",
+  "phone": "+15551234567",
+  "phone_channel": "sms",
+  "call_time": null,
+  "booking": {
+    "provider": "other",
+    "event_uri": null,
+    "invitee_uri": null,
+    "verified": false
+  },
+  "status": "booked"
+}
