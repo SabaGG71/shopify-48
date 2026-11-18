@@ -1,4 +1,5 @@
 import "server-only"
+import { revalidateTag } from "next/cache"
 import { getRepo } from "@/lib/db/repo"
 import { metaEventId, sendMetaEvent } from "@/lib/meta"
 import { notifyKent, sendEmail } from "@/lib/notify"
@@ -77,6 +78,13 @@ export async function createJobFromSession(session: StripeCheckoutSession): Prom
     const again = await repo.getJobBySession(session.id)
     if (again) return { job: again, created: false }
     throw err
+  }
+
+  try {
+    // Slot counter shows real numbers. Not allowed while rendering a page, so ignore that case.
+    revalidateTag("slots", "max")
+  } catch {
+    /* the counter refreshes within a minute anyway */
   }
 
   const link = intakeUrl(job)

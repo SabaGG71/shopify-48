@@ -1,0 +1,213 @@
+{
+ "stores": [
+  {
+   "slug": "fly-by-jing",
+   "look": "loud-and-bold",
+   "card_loop": "/lookbook/loud-and-bold/fly-by-jing/desktop/card-loop.mp4",
+   "poster": "/lookbook/loud-and-bold/fly-by-jing/desktop/poster.webp",
+   "stills": [
+    "/lookbook/loud-and-bold/fly-by-jing/desktop/1-home.webp",
+    "/lookbook/loud-and-bold/fly-by-jing/desktop/2-collection.webp",
+    "/lookbook/loud-and-bold/fly-by-jing/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "good-girl-snacks",
+   "look": "loud-and-bold",
+   "card_loop": "/lookbook/loud-and-bold/good-girl-snacks/desktop/card-loop.mp4",
+   "poster": "/lookbook/loud-and-bold/good-girl-snacks/desktop/poster.webp",
+   "stills": [
+    "/lookbook/loud-and-bold/good-girl-snacks/desktop/1-home.webp",
+    "/lookbook/loud-and-bold/good-girl-snacks/desktop/2-collection.webp",
+    "/lookbook/loud-and-bold/good-girl-snacks/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "heist",
+   "look": "loud-and-bold",
+   "card_loop": "/lookbook/loud-and-bold/heist/desktop/card-loop.mp4",
+   "poster": "/lookbook/loud-and-bold/heist/desktop/poster.webp",
+   "stills": [
+    "/lookbook/loud-and-bold/heist/desktop/1-home.webp",
+    "/lookbook/loud-and-bold/heist/desktop/2-collection.webp",
+    "/lookbook/loud-and-bold/heist/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "olipop",
+   "look": "loud-and-bold",
+   "card_loop": "/lookbook/loud-and-bold/olipop/desktop/card-loop.mp4",
+   "poster": "/lookbook/loud-and-bold/olipop/desktop/poster.webp",
+   "stills": [
+    "/lookbook/loud-and-bold/olipop/desktop/1-home.webp",
+    "/lookbook/loud-and-bold/olipop/desktop/2-collection.webp",
+    "/lookbook/loud-and-bold/olipop/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "afternoon-toast",
+   "look": "editorial-and-moody",
+   "card_loop": "/lookbook/editorial-and-moody/afternoon-toast/desktop/card-loop.mp4",
+   "poster": "/lookbook/editorial-and-moody/afternoon-toast/desktop/poster.webp",
+   "stills": [
+    "/lookbook/editorial-and-moody/afternoon-toast/desktop/1-home.webp",
+    "/lookbook/editorial-and-moody/afternoon-toast/desktop/2-collection.webp",
+    "/lookbook/editorial-and-moody/afternoon-toast/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "flamingo-estate",
+   "look": "editorial-and-moody",
+   "card_loop": "/lookbook/editorial-and-moody/flamingo-estate/desktop/card-loop.mp4",
+   "poster": "/lookbook/editorial-and-moody/flamingo-estate/desktop/poster.webp",
+   "stills": [
+    "/lookbook/editorial-and-moody/flamingo-estate/desktop/1-home.webp",
+    "/lookbook/editorial-and-moody/flamingo-estate/desktop/2-collection.webp",
+    "/lookbook/editorial-and-moody/flamingo-estate/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "ghia",
+   "look": "editorial-and-moody",
+   "card_loop": "/lookbook/editorial-and-moody/ghia/desktop/card-loop.mp4",
+   "poster": "/lookbook/editorial-and-moody/ghia/desktop/poster.webp",
+   "stills": [
+    "/lookbook/editorial-and-moody/ghia/desktop/1-home.webp",
+    "/lookbook/editorial-and-moody/ghia/desktop/2-collection.webp",
+    "/lookbook/editorial-and-moody/ghia/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "poca",
+   "look": "editorial-and-moody",
+   "card_loop": "/lookbook/editorial-and-moody/poca/desktop/card-loop.mp4",
+   "poster": "/lookbook/editorial-and-moody/poca/desktop/poster.webp",
+   "stills": [
+    "/lookbook/editorial-and-moody/poca/desktop/1-home.webp",
+    "/lookbook/editorial-and-moody/poca/desktop/2-collection.webp",
+    "/lookbook/editorial-and-moody/poca/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "fellow",
+   "look": "clean-minimal",
+   "card_loop": "/lookbook/clean-minimal/fellow/desktop/card-loop.mp4",
+   "poster": "/lookbook/clean-minimal/fellow/desktop/poster.webp",
+   "stills": [
+    "/lookbook/clean-minimal/fellow/desktop/1-home.webp",
+    "/lookbook/clean-minimal/fellow/desktop/2-collection.webp",
+    "/lookbook/clean-minimal/fellow/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "manta-chocolate",
+   "look": "clean-minimal",
+   "card_loop": "/lookbook/clean-minimal/manta-chocolate/desktop/card-loop.mp4",
+   "poster": "/lookbook/clean-minimal/manta-chocolate/desktop/poster.webp",
+   "stills": [
+    "/lookbook/clean-minimal/manta-chocolate/desktop/1-home.webp",
+    "/lookbook/clean-minimal/manta-chocolate/desktop/2-collection.webp",
+    "/lookbook/clean-minimal/manta-chocolate/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "rockys-matcha",
+   "look": "clean-minimal",
+   "card_loop": "/lookbook/clean-minimal/rockys-matcha/desktop/card-loop.mp4",
+   "poster": "/lookbook/clean-minimal/rockys-matcha/desktop/poster.webp",
+   "stills": [
+    "/lookbook/clean-minimal/rockys-matcha/desktop/1-home.webp",
+    "/lookbook/clean-minimal/rockys-matcha/desktop/2-collection.webp",
+    "/lookbook/clean-minimal/rockys-matcha/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "alecs-ice-cream",
+   "look": "playful-and-illustrated",
+   "card_loop": "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/card-loop.mp4",
+   "poster": "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/poster.webp",
+   "stills": [
+    "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/1-home.webp",
+    "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/2-collection.webp",
+    "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "magic-spoon",
+   "look": "playful-and-illustrated",
+   "card_loop": "/lookbook/playful-and-illustrated/magic-spoon/desktop/card-loop.mp4",
+   "poster": "/lookbook/playful-and-illustrated/magic-spoon/desktop/poster.webp",
+   "stills": [
+    "/lookbook/playful-and-illustrated/magic-spoon/desktop/1-home.webp",
+    "/lookbook/playful-and-illustrated/magic-spoon/desktop/2-collection.webp",
+    "/lookbook/playful-and-illustrated/magic-spoon/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "one-trick-pony",
+   "look": "playful-and-illustrated",
+   "card_loop": "/lookbook/playful-and-illustrated/one-trick-pony/desktop/card-loop.mp4",
+   "poster": "/lookbook/playful-and-illustrated/one-trick-pony/desktop/poster.webp",
+   "stills": [
+    "/lookbook/playful-and-illustrated/one-trick-pony/desktop/1-home.webp",
+    "/lookbook/playful-and-illustrated/one-trick-pony/desktop/2-collection.webp",
+    "/lookbook/playful-and-illustrated/one-trick-pony/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "sanzo",
+   "look": "playful-and-illustrated",
+   "card_loop": "/lookbook/playful-and-illustrated/sanzo/desktop/card-loop.mp4",
+   "poster": "/lookbook/playful-and-illustrated/sanzo/desktop/poster.webp",
+   "stills": [
+    "/lookbook/playful-and-illustrated/sanzo/desktop/1-home.webp",
+    "/lookbook/playful-and-illustrated/sanzo/desktop/2-collection.webp",
+    "/lookbook/playful-and-illustrated/sanzo/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "cure",
+   "look": "warm-and-natural",
+   "card_loop": "/lookbook/warm-and-natural/cure/desktop/card-loop.mp4",
+   "poster": "/lookbook/warm-and-natural/cure/desktop/poster.webp",
+   "stills": [
+    "/lookbook/warm-and-natural/cure/desktop/1-home.webp",
+    "/lookbook/warm-and-natural/cure/desktop/2-collection.webp",
+    "/lookbook/warm-and-natural/cure/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "golde",
+   "look": "warm-and-natural",
+   "card_loop": "/lookbook/warm-and-natural/golde/desktop/card-loop.mp4",
+   "poster": "/lookbook/warm-and-natural/golde/desktop/poster.webp",
+   "stills": [
+    "/lookbook/warm-and-natural/golde/desktop/1-home.webp",
+    "/lookbook/warm-and-natural/golde/desktop/2-collection.webp",
+    "/lookbook/warm-and-natural/golde/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "graza",
+   "look": "warm-and-natural",
+   "card_loop": "/lookbook/warm-and-natural/graza/desktop/card-loop.mp4",
+   "poster": "/lookbook/warm-and-natural/graza/desktop/poster.webp",
+   "stills": [
+    "/lookbook/warm-and-natural/graza/desktop/1-home.webp",
+    "/lookbook/warm-and-natural/graza/desktop/2-collection.webp",
+    "/lookbook/warm-and-natural/graza/desktop/3-product.webp"
+   ]
+  },
+  {
+   "slug": "east-fork",
+   "look": "warm-and-natural",
+   "card_loop": "/lookbook/warm-and-natural/east-fork/desktop/card-loop.mp4",
+   "poster": "/lookbook/warm-and-natural/east-fork/desktop/poster.webp",
+   "stills": [
+    "/lookbook/warm-and-natural/east-fork/desktop/1-home.webp",
+    "/lookbook/warm-and-natural/east-fork/desktop/2-collection.webp",
+    "/lookbook/warm-and-natural/east-fork/desktop/3-product.webp"
+   ]
+  }
+ ]
+}

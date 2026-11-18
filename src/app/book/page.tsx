@@ -5,8 +5,8 @@ import { Suspense } from "react"
 import { BookFlow } from "@/components/book/book-flow"
 import { Container } from "@/components/landing/sections"
 import { SiteFooter, SiteHeader } from "@/components/site/chrome"
-import { reserveLinkFor } from "@/lib/booking"
-import { getConfig, showMissingConfig } from "@/lib/config"
+import { calendlyPrefill } from "@/lib/booking"
+import { getConfig } from "@/lib/config"
 import { getRepo } from "@/lib/db/repo"
 import { currentApplication } from "@/lib/session"
 import { displayHost } from "@/lib/url"
@@ -47,6 +47,7 @@ async function BookContent() {
   if (app.outcome !== "qualified") redirect("/not-a-fit")
 
   const [config, homepageJob] = await Promise.all([getConfig(), (await getRepo()).getHomepageJobByApplication(app.id)])
+  if (homepageJob && homepageJob.status === "booked") redirect("/booked")
   return (
     <BookFlow
       appId={app.id}
@@ -61,13 +62,15 @@ async function BookContent() {
         top_products: app.top_products ?? [],
         saved: Boolean(app.design_saved_at),
       }}
-      booked={homepageJob && homepageJob.status === "booked" ? { callTime: homepageJob.call_time } : null}
-      bookingUrl={config.BOOKING_URL}
+      bookingUrl={calendlyPrefill(config.BOOKING_URL, {
+        name: app.name,
+        email: app.email,
+        storeUrl: app.store_url,
+        phone: app.phone,
+        applicationId: app.id,
+      })}
       confirmVideo={{ url: config.CONFIRM_VIDEO_URL, captions: config.CONFIRM_CAPTIONS_URL }}
       lookbook={config.LOOKBOOK}
-      reserveHref={reserveLinkFor(app, config.RESERVE_URL)}
-      priceDisplay={config.PRICE_DISPLAY}
-      missing={showMissingConfig()}
     />
   )
 }

@@ -57,6 +57,10 @@ export type BookingInfo = {
   cancel_url?: string | null
   reschedule_url?: string | null
   verified: boolean
+  canceled_at?: string | null
+  no_show_at?: string | null
+  rebook_sent_at?: string | null
+  rebook_channel?: "sms" | "email" | null
 }
 
 /** The record Kent's agent reads to build the free homepage. */

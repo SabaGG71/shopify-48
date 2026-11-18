@@ -10,7 +10,9 @@ import {
   PriceReserve,
   ProofSection,
   WhatYouGet,
+  shownProofStores,
 } from "@/components/landing/sections"
+import { BeforeAfter } from "@/components/proof/before-after"
 import { SiteFooter, SiteHeader } from "@/components/site/chrome"
 import { VideoPlayer } from "@/components/video/video-player"
 import { getConfig, showMissingConfig } from "@/lib/config"
@@ -21,6 +23,8 @@ export const maxDuration = 60
 export default async function LandingPage() {
   const config = await getConfig()
   const missing = showMissingConfig()
+  // Until Kent's VSL is ready, the video's spot shows a real before and after instead.
+  const heroProof = config.VSL_URL ? null : (shownProofStores(config)[0] ?? null)
 
   return (
     <ApplyProvider>
@@ -39,13 +43,25 @@ export default async function LandingPage() {
                 </h1>
                 <p className="mt-4 text-[1.08rem] text-soft sm:mt-6 sm:text-[1.2rem]">Free homepage rebuild if you qualify.</p>
               </div>
-              <VideoPlayer
-                url={config.VSL_URL}
-                poster={config.VSL_POSTER_URL}
-                captions={config.VSL_CAPTIONS_URL}
-                title="How the 48 hour rebuild works"
-                missingLabel={missing ? "VSL_URL not set" : null}
-              />
+              {heroProof ? (
+                <figure>
+                  <BeforeAfter
+                    name={heroProof.name}
+                    desktop={{ before: heroProof.before_desktop, after: heroProof.after_desktop }}
+                    mobile={{}}
+                  />
+                  <figcaption className="mt-3 text-center text-[0.82rem] text-soft lg:text-left">
+                    <span className="font-semibold text-ink">{heroProof.name}</span>, before and after. Drag to compare.
+                  </figcaption>
+                </figure>
+              ) : (
+                <VideoPlayer
+                  url={config.VSL_URL}
+                  poster={config.VSL_POSTER_URL}
+                  captions={config.VSL_CAPTIONS_URL}
+                  title="How the 48 hour rebuild works"
+                />
+              )}
             </div>
           </Container>
         </section>
@@ -57,7 +73,7 @@ export default async function LandingPage() {
           </Container>
         </section>
 
-        <ProofSection config={config} missing={missing} />
+        <ProofSection config={config} missing={missing} exclude={heroProof?.slug} />
         <WhatYouGet items={config.WHAT_YOU_GET} />
         <Guarantees />
         <HowItWorks />

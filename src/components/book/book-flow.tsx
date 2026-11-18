@@ -1,8 +1,9 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react"
+import { useRouter } from "next/navigation"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { confirmBooking, saveDesign } from "@/app/actions/book"
-import { CtaButton, CtaLink } from "@/components/brand/cta"
+import { CtaButton } from "@/components/brand/cta"
 import { LabelRule, Ornament } from "@/components/brand/marks"
 import { FieldShell, FormError, TextField, inputBase } from "@/components/form/fields"
 import { LookbookDialog } from "@/components/lookbook/lookbook-dialog"
@@ -25,50 +26,19 @@ export type BookFlowProps = {
   storeHost: string
   stylePick: Look
   initial: { reference_stores: string[]; never_want: string; top_products: string[]; saved: boolean }
-  booked: { callTime: string | null } | null
+  /** Booking link with name, email, store URL, phone and the application id already filled in. */
   bookingUrl: string
   confirmVideo: { url: string; captions: string }
   lookbook: LookbookEntry[]
-  reserveHref: string
-  priceDisplay: string
-  missing: boolean
 }
 
-type Stage = "questions" | "calendar" | "booked"
-
-function formatCall(iso: string | null) {
-  if (!iso) return null
-  try {
-    return new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "2-digit" }).format(
-      new Date(iso),
-    )
-  } catch {
-    return null
-  }
-}
-
-const noopSubscribe = () => () => {}
-
-/** Call time in the visitor's own time zone. Rendered after hydration so server and browser never disagree. */
-function useLocalCallTime(iso: string | null) {
-  return useSyncExternalStore(
-    noopSubscribe,
-    () => formatCall(iso),
-    () => null,
-  )
-}
+type Stage = "questions" | "calendar"
 
 function BookingEmbed({
   url,
-  appId,
-  name,
-  email,
   onBooked,
 }: {
   url: string
-  appId: string
-  name: string
-  email: string
   onBooked: (p: { provider: "calendly" | "google" | "other"; event_uri?: string; invitee_uri?: string }) => void
 }) {
   const isCalendly = /calendly\.com\//i.test(url)
@@ -104,10 +74,6 @@ function BookingEmbed({
       u.searchParams.set("background_color", "fffdf7")
       u.searchParams.set("text_color", "2a241c")
       u.searchParams.set("primary_color", "8a6c33")
-      if (name) u.searchParams.set("name", name)
-      if (email) u.searchParams.set("email", email)
-      u.searchParams.set("utm_source", "le48")
-      u.searchParams.set("utm_content", appId)
     }
     src = u.toString()
   } catch {
@@ -158,7 +124,8 @@ function BookingEmbed({
 }
 
 export function BookFlow(props: BookFlowProps) {
-  const [stage, setStage] = useState<Stage>(props.booked ? "booked" : props.initial.saved ? "calendar" : "questions")
+  const router = useRouter()
+  const [stage, setStage] = useState<Stage>(props.initial.saved ? "calendar" : "questions")
   const [look, setLook] = useState<Look>(props.stylePick)
   const [lookOpen, setLookOpen] = useState(false)
   const [lookbookOpen, setLookbookOpen] = useState(false)
@@ -168,11 +135,9 @@ export function BookFlow(props: BookFlowProps) {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [formError, setFormError] = useState<string | null>(null)
   const [pending, setPending] = useState(false)
-  const [callTime, setCallTime] = useState<string | null>(props.booked?.callTime ?? null)
   const calRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
   useFocusFirstError(errors, formRef)
-  const when = useLocalCallTime(callTime)
 
   const nameOf = (url: string) => props.lookbook.find((e) => normalizeUrl(e.url) === url)?.name ?? url.replace(/^https:\/\//, "")
 
@@ -206,56 +171,11 @@ export function BookFlow(props: BookFlowProps) {
         return
       }
       trackPixel("Schedule", res.eventId)
-      setCallTime(res.callTime)
-      setStage("booked")
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      router.push("/booked")
     } catch {
       setFormError("Your time is booked, but we couldn't confirm it here. Kent will text you to confirm.")
     }
-  }, [])
-
-  if (stage === "booked") {
-    return (
-      <div className="mx-auto max-w-3xl">
-        <LabelRule>
-          <Ornament /> Booked
-        </LabelRule>
-        <h1 className="display mt-6 text-[2.6rem] text-balance text-ink sm:text-[3.6rem]">
-          {when ? (
-            <>
-              You’re booked for <span className="text-gold">{when}</span>.
-            </>
-          ) : (
-            "You’re booked."
-          )}
-        </h1>
-        <p className="mt-5 max-w-xl text-[1rem] leading-relaxed text-soft">
-          Kent builds your homepage before the call and walks you through it live. The calendar invite is in your inbox.
-        </p>
-        <ul className="mt-8 border-t border-line">
-          {["On the call, you see your new homepage with your own products.", "If you like it, Kent rebuilds the rest of the store in 48 hours."].map((t) => (
-            <li key={t} className="flex items-baseline gap-3 border-b border-line py-4 text-[0.98rem] text-ink">
-              <Ornament className="size-2.5" />
-              {t}
-            </li>
-          ))}
-        </ul>
-        {props.reserveHref ? (
-          <div className="mt-10 rounded-[22px] border border-line bg-paper/80 p-6 sm:p-8">
-            <p className="micro">Already sure?</p>
-            <p className="display mt-3 text-[1.9rem] text-ink">Hold your build slot now.</p>
-            <p className="mt-2 text-[0.92rem] leading-relaxed text-soft">
-              {props.priceDisplay ? `${props.priceDisplay} for the whole store. ` : ""}The call still happens, and nothing goes live without your yes.
-            </p>
-            <CtaLink href={props.reserveHref} variant="outline" className="mt-6">
-              Reserve my slot
-            </CtaLink>
-          </div>
-        ) : null}
-        <FormError>{formError}</FormError>
-      </div>
-    )
-  }
+  }, [router])
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -274,7 +194,6 @@ export function BookFlow(props: BookFlowProps) {
         captions={props.confirmVideo.captions}
         title="What happens next"
         className="mt-8"
-        missingLabel={props.missing ? "CONFIRM_VIDEO_URL not set" : null}
       />
 
       <form ref={formRef} onSubmit={submitQuestions} noValidate className="mt-10">
@@ -420,10 +339,10 @@ export function BookFlow(props: BookFlowProps) {
           <h2 className="display mt-5 text-[2.1rem] text-ink sm:text-[2.6rem]">Book your homepage call.</h2>
           <div className="mt-6">
             {props.bookingUrl ? (
-              <BookingEmbed url={props.bookingUrl} appId={props.appId} name={props.name} email={props.email} onBooked={onBooked} />
+              <BookingEmbed url={props.bookingUrl} onBooked={onBooked} />
             ) : (
               <div className="rounded-[18px] border border-dashed border-line-strong p-8 text-center">
-                <p className="micro">{props.missing ? "BOOKING_URL not set" : "Kent will text you to set a time."}</p>
+                <p className="micro">Kent will text you to set a time.</p>
               </div>
             )}
           </div>

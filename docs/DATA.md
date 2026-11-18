@@ -29,8 +29,8 @@ Created when a qualified applicant books the call. One per application. This is 
 | `top_products` | list of product URLs from their store, 1 to 3 |
 | `name`, `email`, `phone`, `phone_channel` | contact |
 | `call_time` | ISO time, or `null` if the booking tool did not report it |
-| `booking` | `{ provider, event_uri, invitee_uri, verified }` |
-| `status` | `booked` or `canceled` |
+| `booking` | `{ provider, event_uri, invitee_uri, cancel_url, reschedule_url, verified, canceled_at, no_show_at, rebook_sent_at, rebook_channel }` (Calendly fills the uris; the rest are set by the cancel and no-show webhooks) |
+| `status` | `booked`, or `canceled` when the lead cancels (a reschedule stays `booked` with the new time) |
 
 Example: [sample-homepage-job.json](sample-homepage-job.json)
 

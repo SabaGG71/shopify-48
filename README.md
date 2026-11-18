@@ -7,7 +7,8 @@ Landing page, apply form, booking step and full intake for the LocalEyes 48 Hour
 | Path | What it is |
 | --- | --- |
 | `/` | Landing page: headline, video, apply form (two screens), proof, what you get, guarantees, how it works, price, fine print, apply again |
-| `/book` | Page 2, qualified applicants only: video, three design questions, then the booking calendar |
+| `/book` | Page 2, qualified applicants only: video, three design questions, then the booking calendar (Calendly, prefilled with name, email, store URL, phone and the lead id) |
+| `/booked` | After a booking: call time, the booked page video, and the reserve option. Calendly's redirect lands here too |
 | `/thanks` | Flagged for Kent to review by hand (coffee, something else, store we could not check) |
 | `/not-a-fit` | Not a fit right now. Shows a Store Score link once `STORE_SCORE_URL` is set |
 | `/reserved` | Stripe's after-payment page. Links straight to the intake |
@@ -31,11 +32,11 @@ To test the intake without a real payment, apply with a qualified store, then in
 1. **Database.** Neon is already set up: `npm run db:migrate` created the tables (`applications`, `homepage_jobs`, `jobs`, `site_config`, `alerts`). After a schema change: `npm run db:generate`, then `npm run db:migrate`. `npm run db:studio` opens a table browser.
 2. **File storage.** In Vercel, create a Blob store and connect it to the project. That adds `BLOB_READ_WRITE_TOKEN`.
 3. **Vercel.** Import the repo, then set the env vars from `.env.example`. Needs a Pro team for a commercial site.
-4. **Settings in /admin.** Kent fills `PRICE_DISPLAY`, `RESERVE_URL`, `BOOKING_URL`, the three videos, `KENT_TEXT_NUMBER`. Nothing price related is in the code.
-5. **Stripe.** On the Payment Link, set the after-payment redirect to `https://<site>/reserved?session_id={CHECKOUT_SESSION_ID}`. Add a webhook to `https://<site>/api/webhooks/stripe` for `checkout.session.completed` and `checkout.session.async_payment_succeeded`, and put its secret in `STRIPE_WEBHOOK_SECRET`.
-6. **Calendly.** Set `CALENDLY_TOKEN` so the booked time is saved. Optional backup: a webhook on `invitee.created` to `https://<site>/api/webhooks/calendly`.
-7. **Meta.** Set `NEXT_PUBLIC_META_PIXEL_ID` and `META_CAPI_TOKEN`. Use `META_TEST_EVENT_CODE` to watch `Lead`, `QualifiedLead`, `Schedule` and `Purchase` arrive in Events Manager, then remove it.
-8. **Alerts.** Set Twilio (`KENT_ALERT_PHONE`) and/or Resend (`KENT_ALERT_EMAIL`). Resend also emails the intake link after payment, so it needs a verified sending domain.
+4. **Settings in /admin.** Already in Neon: price and price note, reserve link, booking link, slot counter (7 a week, counted from real payments), checklist, fine print, lookbook, proof stores. Still to add when Kent sends them: the four videos and `KENT_TEXT_NUMBER`. Nothing price related is in the code.
+5. **Stripe.** Send Kent two URLs. Webhook: `https://<site>/api/webhooks/stripe` with `checkout.session.completed` and `checkout.session.async_payment_succeeded`; he sends back the signing secret for `STRIPE_WEBHOOK_SECRET`. Thank you page for the Payment Link redirect: `https://<site>/reserved?session_id={CHECKOUT_SESSION_ID}`. `STRIPE_SECRET_KEY` and `STRIPE_PAYMENT_LINK_ID` are already known.
+6. **Calendly.** `CALENDLY_TOKEN` goes in Vercel. Send Kent the booked page URL for the event's redirect: `https://<site>/booked` (with "pass event details" on). Then run `node --env-file=.env.local scripts/calendly-webhook.mjs https://<site>` once: it subscribes new booking, cancel and no-show, and prints `CALENDLY_WEBHOOK_SIGNING_KEY` for Vercel.
+7. **Meta.** Set `NEXT_PUBLIC_META_PIXEL_ID` and `META_CAPI_TOKEN` in Vercel only (they are off locally so tests never send fake events). Use `META_TEST_EVENT_CODE` from Events Manager to watch `Lead`, `QualifiedLead`, `Schedule` and `Purchase` arrive, then remove it.
+8. **Alerts.** Kent wants email: set `KENT_ALERT_EMAIL` in Vercel (Resend is set up, localeyesgrowth.com is verified). It is off locally so tests never email Kent. A no-show gets one rebook text if Twilio is added, otherwise one email.
 
 ## How the rules from the brief are met
 
@@ -49,12 +50,11 @@ To test the intake without a real payment, apply with a qualified store, then in
 
 The data the build agent reads is described key by key in [docs/DATA.md](docs/DATA.md).
 
-## Content Kent should check
+## Still open
 
-- `WHAT_YOU_GET` and `FINE_PRINT` are drafted from the ad scripts because the plan doc was not available. Replace them in /admin with the plan doc wording.
-- Proof stores: Lima's pair is live. Boxwood, Lamppost, Lake Effect and JJ's are listed as cleared but need before and after images (set the four image paths in `PROOF_STORES`). Green Kettle (the timed test build: Wix site rebuilt as a Shopify draft) is ready but hidden until Kent sets `cleared: true`.
-- The slot counter is off until Kent decides (`SLOT_COUNTER_ON`).
-- The lookbook was captured during Black Friday sales. Recapture after Dec 2 with the same file names. Sanzo's loop from Kent's script was broken (the page was captured 6 times too wide), so a fixed loop from a fresh capture is in place; the capture script needs the same width fix.
+- Videos: Kent sends the VSL, booked page video, welcome video and collaborator code clip as he records them. Until then the hero shows a before and after, and the other video spots are hidden.
+- Proof stores: Lima is live. Boxwood, Lake Effect and JJ's pairs are being captured (befores from the Wayback Machine) and get added once reviewed. Lamppost is held: its rebuild is still an unpublished preview and the client has not signed off. Green Kettle (the timed test build) is ready but hidden until Kent sets `cleared: true`.
+- The lookbook was captured during Black Friday sales. Recapture after Dec 2 with the same file names. Kent's capture script needs two fixes first: Sanzo's mobile page overflows sideways, and Heist's desktop theme scrolls inside a wrapper (both were recaptured by hand).
 
 ## Where things live
 

@@ -5,6 +5,8 @@ export type AlertKind =
   | "qualified_application"
   | "review_application"
   | "call_booked"
+  | "call_canceled"
+  | "no_show"
   | "payment_cleared"
   | "access_code"
   | "intake_submitted"
@@ -16,7 +18,7 @@ type Delivery = { sms?: string; email?: string }
 
 const siteUrl = () => (process.env.SITE_URL || "").replace(/\/$/, "")
 
-async function sendSms(to: string, body: string): Promise<string> {
+export async function sendSms(to: string, body: string): Promise<string> {
   const sid = process.env.TWILIO_ACCOUNT_SID
   const token = process.env.TWILIO_AUTH_TOKEN
   const from = process.env.TWILIO_FROM_NUMBER

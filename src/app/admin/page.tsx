@@ -17,6 +17,7 @@ export const metadata: Metadata = { title: "Admin | 48 Hour Rebuild", robots: { 
 
 const DESCRIPTIONS: Record<ConfigKey, string> = {
   PRICE_DISPLAY: "The price text shown on the page.",
+  PRICE_NOTE: "One line under the price.",
   RESERVE_URL: "Stripe Payment Link for the reserve button. In Stripe, set its after-payment redirect to /reserved?session_id={CHECKOUT_SESSION_ID} on this site.",
   BOOKING_URL: "Calendly or Google booking link.",
   VSL_URL: "Main video. YouTube, Vimeo, Wistia, Loom or a direct .mp4 link.",

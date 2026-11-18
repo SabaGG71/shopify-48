@@ -328,7 +328,6 @@ export function IntakeFlow(props: IntakeFlowProps) {
             captions={props.video.captions}
             title="Welcome to your 48 hour rebuild"
             className="mt-6"
-            missingLabel={props.missing ? "INTAKE_VIDEO_URL not set" : null}
           />
         </div>
       ) : null}
@@ -372,8 +371,6 @@ export function IntakeFlow(props: IntakeFlowProps) {
               />
               {props.collabVideo ? (
                 <VideoPlayer url={props.collabVideo} title="Where to find your collaborator code" aspect="9 / 16" className="mx-auto w-full max-w-[260px]" />
-              ) : props.missing ? (
-                <p className="micro">COLLAB_HOWTO_VIDEO_URL not set</p>
               ) : null}
             </div>
             <CheckRow

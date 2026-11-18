@@ -52,6 +52,8 @@ const boolish = z.preprocess(
  */
 export const configSchema = z.object({
   PRICE_DISPLAY: z.string().trim().default(""),
+  /** One line under the price. */
+  PRICE_NOTE: z.string().trim().default(""),
   RESERVE_URL: optionalUrl,
   BOOKING_URL: optionalUrl,
   VSL_URL: optionalUrl,

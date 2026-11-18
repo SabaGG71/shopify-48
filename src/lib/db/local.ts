@@ -94,6 +94,15 @@ export function createLocalRepo(): Repo {
       }),
     getHomepageJobByApplication: (id) => read((db) => db.homepage_jobs.find((h) => h.application_id === id) ?? null),
     listHomepageJobs: (limit) => read((db) => [...db.homepage_jobs].sort(byNewest).slice(0, limit)),
+    updateHomepageJob: (id, patch) =>
+      tx((db) => {
+        const i = db.homepage_jobs.findIndex((h) => h.id === id)
+        if (i < 0) throw new Error(`homepage job ${id} not found`)
+        db.homepage_jobs[i] = { ...db.homepage_jobs[i], ...patch, id, updated_at: now() }
+        return db.homepage_jobs[i]
+      }),
+    findHomepageJobByBooking: (field, value) =>
+      read((db) => db.homepage_jobs.filter((h) => h.booking?.[field] === value).sort(byNewest)[0] ?? null),
 
     insertJob: (row) =>
       tx((db) => {
@@ -117,6 +126,7 @@ export function createLocalRepo(): Repo {
     getJobByApplication: (id) =>
       read((db) => db.jobs.filter((j) => j.application_id === id).sort(byNewest)[0] ?? null),
     listJobs: (limit) => read((db) => [...db.jobs].sort(byNewest).slice(0, limit)),
+    countPaidSince: (iso) => read((db) => db.jobs.filter((j) => j.paid_at && j.paid_at >= iso && j.status !== "canceled").length),
 
     getConfigRows: () => read((db) => ({ ...db.site_config })),
     setConfigRow: (key, value) =>

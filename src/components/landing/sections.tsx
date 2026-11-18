@@ -2,6 +2,7 @@ import { CtaLink } from "@/components/brand/cta"
 import { LabelRule, Ornament } from "@/components/brand/marks"
 import { BeforeAfter } from "@/components/proof/before-after"
 import type { SiteConfig } from "@/lib/config"
+import { slotsLeft } from "@/lib/slots"
 import { cn } from "@/lib/utils"
 
 export function Container({ className, children }: { className?: string; children: React.ReactNode }) {
@@ -28,10 +29,13 @@ export function MissingConfig({ name, show }: { name: string; show: boolean }) {
 
 /* ---------- 4. Proof ---------- */
 
-export function ProofSection({ config, missing }: { config: SiteConfig; missing: boolean }) {
-  const stores = config.PROOF_STORES.filter(
-    (s) => s.cleared && ((s.before_desktop && s.after_desktop) || (s.before_mobile && s.after_mobile)),
-  )
+/** Cleared stores that have a complete before and after pair. */
+export function shownProofStores(config: SiteConfig) {
+  return config.PROOF_STORES.filter((s) => s.cleared && ((s.before_desktop && s.after_desktop) || (s.before_mobile && s.after_mobile)))
+}
+
+export function ProofSection({ config, missing, exclude }: { config: SiteConfig; missing: boolean; exclude?: string | null }) {
+  const stores = shownProofStores(config).filter((s) => s.slug !== exclude)
   if (!stores.length && !missing) return null
   return (
     <section aria-labelledby="proof-title" className="py-16 sm:py-24">
@@ -96,7 +100,16 @@ export function WhatYouGet({ items }: { items: string[] }) {
           {items.map((item, i) => (
             <li key={i} className="flex items-baseline gap-4 border-b border-line py-4 sm:py-5">
               <span className="display w-7 shrink-0 text-[1.05rem] text-gold tabular">{String(i + 1).padStart(2, "0")}</span>
-              <span className="text-[1rem] leading-snug text-ink sm:text-[1.08rem]">{item}</span>
+              <span className="text-[1rem] leading-snug text-ink sm:text-[1.08rem]">
+                {item.includes(": ") ? (
+                  <>
+                    <span className="font-semibold">{item.slice(0, item.indexOf(": "))}</span>
+                    <span className="text-soft">: {item.slice(item.indexOf(": ") + 2)}</span>
+                  </>
+                ) : (
+                  item
+                )}
+              </span>
             </li>
           ))}
         </ul>
@@ -191,9 +204,10 @@ export function HowItWorks() {
 
 /* ---------- 8. Price and reserve ---------- */
 
-export function PriceReserve({ config, missing }: { config: SiteConfig; missing: boolean }) {
-  const showCounter =
-    config.SLOT_COUNTER_ON && config.SLOTS_PER_WEEK !== null && config.SLOTS_LEFT !== null && config.SLOTS_PER_WEEK > 0
+export async function PriceReserve({ config, missing }: { config: SiteConfig; missing: boolean }) {
+  const perWeek = config.SLOT_COUNTER_ON && config.SLOTS_PER_WEEK ? config.SLOTS_PER_WEEK : null
+  const left = await slotsLeft(perWeek, config.SLOTS_LEFT)
+  const showCounter = perWeek !== null && left !== null
   if (!config.PRICE_DISPLAY && !config.RESERVE_URL && !missing) return null
   return (
     <section aria-labelledby="price-title" className="py-16 sm:py-24">
@@ -208,21 +222,21 @@ export function PriceReserve({ config, missing }: { config: SiteConfig; missing:
           <p className="display mt-5 text-[3.6rem] leading-none text-ink sm:text-[5rem]">
             {config.PRICE_DISPLAY || <MissingConfig name="PRICE_DISPLAY" show={missing} />}
           </p>
-          <p className="mx-auto mt-4 max-w-md text-[0.95rem] leading-relaxed text-soft">
-            One price for the whole store. Already sure? Skip the call and hold your spot this week.
+          {config.PRICE_NOTE ? <p className="mt-4 text-[1.02rem] font-medium text-ink">{config.PRICE_NOTE}</p> : null}
+          <p className="mx-auto mt-3 max-w-md text-[0.92rem] leading-relaxed text-soft">
+            {showCounter && left === 0
+              ? "This week is full. Reserve now to hold a slot for next week."
+              : "Already sure? Skip the call and hold your spot this week."}
           </p>
           {showCounter ? (
             <div className="mt-6 flex flex-col items-center gap-2.5">
               <div className="flex gap-1.5" aria-hidden="true">
-                {Array.from({ length: config.SLOTS_PER_WEEK! }).map((_, i) => (
-                  <span
-                    key={i}
-                    className={cn("h-1.5 w-6 rounded-full", i < config.SLOTS_PER_WEEK! - config.SLOTS_LEFT! ? "bg-ink/20" : "bg-gold")}
-                  />
+                {Array.from({ length: perWeek }).map((_, i) => (
+                  <span key={i} className={cn("h-1.5 w-6 rounded-full", i < perWeek - left ? "bg-ink/20" : "bg-gold")} />
                 ))}
               </div>
               <p className="micro text-ink">
-                {config.SLOTS_LEFT} of {config.SLOTS_PER_WEEK} slots left this week
+                {left} of {perWeek} slots left this week
               </p>
             </div>
           ) : null}

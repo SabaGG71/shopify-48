@@ -12,11 +12,11 @@ const proof = (slug: string) => ({
  * Launch defaults. Prices, links and videos are deliberately empty: Kent fills
  * them in /admin (or as env vars). Nothing here is a price.
  *
- * WHAT_YOU_GET and FINE_PRINT are drafted from Kent's ad scripts because the
- * plan doc was not available. Kent should replace them with the plan doc text.
+ * WHAT_YOU_GET and FINE_PRINT are Kent's wording (Nov 18 2026).
  */
 export const DEFAULT_CONFIG: SiteConfig = {
   PRICE_DISPLAY: "",
+  PRICE_NOTE: "",
   RESERVE_URL: "",
   BOOKING_URL: "",
   VSL_URL: "",
@@ -53,30 +53,26 @@ export const DEFAULT_CONFIG: SiteConfig = {
   ],
   LOOKBOOK: DEFAULT_LOOKBOOK,
   WHAT_YOU_GET: [
-    "A new homepage built around your best sellers",
-    "Product pages rebuilt to sell",
-    "Collection pages that are easy to shop",
-    "A cart that sells the second item",
-    "Apps cleaned up and every old link redirected",
-    "Checked on real phones before you see it",
-    "Still your theme editor, so you can change anything after",
+    "Full redesign: home, collection, product page, cart, nav, footer, about, contact",
+    "Conversion setup: product page layout, cart upsells, gift tiers, mobile checkout",
+    "One page your category needs: subscriptions, bundles, gifting or wholesale",
+    "Up to 2 apps installed and set up",
+    "Zero SEO loss: every URL kept or redirected, titles, meta, schema, internal links",
+    "14 days of tweaks after launch",
+    "30 day report on conversion rate, AOV and speed, plus your next 3 moves",
   ],
   FINE_PRINT: [
     {
       title: "When the clock starts",
-      body: "The 48 hours start once three things are in: your intake, your approval of our store access, and your payment. We text you the moment it starts.",
+      body: "The clock starts when your intake is done, store access is granted and payment clears. Business days only. It pauses while we're waiting on you.",
     },
     {
-      title: "If we're late",
-      body: "If your preview isn't ready 48 hours after the clock starts, the rebuild is free.",
-    },
-    {
-      title: "Your live store",
-      body: "We build on a copy of your theme. Your store keeps selling while we work, and nothing goes live until you say yes.",
+      title: "How you get it",
+      body: "Delivery is a preview link. You publish when you're ready.",
     },
     {
       title: "Not included",
-      body: "New photography, custom app development and changes after launch. Ask on the call if you need any of these.",
+      body: "Logo or branding, photography, writing every product description, custom apps, migrations and ads. You pay your own app fees.",
     },
   ],
 }

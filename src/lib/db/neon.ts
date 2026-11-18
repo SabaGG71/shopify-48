@@ -1,5 +1,21 @@
 import "server-only"
-import { neon } from "@neondatabase/serverless"
+import { neon, neonConfig } from "@neondatabase/serverless"
+
+/**
+ * Retry a query twice when the connection drops before Neon answers
+ * ("fetch failed", reset, timeout). Errors Neon returns are never retried.
+ */
+const RETRY_DELAYS = [250, 800]
+neonConfig.fetchFunction = async (input: RequestInfo | URL, init?: RequestInit) => {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await fetch(input, { ...init, cache: "no-store" })
+    } catch (err) {
+      if (attempt >= RETRY_DELAYS.length) throw err
+      await new Promise((r) => setTimeout(r, RETRY_DELAYS[attempt]))
+    }
+  }
+}
 import { desc, eq, sql } from "drizzle-orm"
 import { drizzle } from "drizzle-orm/neon-http"
 import type { AlertRow, Application, HomepageJob, Job } from "@/lib/types"
@@ -103,6 +119,25 @@ export function createNeonRepo(): Repo {
     async listHomepageJobs(limit) {
       return many<HomepageJob>(await db.select().from(homepageJobs).orderBy(desc(homepageJobs.created_at)).limit(limit))
     },
+    async updateHomepageJob(id, patch) {
+      return first<HomepageJob>(
+        await db
+          .update(homepageJobs)
+          .set({ ...toDb(patch), updated_at: new Date() } as never)
+          .where(eq(homepageJobs.id, id))
+          .returning(),
+        "update homepage job",
+      )
+    },
+    async findHomepageJobByBooking(field, value) {
+      const rows = await db
+        .select()
+        .from(homepageJobs)
+        .where(sql`${homepageJobs.booking}->>${field} = ${value}`)
+        .orderBy(desc(homepageJobs.created_at))
+        .limit(1)
+      return fromDb<HomepageJob>(rows[0])
+    },
 
     async insertJob(row: NewJob) {
       return first<Job>(await db.insert(jobs).values(toDb(row) as never).returning(), "insert job")
@@ -135,6 +170,13 @@ export function createNeonRepo(): Repo {
     },
     async listJobs(limit) {
       return many<Job>(await db.select().from(jobs).orderBy(desc(jobs.created_at)).limit(limit))
+    },
+    async countPaidSince(iso) {
+      const rows = await db
+        .select({ n: sql<number>`count(*)::int` })
+        .from(jobs)
+        .where(sql`${jobs.paid_at} >= ${new Date(iso)} and ${jobs.status} <> 'canceled'`)
+      return Number(rows[0]?.n ?? 0)
     },
 
     async getConfigRows() {

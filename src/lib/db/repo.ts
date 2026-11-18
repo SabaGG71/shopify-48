@@ -18,6 +18,9 @@ export interface Repo {
   upsertHomepageJob(row: NewHomepageJob): Promise<HomepageJob>
   getHomepageJobByApplication(applicationId: string): Promise<HomepageJob | null>
   listHomepageJobs(limit: number): Promise<HomepageJob[]>
+  updateHomepageJob(id: string, patch: Partial<HomepageJob>): Promise<HomepageJob>
+  /** Find the homepage job a Calendly webhook refers to. */
+  findHomepageJobByBooking(field: "event_uri" | "invitee_uri", value: string): Promise<HomepageJob | null>
 
   insertJob(row: NewJob): Promise<Job>
   updateJob(id: string, patch: Partial<Job>): Promise<Job>
@@ -26,6 +29,8 @@ export interface Repo {
   getJobBySession(sessionId: string): Promise<Job | null>
   getJobByApplication(applicationId: string): Promise<Job | null>
   listJobs(limit: number): Promise<Job[]>
+  /** Paid builds since an ISO time (for the slot counter). */
+  countPaidSince(iso: string): Promise<number>
 
   getConfigRows(): Promise<Record<string, unknown>>
   setConfigRow(key: string, value: unknown): Promise<void>
