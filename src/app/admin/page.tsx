@@ -105,7 +105,14 @@ async function Leads({ highlight }: { highlight?: string }) {
               ) : null}
               <div className="text-[12px] text-[#5b6075]">{a.is_shopify === true ? "Shopify" : a.is_shopify === false ? "Not Shopify" : "Unchecked"}</div>
             </td>
-            <td>{labelOf(LOOKS, a.style_pick)}</td>
+            <td className="max-w-[220px]">
+              {a.style_pick ? labelOf(LOOKS, a.style_pick) : a.style_other ? <span className="text-[#5b6075]">None fit</span> : ""}
+              {a.style_other ? <div className="mt-1 text-[12px] text-[#14161f]">&ldquo;{a.style_other}&rdquo;</div> : null}
+              {a.styles_viewed?.length ? (
+                <div className="mt-1 text-[12px] text-[#5b6075]">Opened: {a.styles_viewed.map((l) => labelOf(LOOKS, l)).join(", ")}</div>
+              ) : null}
+              {a.stores_clicked?.length ? <div className="mt-1 text-[12px] text-[#5b6075]">Visited: {a.stores_clicked.join(", ")}</div> : null}
+            </td>
             <td>{labelOf(NICHES, a.niche)}</td>
             <td>{status}</td>
             <td className="max-w-[220px] text-[12px] text-[#5b6075]">

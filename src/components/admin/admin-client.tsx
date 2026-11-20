@@ -16,8 +16,22 @@ const btn =
   "inline-flex h-8 items-center rounded-md border border-[#d9dbe3] bg-white px-3 text-[13px] font-medium text-[#14161f] hover:bg-[#f4f5f8] disabled:opacity-50"
 const btnPrimary = "inline-flex h-8 items-center rounded-md bg-[#1a37ff] px-3 text-[13px] font-semibold text-white hover:bg-[#1530e0] disabled:opacity-50"
 
+const field =
+  "h-10 w-full rounded-md border border-[#d9dbe3] px-3 text-[15px] outline-none focus:border-[#1a37ff] focus:ring-2 focus:ring-[#1a37ff]/20"
+
+function EyeIcon({ open }: { open: boolean }) {
+  return (
+    <svg viewBox="0 0 20 20" className="size-[18px]" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M1.8 10S5 4.2 10 4.2 18.2 10 18.2 10 15 15.8 10 15.8 1.8 10 1.8 10Z" strokeLinejoin="round" />
+      <circle cx="10" cy="10" r="2.6" />
+      {open ? null : <path d="M3.5 16.5 16.5 3.5" strokeLinecap="round" />}
+    </svg>
+  )
+}
+
 export function LoginForm() {
   const [state, action, pending] = useActionState(adminLogin, null)
+  const [showPassword, setShowPassword] = useState(false)
   if (state?.ok) {
     if (typeof window !== "undefined") window.location.reload()
   }
@@ -25,9 +39,35 @@ export function LoginForm() {
     <form action={action} className="mx-auto mt-24 grid w-full max-w-sm gap-3 rounded-xl border border-[#e3e5ec] bg-white p-6">
       <h1 className="text-[17px] font-semibold text-[#14161f]">48 Hour Rebuild admin</h1>
       <label className="grid gap-1.5 text-[13px] font-medium text-[#4a4f62]">
-        Password
-        <input name="password" type="password" autoFocus className="h-10 rounded-md border border-[#d9dbe3] px-3 text-[15px] outline-none focus:border-[#1a37ff] focus:ring-2 focus:ring-[#1a37ff]/20" />
+        Username
+        <input name="username" type="text" autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} autoFocus className={field} />
       </label>
+      <div className="grid gap-1.5">
+        <label htmlFor="admin-password" className="text-[13px] font-medium text-[#4a4f62]">
+          Password
+        </label>
+        <div className="relative">
+          <input
+            id="admin-password"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            autoComplete="current-password"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
+            className={cn(field, "pr-11")}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword((v) => !v)}
+            aria-label={showPassword ? "Hide password" : "Show password"}
+            aria-pressed={showPassword}
+            className="absolute inset-y-0 right-0 grid w-10 place-items-center rounded-r-md text-[#4a4f62] hover:text-[#14161f] focus-visible:outline-2 focus-visible:outline-[#1a37ff]"
+          >
+            <EyeIcon open={showPassword} />
+          </button>
+        </div>
+      </div>
       {state && !state.ok ? <p className="text-[13px] text-[#c0262d]">{state.error}</p> : null}
       <button className={cn(btnPrimary, "h-10 justify-center")} disabled={pending}>
         {pending ? "Signing in…" : "Sign in"}

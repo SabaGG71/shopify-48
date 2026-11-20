@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
 import { ApplyProvider } from "@/components/apply/apply-provider"
+import { JumpToApply } from "@/components/apply/jump-to-apply"
 import { StickyApply } from "@/components/apply/sticky-apply"
 import { PROOF_DOMAINS } from "@/components/demo/demo-sections"
+import { BrowseLooks } from "@/components/looks/look-picker"
 import { D1ApplyForm } from "@/components/demo1/apply-form"
 import { Manifesto } from "@/components/demo1/manifesto"
 import {
@@ -173,16 +175,37 @@ export default async function Demo1Page() {
             </section>
           ) : null}
 
+          {/* The lookbook in browse mode: real stores in each look, before they apply */}
+          <section aria-labelledby="d1-looks-title" className="border-t border-line py-20 sm:py-28">
+            <D1Container>
+              <D1Head
+                id="d1-looks-title"
+                kicker="The lookbook"
+                title="Five looks. Real stores."
+                lead="Open a style to see real stores that use it. We'll make it yours."
+              />
+              <BrowseLooks variant="d1" idPrefix="d1-browse" className="mt-12 sm:mt-16" />
+            </D1Container>
+          </section>
+
           <D1WhatYouGet items={config.WHAT_YOU_GET} image={films[0] ? `/demo1/${films[0].slug}/scroll-desktop.webp` : undefined} />
           <D1Guarantees />
           <D1HowItWorks />
           <D1Price config={config} missing={missing} />
           <D1FinePrint items={config.FINE_PRINT} />
 
-          {/* 10. Apply again */}
-          <section aria-label="Apply again" className="border-t border-line py-20 sm:py-28">
+          {/* 10. The last call: back up to step one */}
+          <section aria-labelledby="d1-final-title" className="border-t border-line py-20 sm:py-28">
             <D1Container>
-              <D1ApplyForm instance="bottom" />
+              <D1Head
+                id="d1-final-title"
+                kicker="Two minutes"
+                title="See your homepage before you pay."
+                lead="Start with your store's address. If it fits, we rebuild your homepage free before we talk."
+              />
+              <JumpToApply variant="d1" className="mt-10">
+                See if you qualify
+              </JumpToApply>
             </D1Container>
           </section>
         </main>

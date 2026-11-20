@@ -1,12 +1,14 @@
 import type { Metadata } from "next"
 import { ApplyProvider } from "@/components/apply/apply-provider"
 import { StickyApply } from "@/components/apply/sticky-apply"
+import { JumpToApply } from "@/components/apply/jump-to-apply"
 import { DemoApplyForm } from "@/components/demo/demo-apply-form"
 import {
   DContainer,
   DemoFinePrint,
   DemoFooter,
   DemoGuarantees,
+  DemoHead,
   DemoHeader,
   DemoHowItWorks,
   DemoPrice,
@@ -16,6 +18,7 @@ import {
 } from "@/components/demo/demo-sections"
 import { DemoLink, Extrude } from "@/components/demo/demo-ui"
 import { RebuildStage, type StageStore } from "@/components/demo/rebuild-stage"
+import { BrowseLooks } from "@/components/looks/look-picker"
 import { shownProofStores } from "@/components/landing/sections"
 import { VideoPlayer } from "@/components/video/video-player"
 import { getConfig, showMissingConfig } from "@/lib/config"
@@ -97,16 +100,39 @@ export default async function DemoPage() {
           </section>
 
           <DemoProof config={config} missing={missing} />
+
+          {/* 5. The lookbook in browse mode: real stores in each look, before they apply */}
+          <section aria-labelledby="d-looks-title" className="py-20 sm:py-28" style={{ background: "var(--sky-soft)" }}>
+            <DContainer>
+              <DemoHead
+                id="d-looks-title"
+                kicker="The lookbook"
+                title="Five looks. Real stores."
+                lead="Open a style to see real stores that use it. We'll make it yours."
+              />
+              <BrowseLooks variant="demo" idPrefix="browse" className="mt-12 sm:mt-16" />
+            </DContainer>
+          </section>
+
           <DemoWhatYouGet items={config.WHAT_YOU_GET} />
           <DemoGuarantees />
           <DemoHowItWorks />
           <DemoPrice config={config} missing={missing} />
           <DemoFinePrint items={config.FINE_PRINT} />
 
-          {/* 10. Apply again */}
-          <section aria-label="Apply again" className="py-20 sm:py-28" style={{ background: "var(--butter-soft)" }}>
+          {/* 10. The last call: back up to step one */}
+          <section aria-labelledby="d-final-title" className="py-20 text-center sm:py-28" style={{ background: "var(--butter-soft)" }}>
             <DContainer>
-              <DemoApplyForm instance="bottom" />
+              <p className="d-kicker">Two minutes</p>
+              <h2 id="d-final-title" className="d-display mx-auto mt-4 max-w-[16ch] text-[2.55rem] text-balance text-ink sm:text-[3.8rem]">
+                See your homepage before you pay.
+              </h2>
+              <p className="mx-auto mt-4 max-w-lg text-[1.04rem] leading-relaxed text-soft">
+                Start with your store&apos;s address. If it fits, we rebuild your homepage free before we talk.
+              </p>
+              <JumpToApply variant="demo" className="mt-9">
+                See if you qualify
+              </JumpToApply>
             </DContainer>
           </section>
         </main>

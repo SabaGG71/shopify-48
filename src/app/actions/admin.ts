@@ -2,7 +2,7 @@
 
 import { updateTag } from "next/cache"
 import { cookies } from "next/headers"
-import { ADMIN_COOKIE, isAdmin, passwordMatches, setAdminCookie } from "@/lib/admin-auth"
+import { ADMIN_COOKIE, credentialsMatch, isAdmin, setAdminCookie } from "@/lib/admin-auth"
 import { configSchema, CONFIG_KEYS, type ConfigKey } from "@/lib/config/schema"
 import { getRepo } from "@/lib/db/repo"
 import { maybeStartClock } from "@/lib/jobs"
@@ -11,8 +11,9 @@ import { siteUrl } from "@/lib/session"
 type Res = { ok: true; message?: string; link?: string } | { ok: false; error: string }
 
 export async function adminLogin(_: unknown, form: FormData): Promise<Res> {
+  const user = String(form.get("username") ?? "")
   const pw = String(form.get("password") ?? "")
-  if (!passwordMatches(pw)) return { ok: false, error: "Wrong password." }
+  if (!credentialsMatch(user, pw)) return { ok: false, error: "Wrong username or password." }
   await setAdminCookie()
   return { ok: true }
 }

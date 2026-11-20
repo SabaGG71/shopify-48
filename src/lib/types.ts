@@ -46,6 +46,12 @@ export type Application = {
   never_want: string | null
   top_products: string[] | null
   design_saved_at: string | null
+  // The lookbook: free text when no look fits, looks opened and live stores visited (first-seen order)
+  style_other: string | null
+  styles_viewed: string[] | null
+  stores_clicked: string[] | null
+  /** When the Meta Lead event was sent (once per application). */
+  lead_at: string | null
   source: SourceInfo | null
   submitted_at: string | null
 }

@@ -24,7 +24,10 @@ export type BookFlowProps = {
   name: string
   email: string
   storeHost: string
-  stylePick: Look
+  /** Null when they chose "None of these feel right" on the apply form. They pick the closest look here. */
+  stylePick: Look | null
+  /** What they wrote instead of picking a look, if anything. */
+  styleOther?: string | null
   initial: { reference_stores: string[]; never_want: string; top_products: string[]; saved: boolean }
   /** Booking link with name, email, store URL, phone and the application id already filled in. */
   bookingUrl: string
@@ -126,7 +129,7 @@ function BookingEmbed({
 export function BookFlow(props: BookFlowProps) {
   const router = useRouter()
   const [stage, setStage] = useState<Stage>(props.initial.saved ? "calendar" : "questions")
-  const [look, setLook] = useState<Look>(props.stylePick)
+  const [look, setLook] = useState<Look | "">(props.stylePick ?? "")
   const [lookOpen, setLookOpen] = useState(false)
   const [lookbookOpen, setLookbookOpen] = useState(false)
   const [refs, setRefs] = useState<string[]>(props.initial.reference_stores)
@@ -197,22 +200,47 @@ export function BookFlow(props: BookFlowProps) {
       />
 
       <form ref={formRef} onSubmit={submitQuestions} noValidate className="mt-10">
-        <div className="flex items-center gap-4 rounded-[18px] border border-line bg-paper/80 p-3 pr-4">
-          <div className="@container relative aspect-[3/4] w-[74px] shrink-0 overflow-hidden rounded-[10px] ring-1 ring-line" aria-hidden="true">
-            <LookPreview look={look} />
+        <div
+          className={cn(
+            "flex items-center gap-4 rounded-[18px] border bg-paper/80 p-3 pr-4",
+            errors.style_pick ? "border-destructive" : "border-line",
+          )}
+        >
+          <div
+            className={cn(
+              "@container relative aspect-[3/4] w-[74px] shrink-0 overflow-hidden rounded-[10px]",
+              look ? "ring-1 ring-line" : "border-2 border-dashed border-line-strong",
+            )}
+            aria-hidden="true"
+          >
+            {look ? <LookPreview look={look} /> : null}
           </div>
           <div className="min-w-0 flex-1">
             <p className="micro">Your look</p>
-            <p className="display mt-1 text-[1.5rem] text-ink">{labelOf(LOOKS, look)}</p>
+            {look ? (
+              <p className="display mt-1 text-[1.5rem] text-ink">{labelOf(LOOKS, look)}</p>
+            ) : (
+              <>
+                <p className="display mt-1 text-[1.5rem] text-ink">Pick the closest look</p>
+                {props.styleOther ? (
+                  <p className="mt-1 line-clamp-2 text-[0.88rem] text-soft">You told us: &ldquo;{props.styleOther}&rdquo;. We use the look as a starting point.</p>
+                ) : null}
+              </>
+            )}
           </div>
           <button
             type="button"
             onClick={() => setLookOpen(true)}
-            className="text-[0.72rem] font-semibold tracking-[0.16em] text-ink uppercase underline decoration-gold underline-offset-4"
+            className="min-h-11 text-[0.72rem] font-semibold tracking-[0.16em] text-ink uppercase underline decoration-gold underline-offset-4"
           >
-            Change
+            {look ? "Change" : "Pick a look"}
           </button>
         </div>
+        {errors.style_pick ? (
+          <p className="mt-2 text-[0.88rem] text-destructive" role="alert">
+            Pick the look closest to what you want. It is only a starting point.
+          </p>
+        ) : null}
 
         <div className="mt-8 grid gap-8">
           <FieldShell id="refs" label="1. Stores you love" error={errors.reference_stores} hint="Pick up to three from our lookbook, or paste your own.">
@@ -356,7 +384,20 @@ export function BookFlow(props: BookFlowProps) {
         <DialogContent className="max-h-[92dvh] overflow-y-auto bg-page p-5 sm:max-w-[min(1100px,calc(100%-3rem))] sm:p-8">
           <DialogTitle className="display text-[1.9rem] font-normal text-ink">Change your look</DialogTitle>
           <DialogDescription className="text-[0.88rem] text-soft">Pick the look closest to your brand.</DialogDescription>
-          <StylePicker name="book-style" value={look} onChange={setLook} showNote={false} className="mt-2" />
+          <StylePicker
+            name="book-style"
+            value={look}
+            onChange={(next) => {
+              setLook(next)
+              setErrors((prev) => {
+                const rest = { ...prev }
+                delete rest.style_pick
+                return rest
+              })
+            }}
+            showNote={false}
+            className="mt-2"
+          />
           <button
             type="button"
             onClick={() => setLookOpen(false)}

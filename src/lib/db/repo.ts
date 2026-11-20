@@ -13,6 +13,8 @@ export interface Repo {
   getApplication(id: string): Promise<Application | null>
   findLatestApplicationByEmail(email: string): Promise<Application | null>
   listApplications(limit: number): Promise<Application[]>
+  /** Set lead_at if it is still empty. True only for the one call that set it, so Lead fires once. */
+  claimLead(id: string): Promise<boolean>
 
   /** One homepage job per application. Creates it, or updates the existing one. */
   upsertHomepageJob(row: NewHomepageJob): Promise<HomepageJob>

@@ -77,8 +77,15 @@ export function createLocalRepo(): Repo {
         (db) =>
           db.applications
             .filter((a) => a.email?.toLowerCase() === email.toLowerCase())
-            .sort(byNewest)[0] ?? null,
+            .sort((a, b) => Number(b.stage === "submitted") - Number(a.stage === "submitted") || byNewest(a, b))[0] ?? null,
       ),
+    claimLead: (id) =>
+      tx((db) => {
+        const app = db.applications.find((a) => a.id === id)
+        if (!app || app.lead_at) return false
+        app.lead_at = now()
+        return true
+      }),
     listApplications: (limit) => read((db) => [...db.applications].sort(byNewest).slice(0, limit)),
 
     upsertHomepageJob: (row) =>

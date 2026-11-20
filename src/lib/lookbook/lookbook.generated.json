@@ -1,0 +1,955 @@
+{
+  "source": "playbook-1/lookbook.json, captured 2026-11-16, recapture after 2026-12-02",
+  "stores": [
+    {
+      "name": "Fly By Jing",
+      "slug": "fly-by-jing",
+      "url": "https://flybyjing.com",
+      "why": "Rich red brand color carried through every page",
+      "look": "loud-and-bold",
+      "thumb": "/lookbook/loud-and-bold/fly-by-jing/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/loud-and-bold/fly-by-jing/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/fly-by-jing/desktop/1-home-700.webp 700w, /lookbook/loud-and-bold/fly-by-jing/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwAgCdASoQAAoAA4BaJbACdADdp0ZL+8XKAAD+9FyMYGvFQgHiv4KhfUW446vU4OATL1hLDZPhDYfdk27A/LR3i+6RKufOHsKPYEL55RygNX7dUeia7iUW89qRbAAA"
+        },
+        "collection": {
+          "src": "/lookbook/loud-and-bold/fly-by-jing/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/fly-by-jing/desktop/2-collection-700.webp 700w, /lookbook/loud-and-bold/fly-by-jing/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/loud-and-bold/fly-by-jing/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/fly-by-jing/desktop/3-product-700.webp 700w, /lookbook/loud-and-bold/fly-by-jing/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/loud-and-bold/fly-by-jing/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/fly-by-jing/mobile/1-home-300.webp 300w, /lookbook/loud-and-bold/fly-by-jing/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBACdASoKABYAPu1iqU2ppaQiMAgBMB2JbACdMoR3ACm0rNXR/G9mOAD+2aqM8B7LcB76yXb0m+C0fvUu9aRi8zVWiP2wr38KNAY7nqblHdKiQAxwWHGiVtDXo4eh0AevvxpV5YVpGBp1bxUd6O+ogIsBMQvtLjYTOqvGbHuylieR4AA="
+        },
+        "collection": {
+          "src": "/lookbook/loud-and-bold/fly-by-jing/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/fly-by-jing/mobile/2-collection-300.webp 300w, /lookbook/loud-and-bold/fly-by-jing/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/loud-and-bold/fly-by-jing/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/fly-by-jing/mobile/3-product-300.webp 300w, /lookbook/loud-and-bold/fly-by-jing/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Good Girl Snacks",
+      "slug": "good-girl-snacks",
+      "url": "https://goodgirlsnacks.com",
+      "why": "Giant playful type and a hero that is all personality",
+      "look": "loud-and-bold",
+      "thumb": "/lookbook/loud-and-bold/good-girl-snacks/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/loud-and-bold/good-girl-snacks/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/good-girl-snacks/desktop/1-home-700.webp 700w, /lookbook/loud-and-bold/good-girl-snacks/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACQAQCdASoQAAoAA4BaJbACdABUm6AA/qsBRbtI7zjYCeJcA3gw5AnjGdMczRpod9euOkTqmv3Wy8DHFckXl/q3sTkjabNRLGHCAmfxkdX9xMKGF/rkv/z/eVrdxlJmh+TwAA=="
+        },
+        "collection": {
+          "src": "/lookbook/loud-and-bold/good-girl-snacks/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/good-girl-snacks/desktop/2-collection-700.webp 700w, /lookbook/loud-and-bold/good-girl-snacks/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/loud-and-bold/good-girl-snacks/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/good-girl-snacks/desktop/3-product-700.webp 700w, /lookbook/loud-and-bold/good-girl-snacks/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/loud-and-bold/good-girl-snacks/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/good-girl-snacks/mobile/1-home-300.webp 300w, /lookbook/loud-and-bold/good-girl-snacks/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwBACdASoKABYAPu1iqU2ppaOiMAgBMB2JbACdMoRwACrxpCeeMXmF5gpnQAD8pzwcaKCARy7R1D1yghNvlgnejdO/c2aOqPH2a1+G5m9hAyX9zKTfH5KSOYbkv8/12PL65wxKqcCSILxdLnH41UZvgnl4+PxwqSHyVhBFPR1+VCerPs05QgAA"
+        },
+        "collection": {
+          "src": "/lookbook/loud-and-bold/good-girl-snacks/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/good-girl-snacks/mobile/2-collection-300.webp 300w, /lookbook/loud-and-bold/good-girl-snacks/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/loud-and-bold/good-girl-snacks/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/good-girl-snacks/mobile/3-product-300.webp 300w, /lookbook/loud-and-bold/good-girl-snacks/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Heist",
+      "slug": "heist",
+      "url": "https://heist.co",
+      "why": "One huge headline and a single product shot, nothing else",
+      "look": "loud-and-bold",
+      "thumb": "/lookbook/loud-and-bold/heist/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/loud-and-bold/heist/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/heist/desktop/1-home-700.webp 700w, /lookbook/loud-and-bold/heist/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAQCdASoQAAoAA4BaJbACdAECvwilEAD+8XrZXrVyJQPW5uBv5dQ4pGHPx5oI/2mpOugFCxi6DpWUaVErkaEQENDP18IcCWk3jOvkp7+S7K3tgCWMHe3UY/JkOAAA"
+        },
+        "collection": {
+          "src": "/lookbook/loud-and-bold/heist/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/heist/desktop/2-collection-700.webp 700w, /lookbook/loud-and-bold/heist/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/loud-and-bold/heist/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/heist/desktop/3-product-700.webp 700w, /lookbook/loud-and-bold/heist/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/loud-and-bold/heist/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/heist/mobile/1-home-300.webp 300w, /lookbook/loud-and-bold/heist/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBACdASoKABYAPu1iqU2ppaOiMAgBMB2JbACdMoMYAEliWgkSJ3XkwAD+2raWKls8p6UH0FqI20BEOE9hNno83KuOWT2jtXvZxM3K0Mzn3JqZYKnPfOuSaF2Pr8SeOGUFJi4pngRJzpmR7YeSAiEAAAA="
+        },
+        "collection": {
+          "src": "/lookbook/loud-and-bold/heist/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/heist/mobile/2-collection-300.webp 300w, /lookbook/loud-and-bold/heist/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/loud-and-bold/heist/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/heist/mobile/3-product-300.webp 300w, /lookbook/loud-and-bold/heist/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Olipop",
+      "slug": "olipop",
+      "url": "https://drinkolipop.com",
+      "why": "Bright color blocks and the can always front and center",
+      "look": "loud-and-bold",
+      "thumb": "/lookbook/loud-and-bold/olipop/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/loud-and-bold/olipop/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/olipop/desktop/1-home-700.webp 700w, /lookbook/loud-and-bold/olipop/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAQCdASoQAAoAA4BaJbACdAEMORKPY4AAzfN7a8yqkyv9eYILEINQ9RU9soth1ftYj4ggGu68c8TLi74eZlyrrfFPpOu+LXbNcmIf5ZUxQ0fiMaaeP/+WsnMBXWNvFRdq7oAA"
+        },
+        "collection": {
+          "src": "/lookbook/loud-and-bold/olipop/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/olipop/desktop/2-collection-700.webp 700w, /lookbook/loud-and-bold/olipop/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/loud-and-bold/olipop/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/loud-and-bold/olipop/desktop/3-product-700.webp 700w, /lookbook/loud-and-bold/olipop/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/loud-and-bold/olipop/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/olipop/mobile/1-home-300.webp 300w, /lookbook/loud-and-bold/olipop/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADQAwCdASoKABYAPu1iqk4ppaQiMAgBMB2JbACxG1yB0Xp5E7STNJgA/rIyyGZeFgJt7aekKAkOhqa2peFtuS1XEtsA2wIuMAkZT4AEh/4zd/GsVz+zYOWeDqrnnd10WyvrR7sq5WNZGs2NvRst/HEn1OZjdj7fKJvtwBPcq+QwCWYrPZ/ntu3s+J5fG7gM3V3AAA=="
+        },
+        "collection": {
+          "src": "/lookbook/loud-and-bold/olipop/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/olipop/mobile/2-collection-300.webp 300w, /lookbook/loud-and-bold/olipop/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/loud-and-bold/olipop/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/loud-and-bold/olipop/mobile/3-product-300.webp 300w, /lookbook/loud-and-bold/olipop/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Afternoon Toast",
+      "slug": "afternoon-toast",
+      "url": "https://drinkafternoontoast.com",
+      "why": "Moody still-life photography and a quiet, luxe layout",
+      "look": "editorial-and-moody",
+      "thumb": "/lookbook/editorial-and-moody/afternoon-toast/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/editorial-and-moody/afternoon-toast/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/afternoon-toast/desktop/1-home-700.webp 700w, /lookbook/editorial-and-moody/afternoon-toast/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAQAgCdASoQAAoAA4BaJYgCdAEO4V3/fhQAAP55J5pEbO1dJ8GijQmYFHMKkWIH4DsMpdywqZv5pvctKHtGLXEmGzAAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/editorial-and-moody/afternoon-toast/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/afternoon-toast/desktop/2-collection-700.webp 700w, /lookbook/editorial-and-moody/afternoon-toast/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/editorial-and-moody/afternoon-toast/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/afternoon-toast/desktop/3-product-700.webp 700w, /lookbook/editorial-and-moody/afternoon-toast/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/editorial-and-moody/afternoon-toast/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/afternoon-toast/mobile/1-home-300.webp 300w, /lookbook/editorial-and-moody/afternoon-toast/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAADwAwCdASoKABYAPu1iqU2ppaQiMAgBMB2JZgCdMoR3ACFUBwEoyUWAAP7Ntra+OQBDzPuKHEppMZUn1/+y0MMRDi3w6BgtquvXlGEHiXjaP4Yn8/aWs4bI1sI+IfX4F4gYO99i9bY7ekeeeMAzyFM7BkAAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/editorial-and-moody/afternoon-toast/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/afternoon-toast/mobile/2-collection-300.webp 300w, /lookbook/editorial-and-moody/afternoon-toast/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/editorial-and-moody/afternoon-toast/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/afternoon-toast/mobile/3-product-300.webp 300w, /lookbook/editorial-and-moody/afternoon-toast/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Flamingo Estate",
+      "slug": "flamingo-estate",
+      "url": "https://flamingoestate.com",
+      "why": "Cinematic photos and elegant serif type, feels like a magazine",
+      "look": "editorial-and-moody",
+      "thumb": "/lookbook/editorial-and-moody/flamingo-estate/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/editorial-and-moody/flamingo-estate/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/flamingo-estate/desktop/1-home-700.webp 700w, /lookbook/editorial-and-moody/flamingo-estate/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwAgCdASoQAAoAA4BaJYwCdAEO9cPVRzsiAAD+RTVTxz2RQYgBwKb43T8h8AGc8cCTmYMy6i3qn/U1sRFUbJgv4+9mdE9777Nqvj3KwoFO2LwyMVMMKoAA"
+        },
+        "collection": {
+          "src": "/lookbook/editorial-and-moody/flamingo-estate/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/flamingo-estate/desktop/2-collection-700.webp 700w, /lookbook/editorial-and-moody/flamingo-estate/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/editorial-and-moody/flamingo-estate/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/flamingo-estate/desktop/3-product-700.webp 700w, /lookbook/editorial-and-moody/flamingo-estate/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/editorial-and-moody/flamingo-estate/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/flamingo-estate/mobile/1-home-300.webp 300w, /lookbook/editorial-and-moody/flamingo-estate/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAAAQBQCdASoKABYAPu1iqU2ppaQiMAgBMB2JQBOmUGZk9ADZhoOHgkGQRu+Ho5arCI6AAPsgD52VJOLN3Em5T3lL1VPc6PQEEQowrziA6mbIlxPwyrHYevc+1j0vD4/bO0kyaZyFKVpXIGsgkRslDf0drN3l6T0/ge/4XNAEnRG7924qFiPiJ3JqiUBD0B2tjWAEVl4LcVOItYAJGAA="
+        },
+        "collection": {
+          "src": "/lookbook/editorial-and-moody/flamingo-estate/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/flamingo-estate/mobile/2-collection-300.webp 300w, /lookbook/editorial-and-moody/flamingo-estate/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/editorial-and-moody/flamingo-estate/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/flamingo-estate/mobile/3-product-300.webp 300w, /lookbook/editorial-and-moody/flamingo-estate/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Ghia",
+      "slug": "ghia",
+      "url": "https://drinkghia.com",
+      "why": "One deep red owns the whole site, magazine-style type",
+      "look": "editorial-and-moody",
+      "thumb": "/lookbook/editorial-and-moody/ghia/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/editorial-and-moody/ghia/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/ghia/desktop/1-home-700.webp 700w, /lookbook/editorial-and-moody/ghia/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoQAAoAA4BaJYgCdAEQ5O4WAgAA3QLdKYUQxs03WjarL/wKcX/qPT/Rs+STMDbqUOV5zTXGJjKCtNp4gAA="
+        },
+        "collection": {
+          "src": "/lookbook/editorial-and-moody/ghia/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/ghia/desktop/2-collection-700.webp 700w, /lookbook/editorial-and-moody/ghia/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/editorial-and-moody/ghia/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/ghia/desktop/3-product-700.webp 700w, /lookbook/editorial-and-moody/ghia/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/editorial-and-moody/ghia/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/ghia/mobile/1-home-300.webp 300w, /lookbook/editorial-and-moody/ghia/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADwAwCdASoKABYAPu1kqU2ppaOiMAgBMB2JaACdABt9PU3OSEB6UoGIAPfMvVng8WSSK0IU08voU5ZVj7VWWXts8cogw725O6FLMwcH6/Xf1jnvjq/auAesuxdmCDcMN7Wg5n9BRWvxmHfDVXq9xBX0rNtZHNh1/lQAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/editorial-and-moody/ghia/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/ghia/mobile/2-collection-300.webp 300w, /lookbook/editorial-and-moody/ghia/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/editorial-and-moody/ghia/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/ghia/mobile/3-product-300.webp 300w, /lookbook/editorial-and-moody/ghia/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Poca",
+      "slug": "poca",
+      "url": "https://pickpoca.com",
+      "why": "Dark chocolate tones with crisp product cards",
+      "look": "editorial-and-moody",
+      "thumb": "/lookbook/editorial-and-moody/poca/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/editorial-and-moody/poca/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/poca/desktop/1-home-700.webp 700w, /lookbook/editorial-and-moody/poca/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQAgCdASoQAAoAA4BaJZgCdAEO+XLpCV0AAP7CFjjPySQxEcRBaA8zC2vguqUKtusFj5dzIlbvoS3iawS+12aZPr22mNSlaHgMfX35cj63cKcO7cqft6bJ36wAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/editorial-and-moody/poca/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/poca/desktop/2-collection-700.webp 700w, /lookbook/editorial-and-moody/poca/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/editorial-and-moody/poca/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/editorial-and-moody/poca/desktop/3-product-700.webp 700w, /lookbook/editorial-and-moody/poca/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/editorial-and-moody/poca/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/poca/mobile/1-home-300.webp 300w, /lookbook/editorial-and-moody/poca/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBACdASoKABYAPu1iqU2ppaQiMAgBMB2JYgCdACHE2paF3kYKbzeiAADyp6XUnL5a8PlJSUEGBmGTDbXxJ/TKoU80xW22pFNO8qPLD09idVg84SGHx4a8vQuY/T3i7AfQGWGS7k//NV136GiktqgDJjcmOQZ435N7Ljn52EeoAAAA"
+        },
+        "collection": {
+          "src": "/lookbook/editorial-and-moody/poca/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/poca/mobile/2-collection-300.webp 300w, /lookbook/editorial-and-moody/poca/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/editorial-and-moody/poca/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/editorial-and-moody/poca/mobile/3-product-300.webp 300w, /lookbook/editorial-and-moody/poca/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Fellow",
+      "slug": "fellow",
+      "url": "https://fellowproducts.com",
+      "why": "Product first, lots of white space, sharp and quiet",
+      "look": "clean-minimal",
+      "thumb": "/lookbook/clean-minimal/fellow/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/clean-minimal/fellow/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/clean-minimal/fellow/desktop/1-home-700.webp 700w, /lookbook/clean-minimal/fellow/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoQAAoAA4BaJZwAD5CMUIwiQBQQAOI33JLl6M6c0VF0Fv8ZUMErcOlH5J8EtwJR8EWzib4wJt0yTi8xQEM6JCMKg3mZcxhZpVA3xXyibh4yDMp0DE6kONBUb6Oe+AAA"
+        },
+        "collection": {
+          "src": "/lookbook/clean-minimal/fellow/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/clean-minimal/fellow/desktop/2-collection-700.webp 700w, /lookbook/clean-minimal/fellow/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/clean-minimal/fellow/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/clean-minimal/fellow/desktop/3-product-700.webp 700w, /lookbook/clean-minimal/fellow/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/clean-minimal/fellow/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/clean-minimal/fellow/mobile/1-home-300.webp 300w, /lookbook/clean-minimal/fellow/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwAwCdASoKABYAPu1iqU2ppaOiMAgBMB2JZwAAW9metxNIZ0Y0nwQAAP6yP3skFiaC1xg0TK2qwN+uDg6oBjC+RuHg3JyAS7aYkdbEMI/F/pSkPFky3wZsYB10lLGoUJPOer/xG7z3XAmSKTQ5x5luAAA="
+        },
+        "collection": {
+          "src": "/lookbook/clean-minimal/fellow/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/clean-minimal/fellow/mobile/2-collection-300.webp 300w, /lookbook/clean-minimal/fellow/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/clean-minimal/fellow/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/clean-minimal/fellow/mobile/3-product-300.webp 300w, /lookbook/clean-minimal/fellow/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Manta Chocolate",
+      "slug": "manta-chocolate",
+      "url": "https://mantachocolate.com",
+      "why": "Simple type, soft colors, the packaging is the hero",
+      "look": "clean-minimal",
+      "thumb": "/lookbook/clean-minimal/manta-chocolate/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/clean-minimal/manta-chocolate/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/clean-minimal/manta-chocolate/desktop/1-home-700.webp 700w, /lookbook/clean-minimal/manta-chocolate/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoQAAoAA4BaJYwCdAELZTElGH8AAP7ysg0aRzsq6OAgvVChg/BYKekJrnfyol14tnpZD2oVQLUXKFDOsAA="
+        },
+        "collection": {
+          "src": "/lookbook/clean-minimal/manta-chocolate/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/clean-minimal/manta-chocolate/desktop/2-collection-700.webp 700w, /lookbook/clean-minimal/manta-chocolate/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/clean-minimal/manta-chocolate/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/clean-minimal/manta-chocolate/desktop/3-product-700.webp 700w, /lookbook/clean-minimal/manta-chocolate/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/clean-minimal/manta-chocolate/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/clean-minimal/manta-chocolate/mobile/1-home-300.webp 300w, /lookbook/clean-minimal/manta-chocolate/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoKABYAPu1iqU2ppaQiMAgBMB2JZQCdAB6WgUTOGLk7O75AAP7Z9VBWtfHpT857/3edkAahpUUYfRkivFLpd2L9tQVjCQtwgCFoKLoe8rh+5Dp6/pCab1wNcvhYAA=="
+        },
+        "collection": {
+          "src": "/lookbook/clean-minimal/manta-chocolate/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/clean-minimal/manta-chocolate/mobile/2-collection-300.webp 300w, /lookbook/clean-minimal/manta-chocolate/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/clean-minimal/manta-chocolate/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/clean-minimal/manta-chocolate/mobile/3-product-300.webp 300w, /lookbook/clean-minimal/manta-chocolate/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Rocky's Matcha",
+      "slug": "rockys-matcha",
+      "url": "https://rockysmatcha.com",
+      "why": "Calm layout that lets the product and texture speak",
+      "look": "clean-minimal",
+      "thumb": "/lookbook/clean-minimal/rockys-matcha/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/clean-minimal/rockys-matcha/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/clean-minimal/rockys-matcha/desktop/1-home-700.webp 700w, /lookbook/clean-minimal/rockys-matcha/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoQAAoAA4BaJbACdAEPDso6GtAA/lv+t+VUZ5IuJKYmUDGmoGU+cAYl+x7u6o5nnb2R8AAA"
+        },
+        "collection": {
+          "src": "/lookbook/clean-minimal/rockys-matcha/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/clean-minimal/rockys-matcha/desktop/2-collection-700.webp 700w, /lookbook/clean-minimal/rockys-matcha/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/clean-minimal/rockys-matcha/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/clean-minimal/rockys-matcha/desktop/3-product-700.webp 700w, /lookbook/clean-minimal/rockys-matcha/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/clean-minimal/rockys-matcha/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/clean-minimal/rockys-matcha/mobile/1-home-300.webp 300w, /lookbook/clean-minimal/rockys-matcha/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAwCdASoKABYAPu1kqU2ppaQiMAgBMB2JYgC7ACHhzjGV2B1QmAAA/uALDwDHDEKZMz5JsMGc7XrJPzkrWS71+lfi7koG3MOOYpofTKCAAAAA"
+        },
+        "collection": {
+          "src": "/lookbook/clean-minimal/rockys-matcha/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/clean-minimal/rockys-matcha/mobile/2-collection-300.webp 300w, /lookbook/clean-minimal/rockys-matcha/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/clean-minimal/rockys-matcha/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/clean-minimal/rockys-matcha/mobile/3-product-300.webp 300w, /lookbook/clean-minimal/rockys-matcha/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Alec's Ice Cream",
+      "slug": "alecs-ice-cream",
+      "url": "https://alecsicecream.com",
+      "why": "Playful collage of product, color and illustration",
+      "look": "playful-and-illustrated",
+      "thumb": "/lookbook/playful-and-illustrated/alecs-ice-cream/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/1-home-700.webp 700w, /lookbook/playful-and-illustrated/alecs-ice-cream/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAoAA4BaJagCdAEO8tObyAAA/IluYki7OqxzPazGhPCHBTQG1u9R5rImX24G3mbmzQMHBTYvuj/XZC1oBvWngQBsX0LZscAAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/2-collection-700.webp 700w, /lookbook/playful-and-illustrated/alecs-ice-cream/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/alecs-ice-cream/desktop/3-product-700.webp 700w, /lookbook/playful-and-illustrated/alecs-ice-cream/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/playful-and-illustrated/alecs-ice-cream/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/alecs-ice-cream/mobile/1-home-300.webp 300w, /lookbook/playful-and-illustrated/alecs-ice-cream/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBACdASoKABYAPu1iqU2ppaQiMAgBMB2JbACdMoMYJn/AeNmx9hCtFwAA3Qfyyv4d9qlJp0uo1g2KAyBNI9t2xNPxC7dRNRIlVyfJ+TfrVs5Kgu0YkY/vj/vc7Kv+AoRl/jOR+A0oNCbKwB3QPBJGCpNSEAAA"
+        },
+        "collection": {
+          "src": "/lookbook/playful-and-illustrated/alecs-ice-cream/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/alecs-ice-cream/mobile/2-collection-300.webp 300w, /lookbook/playful-and-illustrated/alecs-ice-cream/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/playful-and-illustrated/alecs-ice-cream/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/alecs-ice-cream/mobile/3-product-300.webp 300w, /lookbook/playful-and-illustrated/alecs-ice-cream/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Magic Spoon",
+      "slug": "magic-spoon",
+      "url": "https://magicspoon.com",
+      "why": "Loud purple, cartoon energy, bundles front and center",
+      "look": "playful-and-illustrated",
+      "thumb": "/lookbook/playful-and-illustrated/magic-spoon/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/playful-and-illustrated/magic-spoon/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/magic-spoon/desktop/1-home-700.webp 700w, /lookbook/playful-and-illustrated/magic-spoon/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAoAA4BaJbACdADdLFQBlpDIAP5A0TwBw8Cm7jwGQg0L/2urlVwucPk0NnAY0/zPMtsf4j8r28ZNO2dcnm93z+5M/Kfj3/3f9EkbGa/75XztXhwqytWjgAA="
+        },
+        "collection": {
+          "src": "/lookbook/playful-and-illustrated/magic-spoon/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/magic-spoon/desktop/2-collection-700.webp 700w, /lookbook/playful-and-illustrated/magic-spoon/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/playful-and-illustrated/magic-spoon/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/magic-spoon/desktop/3-product-700.webp 700w, /lookbook/playful-and-illustrated/magic-spoon/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/playful-and-illustrated/magic-spoon/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/magic-spoon/mobile/1-home-300.webp 300w, /lookbook/playful-and-illustrated/magic-spoon/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABQBACdASoKABYAPu1iqk2ppaQiMAgBMB2JbACdMoFWAAQslcS2cQohPsrgAP6ez27fRaO3f2Fn/PNHKvf7dDSC6+ogMzRugUpKqeF/Gbus9z9ssZ8+VH3pbQDbTTkRUACyoDh/8hszHMMvNq5eMe77+HLgbD+Rd052aB9/Z0P8b9K47WgetLaD2WP+yNFPjLwR+ff0ON0JP3k3/j9wBIgjmJcU4rAA"
+        },
+        "collection": {
+          "src": "/lookbook/playful-and-illustrated/magic-spoon/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/magic-spoon/mobile/2-collection-300.webp 300w, /lookbook/playful-and-illustrated/magic-spoon/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/playful-and-illustrated/magic-spoon/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/magic-spoon/mobile/3-product-300.webp 300w, /lookbook/playful-and-illustrated/magic-spoon/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "One Trick Pony",
+      "slug": "one-trick-pony",
+      "url": "https://onetrickponynuts.com",
+      "why": "Characterful packaging and bright pastel color",
+      "look": "playful-and-illustrated",
+      "thumb": "/lookbook/playful-and-illustrated/one-trick-pony/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/playful-and-illustrated/one-trick-pony/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/one-trick-pony/desktop/1-home-700.webp 700w, /lookbook/playful-and-illustrated/one-trick-pony/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAQCdASoQAAoAA4BaJbACdAEOeo6CpAAA+OR1xyRihJVQacwagkad1630ag1WzH/LvxPleQDep8LCzz+LtrA4sVU+6Ygo+mbTfe/9dwTmS+P/wI18vj7+AAA="
+        },
+        "collection": {
+          "src": "/lookbook/playful-and-illustrated/one-trick-pony/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/one-trick-pony/desktop/2-collection-700.webp 700w, /lookbook/playful-and-illustrated/one-trick-pony/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/playful-and-illustrated/one-trick-pony/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/one-trick-pony/desktop/3-product-700.webp 700w, /lookbook/playful-and-illustrated/one-trick-pony/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/playful-and-illustrated/one-trick-pony/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/one-trick-pony/mobile/1-home-300.webp 300w, /lookbook/playful-and-illustrated/one-trick-pony/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABwBACdASoKABYAPu1iqU2ppaOiMAgBMB2JbACdMoRwACm1hdYC4fYSKrR2AAD33xMmVlfVnonJZvM8TScy5z0UAuG1+q6oYP/igAWtiqeA+wmFyJQIRu3FEVpXkCG5sjFto6bAAAA="
+        },
+        "collection": {
+          "src": "/lookbook/playful-and-illustrated/one-trick-pony/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/one-trick-pony/mobile/2-collection-300.webp 300w, /lookbook/playful-and-illustrated/one-trick-pony/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/playful-and-illustrated/one-trick-pony/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/one-trick-pony/mobile/3-product-300.webp 300w, /lookbook/playful-and-illustrated/one-trick-pony/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Sanzo",
+      "slug": "sanzo",
+      "url": "https://drinksanzo.com",
+      "why": "Pastel pinks and fruit, bold condensed type, fun but clean",
+      "look": "playful-and-illustrated",
+      "thumb": "/lookbook/playful-and-illustrated/sanzo/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/playful-and-illustrated/sanzo/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/sanzo/desktop/1-home-700.webp 700w, /lookbook/playful-and-illustrated/sanzo/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAoAA4BaJbAC7AEQFJ00XegAAP7JW/lXEfCi/oYtdBjwN2va0R6fgRDrP/gSFaRX36F+er+9CNPqrt9bDGTR4jF/UtbS0V9S/HoTdYAAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/playful-and-illustrated/sanzo/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/sanzo/desktop/2-collection-700.webp 700w, /lookbook/playful-and-illustrated/sanzo/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/playful-and-illustrated/sanzo/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/sanzo/desktop/3-product-700.webp 700w, /lookbook/playful-and-illustrated/sanzo/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/playful-and-illustrated/sanzo/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/sanzo/mobile/1-home-300.webp 300w, /lookbook/playful-and-illustrated/sanzo/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBACdASoKABYAPu1iqU2ppaOiMAgBMB2JZAC/OCHazxDW1Mb/eR2zAAD+W/adKFF4t3dxPMnUE3KfMfyLVZkO+Sx2NuX4kOZw1riMrJbv8wj6YRcWOrVFt1MgHnNImNte4qRn48/4ux7+t51/SV0fUF9QAAAA"
+        },
+        "collection": {
+          "src": "/lookbook/playful-and-illustrated/sanzo/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/sanzo/mobile/2-collection-300.webp 300w, /lookbook/playful-and-illustrated/sanzo/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/playful-and-illustrated/sanzo/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/playful-and-illustrated/sanzo/mobile/3-product-300.webp 300w, /lookbook/playful-and-illustrated/sanzo/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Cure",
+      "slug": "cure",
+      "url": "https://curehydration.com",
+      "why": "Soft natural colors and lifestyle photos",
+      "look": "warm-and-natural",
+      "thumb": "/lookbook/warm-and-natural/cure/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/warm-and-natural/cure/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/cure/desktop/1-home-700.webp 700w, /lookbook/warm-and-natural/cure/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAoAA4BaJbACdAEO5DxsZgAA/sYHB9rV3J26JM5VVS/grf8p+nZCFZYGASKnaCD7LLB7tLrGHfURTeX78UT5CcDgmqWqrnAAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/warm-and-natural/cure/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/cure/desktop/2-collection-700.webp 700w, /lookbook/warm-and-natural/cure/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/warm-and-natural/cure/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/cure/desktop/3-product-700.webp 700w, /lookbook/warm-and-natural/cure/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/warm-and-natural/cure/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/cure/mobile/1-home-300.webp 300w, /lookbook/warm-and-natural/cure/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQAwCdASoKABYAPu1iqU2ppaQiMAgBMB2JbACdGvrAWYEx6q2xmqAA/u1xL853KtyOxAz3l+M+fxdLgHkyybjiJndYp2sHzVISJ+1Oqubo9U6II/CMsPZUkWxzHG9tjvZTSoe8boJjyKQEyT+AUC06S7jxc5HWQUAAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/warm-and-natural/cure/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/cure/mobile/2-collection-300.webp 300w, /lookbook/warm-and-natural/cure/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/warm-and-natural/cure/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/cure/mobile/3-product-300.webp 300w, /lookbook/warm-and-natural/cure/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Golde",
+      "slug": "golde",
+      "url": "https://golde.co",
+      "why": "Cozy, earthy tones and slow ritual photography",
+      "look": "warm-and-natural",
+      "thumb": "/lookbook/warm-and-natural/golde/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/warm-and-natural/golde/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/golde/desktop/1-home-700.webp 700w, /lookbook/warm-and-natural/golde/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAoAA4BaJZACdADdilOCC2AA/pveWYu6748/Ui4TSOUdRxc58cWW1oMOjB5gEGQK8ZqCi0w4Zj2J4/Ys1F2MJpF9LUSSgAA="
+        },
+        "collection": {
+          "src": "/lookbook/warm-and-natural/golde/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/golde/desktop/2-collection-700.webp 700w, /lookbook/warm-and-natural/golde/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/warm-and-natural/golde/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/golde/desktop/3-product-700.webp 700w, /lookbook/warm-and-natural/golde/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/warm-and-natural/golde/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/golde/mobile/1-home-300.webp 300w, /lookbook/warm-and-natural/golde/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABQBACdASoKABYAPu1iqU2ppaQiMAgBMB2JYgCdMoADTnifAhQpZn/JjfOmAP7nfZYg7cwywuzLbgEQ5WE276iMRth7U5H329+o1bActMi2WOl7HNTA/7ErqHw1w5iew9tQCZwm5LlpE/EjcxNwgAAA"
+        },
+        "collection": {
+          "src": "/lookbook/warm-and-natural/golde/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/golde/mobile/2-collection-300.webp 300w, /lookbook/warm-and-natural/golde/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/warm-and-natural/golde/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/golde/mobile/3-product-300.webp 300w, /lookbook/warm-and-natural/golde/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "Graza",
+      "slug": "graza",
+      "url": "https://graza.co",
+      "why": "Warm food photography and a friendly serif, feels homemade",
+      "look": "warm-and-natural",
+      "thumb": "/lookbook/warm-and-natural/graza/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/warm-and-natural/graza/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/graza/desktop/1-home-700.webp 700w, /lookbook/warm-and-natural/graza/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAAAwAgCdASoQAAoAA4BaJQBYdiK4TK2WUJeugAD+5SylPY+Cw5+RxirhGRK4rBiSrPocHauQEoAAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/warm-and-natural/graza/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/graza/desktop/2-collection-700.webp 700w, /lookbook/warm-and-natural/graza/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/warm-and-natural/graza/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/graza/desktop/3-product-700.webp 700w, /lookbook/warm-and-natural/graza/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/warm-and-natural/graza/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/graza/mobile/1-home-300.webp 300w, /lookbook/warm-and-natural/graza/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoKABYAPu1kqU2ppaOiMAgBMB2JYgCdABrL0XF62CvybgAA/tCdDVzswBszKcZK7779XE2YW22sjwshkt0mM3CM5cSAUuv1ADqyzr9q7zpqN8QKl725+m2gSTcHN1gA"
+        },
+        "collection": {
+          "src": "/lookbook/warm-and-natural/graza/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/graza/mobile/2-collection-300.webp 300w, /lookbook/warm-and-natural/graza/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/warm-and-natural/graza/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/graza/mobile/3-product-300.webp 300w, /lookbook/warm-and-natural/graza/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    },
+    {
+      "name": "East Fork",
+      "slug": "east-fork",
+      "url": "https://eastfork.com",
+      "why": "Warm food and table photography, handmade feel, friendly serif",
+      "look": "warm-and-natural",
+      "thumb": "/lookbook/warm-and-natural/east-fork/thumb.webp",
+      "desktop": {
+        "home": {
+          "src": "/lookbook/warm-and-natural/east-fork/desktop/1-home-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/east-fork/desktop/1-home-700.webp 700w, /lookbook/warm-and-natural/east-fork/desktop/1-home-1400.webp 1400w",
+          "width": 1400,
+          "height": 875,
+          "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQAgCdASoQAAoAA4BaJZACdADdYE1lUzAAAP7qyJMTKxcxqoxktY3oGzW73GJ3vg+mo34gtZ/UdBfr9hpx4+3U2/yzsZWiGR6bzwMGselsWPQnxstWxd9HI2nMS+tX2cuWgRjgAAA="
+        },
+        "collection": {
+          "src": "/lookbook/warm-and-natural/east-fork/desktop/2-collection-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/east-fork/desktop/2-collection-700.webp 700w, /lookbook/warm-and-natural/east-fork/desktop/2-collection-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        },
+        "product": {
+          "src": "/lookbook/warm-and-natural/east-fork/desktop/3-product-1400.webp",
+          "srcSet": "/lookbook/warm-and-natural/east-fork/desktop/3-product-700.webp 700w, /lookbook/warm-and-natural/east-fork/desktop/3-product-1400.webp 1400w",
+          "width": 1400,
+          "height": 875
+        }
+      },
+      "mobile": {
+        "home": {
+          "src": "/lookbook/warm-and-natural/east-fork/mobile/1-home-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/east-fork/mobile/1-home-300.webp 300w, /lookbook/warm-and-natural/east-fork/mobile/1-home-600.webp 600w",
+          "width": 600,
+          "height": 1298,
+          "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADwAwCdASoKABYAPu1iqU2ppaOiMAgBMB2JZgCdL1yB0EUXZv35V88AAP7GBsIjtK8kyHKuepyt8sHr9hC+y8830hUU385xiwuCFlcHXA5eQQ2bTTLSiE5ZnpOpNZj7LAhSd2DFV2KHqb0tgHLMX99PtWqRCmIhXBSgvm53Agwy4/FFH2PX9hUhdBE3VC696CoAAA=="
+        },
+        "collection": {
+          "src": "/lookbook/warm-and-natural/east-fork/mobile/2-collection-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/east-fork/mobile/2-collection-300.webp 300w, /lookbook/warm-and-natural/east-fork/mobile/2-collection-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        },
+        "product": {
+          "src": "/lookbook/warm-and-natural/east-fork/mobile/3-product-600.webp",
+          "srcSet": "/lookbook/warm-and-natural/east-fork/mobile/3-product-300.webp 300w, /lookbook/warm-and-natural/east-fork/mobile/3-product-600.webp 600w",
+          "width": 600,
+          "height": 1298
+        }
+      }
+    }
+  ]
+}

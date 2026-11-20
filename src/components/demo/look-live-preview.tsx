@@ -11,11 +11,20 @@ const tidy = (url: string) =>
     .replace(/\/+$/, "")
 
 /**
- * A phone browser standing at an angle beside the address question. It shows the
- * look they picked, and the address bar fills in as they type their store's URL.
- * Turns over to the new look when the pick changes.
+ * A phone browser beside the apply form. The address bar fills in as they type their
+ * store's URL, and the screen shows the look they picked. Turns over when the pick changes.
+ * Used on both landing pages: each page's CSS styles the .lv-* classes in its own colours.
  */
-export function LookLivePreview({ look, url }: { look: Look | ""; url: string }) {
+export function LookLivePreview({
+  look,
+  url,
+  emptyText = "Pick a look to see it here.",
+}: {
+  look: Look | ""
+  url: string
+  /** What the screen says before there is a look. */
+  emptyText?: string
+}) {
   const address = tidy(url)
   return (
     <div className="lv-stage" aria-hidden="true">
@@ -33,7 +42,7 @@ export function LookLivePreview({ look, url }: { look: Look | ""; url: string })
             <LookPreview look={look} />
           ) : (
             <div className="grid size-full place-items-center p-6 text-center">
-              <p className="text-[0.95rem] font-semibold text-soft">Pick a look above to see it here.</p>
+              <p className="text-[0.95rem] font-semibold text-soft">{emptyText}</p>
             </div>
           )}
         </div>

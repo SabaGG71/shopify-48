@@ -28,12 +28,22 @@ export async function isAdmin() {
   return a.length === b.length && timingSafeEqual(a, b)
 }
 
-export function passwordMatches(input: string) {
+/** The admin username. Not a secret, so it has a default. ADMIN_USERNAME overrides it. */
+export const adminUsername = () => (process.env.ADMIN_USERNAME || "kent2026").trim().toLowerCase()
+
+function same(input: string, expected: string) {
+  const a = Buffer.from(input)
+  const b = Buffer.from(expected)
+  return a.length === b.length && timingSafeEqual(a, b)
+}
+
+/** Both checks always run, so a wrong username takes as long as a wrong password. */
+export function credentialsMatch(username: string, password: string) {
   const pw = process.env.ADMIN_PASSWORD || ""
   if (!pw) return false
-  const a = Buffer.from(input)
-  const b = Buffer.from(pw)
-  return a.length === b.length && timingSafeEqual(a, b)
+  const userOk = same(username.trim().toLowerCase(), adminUsername())
+  const passOk = same(password, pw)
+  return userOk && passOk
 }
 
 export async function setAdminCookie() {

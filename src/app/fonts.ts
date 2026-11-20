@@ -1,7 +1,9 @@
 import localFont from "next/font/local"
 import { Anton, Fraunces, Fredoka, Instrument_Serif } from "next/font/google"
 
-/* Display: Cabinet Grotesk (bold, with character). Body: General Sans. Both Fontshare, free for commercial use. */
+/* Display: Cabinet Grotesk (bold, with character). Body: General Sans. Both Fontshare, free for commercial use.
+   Used by the funnel pages (book, intake, thanks, admin). The two landing pages bring their own fonts, so these
+   are not preloaded: the browser fetches them only on a page that renders them. */
 export const ivy = localFont({
   src: [
     { path: "./fonts/cabinet-grotesk-500.woff2", weight: "500" },
@@ -11,6 +13,7 @@ export const ivy = localFont({
   ],
   variable: "--font-ivy",
   display: "swap",
+  preload: false,
   fallback: ["Arial Black", "Helvetica", "sans-serif"],
 })
 
@@ -22,6 +25,7 @@ export const manrope = localFont({
   ],
   variable: "--font-manrope",
   display: "swap",
+  preload: false,
   fallback: ["Helvetica", "Arial", "sans-serif"],
 })
 

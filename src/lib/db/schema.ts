@@ -41,6 +41,12 @@ export const applications = pgTable(
     design_saved_at: ts("design_saved_at"),
     source: jsonb("source").$type<SourceInfo>(),
     submitted_at: ts("submitted_at"),
+    // The lookbook ("Pick a look"): free text when no look fits, and what they opened and visited.
+    style_other: text("style_other"),
+    styles_viewed: jsonb("styles_viewed").$type<string[]>(),
+    stores_clicked: jsonb("stores_clicked").$type<string[]>(),
+    /** When the Meta Lead event went out. Set once, so Lead fires once per application. */
+    lead_at: ts("lead_at"),
   },
   (t) => [index("applications_created_idx").on(t.created_at), index("applications_email_idx").on(sql`lower(${t.email})`)],
 )

@@ -55,7 +55,8 @@ async function BookContent() {
       name={app.name ?? ""}
       email={app.email ?? ""}
       storeHost={displayHost(app.store_url)}
-      stylePick={app.style_pick!}
+      stylePick={app.style_pick}
+      styleOther={app.style_other}
       initial={{
         reference_stores: app.reference_stores ?? [],
         never_want: app.never_want ?? "",

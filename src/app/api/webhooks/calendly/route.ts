@@ -51,6 +51,15 @@ export async function POST(request: Request) {
     if (body.event === "invitee.created") {
       const p = body.payload as Invitee
       const app = await applicationFor(p)
+      if (app && app.outcome === "qualified" && app.store_url && !app.style_pick) {
+        // They chose "None of these feel right" and booked before picking the closest look on /book.
+        await notifyKent(
+          "call_booked",
+          `Calendly booking from ${p.email ?? "no email"} (${app.name ?? "no name"}). No look picked yet${app.style_other ? `, they wrote: "${app.style_other}"` : ""}. Ask for the closest look on the call.`,
+          { invitee: p.uri, application_id: app.id, adminPath: `/admin?app=${app.id}` },
+        )
+        return Response.json({ received: true, matched: false })
+      }
       if (!app || app.outcome !== "qualified" || !app.store_url || !app.style_pick) {
         await notifyKent("call_booked", `Calendly booking that doesn't match a qualified application: ${p.email ?? "no email"}.`, {
           invitee: p.uri,

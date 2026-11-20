@@ -32,7 +32,7 @@ export function DContainer({ className, children }: { className?: string; childr
   )
 }
 
-function Head({ kicker, title, lead, id }: { kicker: string; title: React.ReactNode; lead?: React.ReactNode; id: string }) {
+export function DemoHead({ kicker, title, lead, id }: { kicker: string; title: React.ReactNode; lead?: React.ReactNode; id: string }) {
   return (
     <Reveal className="text-center">
       <p className="d-kicker rv">{kicker}</p>
@@ -100,7 +100,7 @@ export function DemoProof({ config, missing }: { config: SiteConfig; missing: bo
   return (
     <section aria-labelledby="d-proof-title" className="py-16 sm:py-24">
       <DContainer>
-        <Head
+        <DemoHead
           id="d-proof-title"
           kicker="Proof"
           title={
@@ -133,7 +133,7 @@ export function DemoWhatYouGet({ items }: { items: string[] }) {
   return (
     <section aria-labelledby="d-get-title" className="bg-white py-16 sm:py-24">
       <DContainer>
-        <Head
+        <DemoHead
           id="d-get-title"
           kicker="What you get"
           title="Everything in the rebuild."
@@ -234,7 +234,7 @@ export function DemoGuarantees() {
   return (
     <section aria-labelledby="d-guarantees-title" className="demo-dark py-16 sm:py-24">
       <DContainer>
-        <Head id="d-guarantees-title" kicker="Three guarantees" title="The risk is on us." />
+        <DemoHead id="d-guarantees-title" kicker="Three guarantees" title="The risk is on us." />
         <Reveal className="mx-auto mt-10 grid max-w-5xl gap-8 md:mt-12 md:grid-cols-3 md:gap-8" threshold={0.15}>
           {GUARANTEES.map((g, i) => (
             <div key={g.title} className="rv flex items-center gap-5 md:block md:text-center" style={{ ["--rv-delay" as string]: `${i * 120}ms` }}>
@@ -259,7 +259,7 @@ export function DemoHowItWorks() {
   return (
     <section aria-labelledby="d-how-title" className="overflow-hidden bg-white py-16 sm:py-24">
       <DContainer>
-        <Head id="d-how-title" kicker="How it works" title="You see your homepage before you pay." />
+        <DemoHead id="d-how-title" kicker="How it works" title="You see your homepage before you pay." />
         <Reveal as="ol" className="mx-auto mt-8 grid max-w-5xl gap-5 sm:mt-6 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-6" threshold={0.15}>
           {STEPS.map((s, i) => (
             <li key={s.title} className="flex items-center gap-4 text-left sm:block sm:text-center">
@@ -348,7 +348,7 @@ export function DemoFinePrint({ items }: { items: SiteConfig["FINE_PRINT"] }) {
   return (
     <section aria-labelledby="d-fine-title" className="bg-white py-16 sm:py-24">
       <DContainer className="max-w-[860px]">
-        <Head id="d-fine-title" kicker="The fine print" title="No surprises." />
+        <DemoHead id="d-fine-title" kicker="The fine print" title="No surprises." />
         <div className="mt-10 grid gap-4">
           {items.map((f) => (
             <details key={f.title} className="group d-card overflow-hidden">

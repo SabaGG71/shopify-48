@@ -6,7 +6,9 @@ Landing page, apply form, booking step and full intake for the LocalEyes 48 Hour
 
 | Path | What it is |
 | --- | --- |
-| `/` | Landing page: headline, video, apply form (two screens), proof, what you get, guarantees, how it works, price, fine print, apply again |
+| `/` | Landing page, light blue: headline, video, apply form (step 1 contact, store and revenue, step 2 pick a look), before and afters, "Five looks. Real stores." (the lookbook in browse mode), what you get, guarantees, how it works, price, fine print, final call to action |
+| `/demo` | The same funnel in the lime design (films, the 0h to 48h scrubber, the Lake Effect redline). `/demo-1` redirects here and `/demo-2` redirects to `/` |
+| `/demo/privacy` | The privacy notice in the lime design. The lime page links here |
 | `/book` | Page 2, qualified applicants only: video, three design questions, then the booking calendar (Calendly, prefilled with name, email, store URL, phone and the lead id) |
 | `/booked` | After a booking: call time, the booked page video, and the reserve option. Calendly's redirect lands here too |
 | `/thanks` | Flagged for Kent to review by hand (coffee, something else, store we could not check) |
@@ -54,7 +56,7 @@ The data the build agent reads is described key by key in [docs/DATA.md](docs/DA
 
 - Videos: Kent sends the VSL, booked page video, welcome video and collaborator code clip as he records them. Until then the hero shows a before and after, and the other video spots are hidden.
 - Proof stores: Lima is live. Boxwood, Lake Effect and JJ's pairs are being captured (befores from the Wayback Machine) and get added once reviewed. Lamppost is held: its rebuild is still an unpublished preview and the client has not signed off. Green Kettle (the timed test build) is ready but hidden until Kent sets `cleared: true`.
-- The lookbook was captured during Black Friday sales. Recapture after Dec 2 with the same file names. Kent's capture script needs two fixes first: Sanzo's mobile page overflows sideways, and Heist's desktop theme scrolls inside a wrapper (both were recaptured by hand).
+- The lookbook was captured during Black Friday sales. Recapture after Dec 2 with the same file names. Kent's capture script needs two fixes first: Sanzo's mobile page overflows sideways, and Heist's desktop theme scrolls inside a wrapper (both were recaptured by hand). After a recapture, run `node scripts/build-lookbook.mjs <path to playbook-1>` to rebuild the picker's WebP sizes and `src/lib/lookbook/lookbook.generated.json`. The script never touches the mp4 loops.
 
 ## Where things live
 
@@ -62,4 +64,6 @@ The data the build agent reads is described key by key in [docs/DATA.md](docs/DA
 - `src/lib/options.ts`: every option key.
 - `src/lib/intake/schema.ts`: intake steps, validation and the JSON document builder.
 - `src/components/style/look-previews.tsx`: the five live style previews.
-- `public/lookbook`: Kent's 19 lookbook stores. `public/proof`: before and after images. `public/styles`: photos inside the style previews (Pexels).
+- `public/lookbook`: Kent's 19 lookbook stores. The picker uses the sized files (`desktop/1-home-700.webp`, `mobile/1-home-300.webp`, `thumb.webp` and so on). The older unsized files and the mp4 loops belong to the lookbook dialog on /book and /intake. `public/proof`: before and after images. `public/styles`: photos inside the style previews (Pexels).
+- `src/lib/lookbook`: the five looks (line and chips are written in index.ts) and the generated store data.
+- `src/components/looks`: the "Pick a look" picker (pick mode in step 2 of the apply form, browse mode on the landing pages).

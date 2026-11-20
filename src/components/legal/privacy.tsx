@@ -1,6 +1,6 @@
 /** The privacy copy, shared by /privacy (light blue) and /demo/privacy (lime). One source, two looks. */
 
-export const PRIVACY_UPDATED = "November 18, 2026"
+export const PRIVACY_UPDATED = "November 20, 2026"
 
 const EMAIL = "hello@localeyesgrowth.com"
 
@@ -8,7 +8,8 @@ export const PRIVACY_SECTIONS = [
   {
     title: "What we collect",
     body: [
-      "When you apply: the look you pick, your store's web address, your monthly revenue band, what you sell, what isn't working, your name, email and phone number.",
+      "When you apply: your store's web address, your monthly revenue band, your name, email and phone number, the look you pick (or what you tell us instead), what you sell and what isn't working.",
+      "While you browse our lookbook: which looks you open and which example stores you visit. We save this with your application so we know what you liked.",
       "If you book a call or reserve a slot: the answers you give about your store's design, your booking time, and payment confirmation from Stripe. We never see your card details.",
       "If you fill the intake: store access details, brand files, product links, offers, apps, your last 30 days of store numbers and the files you upload.",
     ],

@@ -16,7 +16,7 @@ neonConfig.fetchFunction = async (input: RequestInfo | URL, init?: RequestInit) 
     }
   }
 }
-import { desc, eq, sql } from "drizzle-orm"
+import { and, desc, eq, isNull, sql } from "drizzle-orm"
 import { drizzle } from "drizzle-orm/neon-http"
 import type { AlertRow, Application, HomepageJob, Job } from "@/lib/types"
 import type { NewApplication, NewHomepageJob, NewJob, Repo } from "./repo"
@@ -29,6 +29,7 @@ const TIMESTAMPS = new Set([
   "store_checked_at",
   "design_saved_at",
   "submitted_at",
+  "lead_at",
   "call_time",
   "paid_at",
   "intake_submitted_at",
@@ -87,13 +88,23 @@ export function createNeonRepo(): Repo {
       return fromDb<Application>((await db.select().from(applications).where(eq(applications.id, id)).limit(1))[0])
     },
     async findLatestApplicationByEmail(email) {
+      // Step one saves contact details, so abandoned partial rows carry emails too. Prefer a submitted one.
       const rows = await db
         .select()
         .from(applications)
         .where(sql`lower(${applications.email}) = ${email.trim().toLowerCase()}`)
-        .orderBy(desc(applications.created_at))
+        .orderBy(desc(sql`${applications.stage} = 'submitted'`), desc(applications.created_at))
         .limit(1)
       return fromDb<Application>(rows[0])
+    },
+    async claimLead(id) {
+      if (!UUID.test(id)) return false
+      const rows = await db
+        .update(applications)
+        .set({ lead_at: new Date() } as never)
+        .where(and(eq(applications.id, id), isNull(applications.lead_at)))
+        .returning({ id: applications.id })
+      return rows.length > 0
     },
     async listApplications(limit) {
       return many<Application>(await db.select().from(applications).orderBy(desc(applications.created_at)).limit(limit))
