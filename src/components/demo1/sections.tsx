@@ -48,7 +48,7 @@ export async function d1Slots(config: SiteConfig) {
 
 /* ---------- Header ---------- */
 
-export async function D1Header({ config }: { config: SiteConfig }) {
+export async function D1Header({ config, applyHref = "#apply-top" }: { config: SiteConfig; applyHref?: string }) {
   const slots = await d1Slots(config)
   return (
     <header className="d1-header">
@@ -73,7 +73,7 @@ export async function D1Header({ config }: { config: SiteConfig }) {
               </span>
             </p>
           ) : null}
-          <D1Link href="#apply-top" size="sm" tone="lime" arrow={false}>
+          <D1Link href={applyHref} size="sm" tone="lime" arrow={false}>
             Apply
           </D1Link>
         </div>
@@ -322,7 +322,7 @@ export function D1Footer({ kentNumber }: { kentNumber?: string }) {
             <a href="https://www.localeyesgrowth.com" className="hover:text-ink">
               localeyesgrowth.com
             </a>
-            <Link href="/privacy" className="hover:text-ink">
+            <Link href="/demo/privacy" className="hover:text-ink">
               Privacy
             </Link>
             <a href="https://www.instagram.com/localeyesseo" className="hover:text-ink">

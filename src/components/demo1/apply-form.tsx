@@ -284,7 +284,7 @@ export function D1ApplyForm({ instance, className }: { instance: "top" | "bottom
             <p className="max-w-2xl text-[0.76rem] leading-relaxed text-tan">
               By applying you agree that LocalEyes may text, call or email you about your application at the details above. Message and
               data rates may apply. Reply STOP to opt out. See our{" "}
-              <Link href="/privacy" className="underline underline-offset-2 hover:text-ink">
+              <Link href="/demo/privacy" className="underline underline-offset-2 hover:text-ink">
                 privacy policy
               </Link>
               .

@@ -56,7 +56,7 @@ async function slotState(config: SiteConfig) {
 
 /* ---------- Header: one berry bar, as on the reference page ---------- */
 
-export async function DemoHeader({ config }: { config: SiteConfig }) {
+export async function DemoHeader({ config, applyHref = "#apply-top" }: { config: SiteConfig; applyHref?: string }) {
   const slots = await slotState(config)
   return (
     <header className="demo-header relative z-20">
@@ -71,7 +71,7 @@ export async function DemoHeader({ config }: { config: SiteConfig }) {
               {slots.left} of {slots.perWeek} slots left<span className="hidden sm:inline">&nbsp;this week</span>
             </p>
           ) : null}
-          <DemoLink href="#apply-top" tone="butter" size="sm" arrow={false}>
+          <DemoLink href={applyHref} tone="butter" size="sm" arrow={false}>
             Apply
           </DemoLink>
         </div>
