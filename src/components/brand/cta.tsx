@@ -5,27 +5,17 @@ import { ArrowRight, ArrowUpRight } from "./marks"
 type Variant = "solid" | "outline"
 
 const base =
-  "group/cta relative inline-flex min-h-12 items-center justify-between gap-5 rounded-full py-1.5 pr-1.5 pl-6 text-[0.72rem] font-semibold tracking-[0.2em] uppercase transition-[background-color,border-color,color,transform] duration-200 select-none active:translate-y-px disabled:pointer-events-none disabled:opacity-55"
+  "group/cta relative inline-flex min-h-14 items-center justify-center gap-3 rounded-xl px-7 font-display text-[1.02rem] font-extrabold tracking-[0.03em] uppercase transition-[background-color,border-color,color,box-shadow,transform] duration-200 select-none active:translate-y-px disabled:pointer-events-none disabled:opacity-55"
 
 const variants: Record<Variant, string> = {
-  solid: "bg-ink text-page hover:bg-[#3a3126]",
-  outline: "border border-line-strong bg-transparent text-ink hover:border-ink/45 hover:bg-paper/60",
+  solid: "bg-gold text-white shadow-[0_14px_32px_-14px_rgba(238,74,18,0.85)] hover:bg-[#d93f0b] hover:shadow-[0_18px_36px_-14px_rgba(238,74,18,0.95)]",
+  outline: "border-2 border-ink bg-transparent text-ink hover:bg-ink hover:text-page",
 }
 
-const circle: Record<Variant, string> = {
-  solid: "bg-page text-ink",
-  outline: "bg-[#3a2f22] text-page",
-}
-
-function Circle({ variant, icon }: { variant: Variant; icon: "up" | "right" }) {
+function Arrow({ icon }: { icon: "up" | "right" }) {
   return (
-    <span
-      className={cn(
-        "grid size-9 shrink-0 place-items-center rounded-full transition-transform duration-200 group-hover/cta:translate-x-0.5",
-        circle[variant],
-      )}
-    >
-      {icon === "up" ? <ArrowUpRight /> : <ArrowRight />}
+    <span className="grid shrink-0 place-items-center transition-transform duration-200 group-hover/cta:translate-x-1">
+      {icon === "up" ? <ArrowUpRight className="size-4" /> : <ArrowRight className="size-4" />}
     </span>
   )
 }
@@ -46,13 +36,11 @@ export function CtaButton({
       disabled={disabled || pending}
       {...props}
     >
-      <span className={cn("transition-opacity", pending && "opacity-60")}>{children}</span>
+      <span className={cn("transition-opacity", pending && "opacity-70")}>{children}</span>
       {pending ? (
-        <span className={cn("grid size-9 shrink-0 place-items-center rounded-full", circle[variant])}>
-          <span className="size-3.5 animate-spin rounded-full border-[1.5px] border-current border-t-transparent" />
-        </span>
+        <span className="size-4 shrink-0 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
       ) : (
-        <Circle variant={variant} icon={icon} />
+        <Arrow icon={icon} />
       )}
     </button>
   )
@@ -68,7 +56,7 @@ export function CtaLink({
   return (
     <a className={cn(base, variants[variant], className)} {...props}>
       <span>{children}</span>
-      <Circle variant={variant} icon={icon} />
+      <Arrow icon={icon} />
     </a>
   )
 }

@@ -7,6 +7,10 @@ const proof = (slug: string) => ({
   before_mobile: `/proof/${slug}/before-mobile.webp`,
   after_mobile: `/proof/${slug}/after-mobile.webp`,
 })
+const proofDesktop = (slug: string) => ({
+  before_desktop: `/proof/${slug}/before-desktop.webp`,
+  after_desktop: `/proof/${slug}/after-desktop.webp`,
+})
 
 /**
  * Launch defaults. Prices, links and videos are deliberately empty: Kent fills
@@ -44,10 +48,11 @@ export const DEFAULT_CONFIG: SiteConfig = {
   ],
   PROOF_STORES: [
     { slug: "lima", name: "Lima Coffee Roasters", cleared: true, caption: null, ...proof("lima") },
-    { slug: "boxwood", name: "Boxwood Coffee", cleared: true, caption: null },
-    { slug: "lamppost", name: "Lamppost Coffee", cleared: true, caption: null },
-    { slug: "lake-effect", name: "Lake Effect Coffee Co.", cleared: true, caption: null },
-    { slug: "jjs", name: "JJ's Flower Shop", cleared: true, caption: null },
+    { slug: "boxwood", name: "Boxwood Coffee", cleared: true, caption: null, ...proofDesktop("boxwood") },
+    { slug: "lake-effect", name: "Lake Effect Coffee Co.", cleared: true, caption: null, ...proof("lake-effect") },
+    // Held: the new Lamppost site is still an unpublished preview, and JJ's has no visible redesign yet.
+    { slug: "lamppost", name: "Lamppost Coffee", cleared: false, caption: null },
+    { slug: "jjs", name: "JJ's Flower Shop", cleared: false, caption: null },
     // Kent's timed test build (Wix site rebuilt on Shopify). Not on the cleared list yet.
     { slug: "green-kettle", name: "Green Kettle Coffee", cleared: false, caption: null, ...proof("green-kettle") },
   ],

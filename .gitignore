@@ -43,3 +43,8 @@ next-env.d.ts
 # local test data (dev store)
 /.data
 !.env.example
+
+# Proof images not cleared for publishing yet (kept locally only)
+/public/proof/green-kettle/
+/public/proof/lamppost/
+/public/proof/jjs/

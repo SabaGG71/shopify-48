@@ -36,7 +36,7 @@ export function Check({ className }: { className?: string }) {
 /** LOCALEYES wordmark in the display face. */
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <span className={cn("display tracking-[0.18em] uppercase", className)} aria-label="LocalEyes" translate="no">
+    <span className={cn("font-display font-extrabold tracking-[0.04em] uppercase", className)} aria-label="LocalEyes" translate="no">
       LocalEyes
     </span>
   )

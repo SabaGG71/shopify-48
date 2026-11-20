@@ -2,8 +2,9 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* LocalEyes brand: warm cream page, thin serif display (Ivy Presto), Manrope body,
-   gold as the only accent, hairline rules. Light only. */
+/* 48 Hour Rebuild: direct response, light. Warm white page, ink type, paprika as the
+   one loud colour. Cabinet Grotesk display, General Sans body.
+   Token names (gold, cream, tan) are kept from v1 so every page picks up the new palette. */
 
 @theme inline {
   --color-background: var(--background);
@@ -20,6 +21,7 @@
   --color-gold-lt: var(--gold-lt);
   --color-gold-deep: var(--gold-deep);
   --color-cream: var(--cream);
+  --color-brand-soft: var(--brand-soft);
   --color-page: var(--page);
   --color-panel: var(--panel);
   --color-paper: var(--paper);
@@ -57,18 +59,19 @@
 }
 
 :root {
-  --ink: #2a241c;
-  --soft: #6e6555;
-  --tan: #8c7f63;
-  --gold: #b0904f;
-  --gold-lt: #c6a66a;
-  --gold-deep: #8a6c33;
-  --cream: #ededd5;
-  --page: #f7f5ec;
-  --panel: #f7f5e8;
-  --paper: #fffdf7;
-  --line: rgba(42, 36, 28, 0.13);
-  --line-strong: rgba(42, 36, 28, 0.24);
+  --ink: #131316;
+  --soft: #55555f;
+  --tan: #7a7a85;
+  --gold: #ee4a12;
+  --gold-lt: #ff7a45;
+  --gold-deep: #c23808;
+  --cream: #f1efea;
+  --page: #fbfaf7;
+  --panel: #f4f2ec;
+  --paper: #ffffff;
+  --brand-soft: #ffe9df;
+  --line: rgba(19, 19, 22, 0.1);
+  --line-strong: rgba(19, 19, 22, 0.18);
 
   --background: var(--page);
   --foreground: var(--ink);
@@ -84,7 +87,7 @@
   --muted-foreground: var(--soft);
   --accent: rgba(176, 144, 79, 0.1);
   --accent-foreground: var(--ink);
-  --destructive: #a8321e;
+  --destructive: #c4210b;
   --border: var(--line);
   --input: var(--line-strong);
   --ring: var(--gold);
@@ -115,19 +118,14 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    /* Fixed-size glows, painted once (no repeat), so tall pages never show seams. */
-    background:
-      radial-gradient(1300px 860px at 100% 0%, rgba(214, 190, 145, 0.5) 0%, rgba(214, 190, 145, 0.14) 40%, rgba(214, 190, 145, 0) 70%),
-      radial-gradient(1100px 760px at 0% 100%, rgba(206, 205, 168, 0.32) 0%, rgba(206, 205, 168, 0) 65%),
-      var(--page);
-    background-repeat: no-repeat;
+    background: var(--page);
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
   ::selection {
-    background: rgba(176, 144, 79, 0.28);
+    background: rgba(238, 74, 18, 0.22);
   }
   :focus-visible {
     outline: 2px solid var(--gold);
@@ -136,22 +134,43 @@
 }
 
 @layer components {
-  /* Display face. One weight exists, never bold it. */
+  /* Display face: Cabinet Grotesk, heavy and tight. */
   .display {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.008em;
-    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.96;
     font-synthesis: none;
   }
-  /* Tiny letterspaced caps label (brand micro-label) */
+  /* Small caps label */
   .micro {
-    font-size: 0.6875rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--tan);
+    color: var(--gold-deep);
     line-height: 1.4;
+  }
+  /* Eyebrow pill, as on the reference page */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-radius: 999px;
+    background: var(--brand-soft);
+    color: var(--gold-deep);
+    padding: 0.5rem 1rem;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: var(--gold);
   }
   /* Label rule: label, then a hairline to the edge */
   .label-rule {
@@ -206,6 +225,74 @@
     transform: scale(1.12) translate(-2%, -1%);
   }
 }
+/* Hero: a scan line sweeps across a store and the old site becomes the new one. */
+@keyframes wipe-clip {
+  0%,
+  22% {
+    clip-path: inset(0 0 0 0);
+  }
+  52%,
+  90% {
+    clip-path: inset(0 0 0 100%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes wipe-line {
+  0%,
+  22% {
+    left: 0%;
+    opacity: 0;
+  }
+  24% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  52%,
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+@keyframes tag-before {
+  0%,
+  30% {
+    opacity: 1;
+  }
+  40%,
+  92% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tag-after {
+  0%,
+  44% {
+    opacity: 0;
+  }
+  54%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tilt, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--tilt, 0deg));
+  }
+}
+
 @keyframes rise {
   from {
     opacity: 0;

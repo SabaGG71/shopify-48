@@ -1,0 +1,585 @@
+/* /demo-2: "Your proposal". The page is a refined proposal document that becomes
+   personal the moment the visitor types their store's address. Modest type, a white
+   sheet on soft paper, one deep green. Scoped to .d2-root. No url() in this file. */
+
+.d2-root {
+  --paper: #f4f3ef;
+  --sheet: #ffffff;
+  --ink: #141413;
+  --soft: #5b5a55;
+  --tan: #8d8b85;
+  --line: rgba(20, 20, 19, 0.1);
+  --line-strong: rgba(20, 20, 19, 0.2);
+  --green: #1d4d3c;
+  --green-soft: #e8f0ec;
+
+  /* shared token names, so the shared fields and slider follow along */
+  --gold: var(--green);
+  --gold-lt: #2f6d57;
+  --gold-deep: #133628;
+  --page: var(--paper);
+  --panel: #f7f6f2;
+  --cream: #f7f6f2;
+  --brand-soft: var(--green-soft);
+  --destructive: #b3261e;
+
+  --font-ivy: var(--font-d2);
+  --font-display: var(--font-d2), Helvetica, Arial, sans-serif;
+  --font-manrope: var(--font-d2);
+  --font-sans: var(--font-d2), Helvetica, Arial, sans-serif;
+
+  font-family: var(--font-d2), Helvetica, Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+.d2-root ::selection {
+  background: rgba(29, 77, 60, 0.16);
+}
+
+/* ---------- Shared form fields (unlayered: beats the utilities) ---------- */
+.d2-root .d2-form input:not([type="radio"]):not([type="checkbox"]),
+.d2-root .d2-form select,
+.d2-root .d2-form textarea {
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: none;
+}
+.d2-root .d2-form input:not([type="radio"]):not([type="checkbox"]):hover,
+.d2-root .d2-form select:hover,
+.d2-root .d2-form textarea:hover {
+  background: #fff;
+  border-color: rgba(20, 20, 19, 0.38);
+}
+.d2-root .d2-form input:not([type="radio"]):not([type="checkbox"]):focus,
+.d2-root .d2-form select:focus,
+.d2-root .d2-form textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(29, 77, 60, 0.1);
+}
+.d2-root .d2-form fieldset [role="radiogroup"] > label {
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: #fff;
+}
+.d2-root .d2-form fieldset [role="radiogroup"] > label:hover {
+  background: #fff;
+  border-color: rgba(20, 20, 19, 0.4);
+}
+.d2-root .d2-form fieldset [role="radiogroup"] > label:has(input:checked) {
+  border-color: var(--green);
+  background: var(--green-soft);
+  box-shadow: inset 0 0 0 1px var(--green);
+}
+.d2-root .d2-film figure > div {
+  border: 0;
+  border-radius: 0;
+}
+
+@layer components {
+  /* ---------- The sheet ---------- */
+  .d2-sheet {
+    position: relative;
+    margin: 0 auto;
+    width: min(100% - 1.5rem, 64rem);
+    background: var(--sheet);
+    border-radius: 18px;
+    box-shadow:
+      0 0 0 1px rgba(20, 20, 19, 0.05),
+      0 1px 2px rgba(20, 20, 19, 0.04),
+      0 30px 80px -50px rgba(20, 20, 19, 0.35);
+  }
+  @media (max-width: 639px) {
+    .d2-sheet {
+      width: calc(100% - 1rem);
+      border-radius: 14px;
+    }
+  }
+  .d2-pad {
+    padding-inline: clamp(1.25rem, 6vw, 5rem);
+  }
+  .d2-part {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    border-top: 1px solid var(--line);
+  }
+  .d2-part:first-child {
+    border-top: 0;
+  }
+
+  /* ---------- Type: calm and modest ---------- */
+  .d2-h1 {
+    font-size: clamp(2rem, 4.6vw, 3.1rem);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
+  }
+  .d2-h2 {
+    font-size: clamp(1.55rem, 3vw, 2.1rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+  }
+  .d2-label {
+    color: var(--tan);
+    font-size: 0.86rem;
+    font-weight: 500;
+  }
+  .d2-meta {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.35rem 1.6rem;
+    font-size: 0.88rem;
+  }
+  .d2-meta dt {
+    color: var(--tan);
+  }
+  .d2-meta dd {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ---------- The sentence with the input in it ---------- */
+  .d2-sentence {
+    font-size: clamp(1.55rem, 3.6vw, 2.35rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.35;
+  }
+  .d2-blank {
+    position: relative;
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  .d2-blank input {
+    width: var(--w, 9ch);
+    min-width: 6ch;
+    max-width: 100%;
+    padding: 0 0.1em;
+    border: 0;
+    border-bottom: 2px solid var(--green);
+    background: transparent;
+    color: var(--green);
+    font: inherit;
+    letter-spacing: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .d2-blank input::placeholder {
+    color: transparent;
+  }
+  .d2-blank input:focus {
+    border-bottom-color: var(--ink);
+  }
+  .d2-ghost {
+    position: absolute;
+    left: 0.1em;
+    bottom: 0.02em;
+    color: rgba(29, 77, 60, 0.45);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .d2-caret {
+    display: inline-block;
+    width: 2px;
+    height: 0.95em;
+    margin-left: 1px;
+    vertical-align: -0.1em;
+    background: var(--green);
+    animation: d2-blink 1s steps(1) infinite;
+  }
+  @keyframes d2-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* ---------- Buttons ---------- */
+  .d2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    min-height: 3.2rem;
+    padding: 0 1.4rem;
+    border-radius: 10px;
+    background: var(--green);
+    color: #fff;
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition:
+      background-color 0.2s,
+      transform 0.2s;
+  }
+  .d2-btn:hover {
+    background: #163d30;
+  }
+  .d2-btn:active {
+    transform: translateY(1px);
+  }
+  .d2-btn .d2-arrow {
+    transition: transform 0.2s;
+  }
+  .d2-btn:hover .d2-arrow {
+    transform: translateX(3px);
+  }
+  .d2-btn:disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  .d2-btn[data-size="sm"] {
+    min-height: 2.4rem;
+    padding: 0 0.95rem;
+    font-size: 0.9rem;
+  }
+  .d2-btn[data-tone="ghost"] {
+    background: transparent;
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--line-strong);
+  }
+  .d2-btn[data-tone="ghost"]:hover {
+    background: #fff;
+    box-shadow: inset 0 0 0 1px var(--ink);
+  }
+  .d2-link {
+    color: var(--green);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+  }
+
+  /* ---------- Looks as small browser previews with their domain ---------- */
+  .d2-looks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem 0.9rem;
+  }
+  @media (min-width: 900px) {
+    .d2-looks {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+  .d2-look {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+  }
+  .d2-win {
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow:
+      0 0 0 1px var(--line-strong),
+      0 14px 28px -22px rgba(20, 20, 19, 0.5);
+    transition:
+      box-shadow 0.25s,
+      transform 0.25s;
+  }
+  .d2-look:hover .d2-win {
+    transform: translateY(-2px);
+  }
+  .d2-look:has(input:checked) .d2-win {
+    box-shadow:
+      0 0 0 2px var(--green),
+      0 18px 30px -22px rgba(29, 77, 60, 0.6);
+  }
+  .d2-look:has(input:focus-visible) .d2-win {
+    outline: 2px solid var(--green);
+    outline-offset: 4px;
+  }
+  .d2-winbar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 1.35rem;
+    padding: 0 0.45rem;
+    border-bottom: 1px solid var(--line);
+    background: #fafaf8;
+  }
+  .d2-winbar i {
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: #d6d4ce;
+  }
+  .d2-winbar span {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    color: var(--soft);
+    font-size: 0.62rem;
+    font-weight: 500;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .d2-winbody {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+  .d2-check {
+    position: absolute;
+    top: 1.85rem;
+    right: 0.5rem;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 999px;
+    background: var(--green);
+    color: #fff;
+    transform: scale(0);
+    transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+  }
+  .d2-look:has(input:checked) .d2-check {
+    transform: scale(1);
+  }
+
+  /* ---------- Films ---------- */
+  .d2-films {
+    display: grid;
+    gap: 1.25rem;
+  }
+  @media (min-width: 900px) {
+    .d2-films {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .d2-film-win {
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow:
+      0 0 0 1px var(--line-strong),
+      0 20px 40px -30px rgba(20, 20, 19, 0.5);
+  }
+  .d2-film-win video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+    background: #f2f1ee;
+  }
+
+  /* ---------- The quote ---------- */
+  .d2-quote {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+  }
+  .d2-quote td {
+    padding: 0.95rem 0;
+    border-top: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .d2-quote tr:last-child td {
+    border-bottom: 1px solid var(--line);
+  }
+  .d2-quote td:last-child {
+    padding-left: 1.5rem;
+    color: var(--green);
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .d2-total td {
+    padding-top: 1.2rem;
+    border-top: 2px solid var(--ink) !important;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+  .d2-total td:last-child {
+    color: var(--ink);
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* ---------- Slots: seven small marks ---------- */
+  .d2-slots {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+  .d2-slot-marks {
+    display: flex;
+    gap: 3px;
+  }
+  .d2-slot-marks i {
+    width: 6px;
+    height: 14px;
+    border-radius: 2px;
+    background: var(--green);
+  }
+  .d2-slot-marks i[data-taken] {
+    background: rgba(20, 20, 19, 0.15);
+  }
+
+  /* ---------- Reveal ---------- */
+  @media (scripting: enabled) {
+    .rv {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.7s ease;
+      transition-delay: var(--rv-delay, 0ms);
+    }
+    [data-in] .rv,
+    .rv[data-in] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .d2-in {
+    animation: d2-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--dl, 0ms);
+  }
+  @keyframes d2-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* ---------- Guarantee vignettes: tiny true pictures of each promise ---------- */
+  .d2-vig {
+    padding: 1rem 1.05rem 1.05rem;
+    border-radius: 12px;
+    background: #fafaf8;
+    box-shadow:
+      inset 0 0 0 1px var(--line),
+      0 12px 24px -20px rgba(20, 20, 19, 0.35);
+  }
+  .d2-vig-bar {
+    position: relative;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(20, 20, 19, 0.08);
+  }
+  .d2-vig-bar span {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: var(--green);
+    transform-origin: 0 50%;
+    transform: scaleX(0.08);
+    transition: transform 2.4s cubic-bezier(0.65, 0, 0.25, 1) 0.4s;
+  }
+  [data-in] .d2-vig-bar span {
+    transform: scaleX(0.62);
+  }
+  .d2-vig-url {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    height: 1.8rem;
+    padding: 0 0.6rem;
+    border-radius: 7px;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px var(--line);
+    color: var(--soft);
+    font-size: 0.74rem;
+  }
+  .d2-switch {
+    position: relative;
+    width: 2.1rem;
+    height: 1.2rem;
+    border-radius: 999px;
+    background: rgba(20, 20, 19, 0.16);
+  }
+  .d2-switch::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: calc(1.2rem - 4px);
+    height: calc(1.2rem - 4px);
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  .d2-vig-btn {
+    padding: 0.35rem 0.7rem;
+    border-radius: 7px;
+    background: var(--green);
+    color: #fff;
+    font-size: 0.76rem;
+    font-weight: 600;
+  }
+
+  /* ---------- Schedule: bars on a track ---------- */
+  .d2-row {
+    display: grid;
+    gap: 0.6rem;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .d2-row:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 900px) {
+    .d2-row {
+      grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+      gap: 1.5rem;
+    }
+  }
+  .d2-track {
+    position: relative;
+    height: 2rem;
+    border-radius: 8px;
+    background: repeating-linear-gradient(90deg, rgba(20, 20, 19, 0.06) 0 1px, transparent 1px 10%);
+  }
+  .d2-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    min-width: 1.4rem;
+    border-radius: 8px;
+    background: var(--green-soft);
+    box-shadow: inset 0 0 0 1px rgba(29, 77, 60, 0.25);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: var(--rv-delay, 0ms);
+  }
+  [data-in] .d2-bar {
+    transform: none;
+  }
+  .d2-bar[data-main] {
+    background: var(--green);
+    box-shadow: none;
+  }
+  .d2-bar-label {
+    padding: 0 0.6rem;
+    overflow: hidden;
+    color: var(--green);
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .d2-bar[data-main] .d2-bar-label {
+    color: #fff;
+  }
+  /* Short bars keep their label just outside, so it is never cut off. */
+  .d2-bar:not([data-main]) .d2-bar-label {
+    position: absolute;
+    left: 100%;
+    padding: 0 0 0 0.5rem;
+    overflow: visible;
+  }
+}

@@ -9,7 +9,7 @@ import { useApply } from "./apply-provider"
  * Mobile only: an Apply bar that appears once the visitor has scrolled past the
  * first form, and hides whenever a form is on screen.
  */
-export function StickyApply() {
+export function StickyApply({ variant = "default" }: { variant?: "default" | "demo" | "d1" | "d2" }) {
   const { screen } = useApply()
   const [show, setShow] = useState(false)
 
@@ -50,17 +50,35 @@ export function StickyApply() {
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
       )}
     >
-      <a
-        href="#apply-top"
-        tabIndex={show ? 0 : -1}
-        aria-hidden={!show}
-        className="flex min-h-12 items-center justify-between rounded-full bg-ink py-1.5 pr-1.5 pl-6 text-[0.72rem] font-semibold tracking-[0.2em] text-page uppercase"
-      >
-        {screen === 2 ? "Finish your application" : "Apply for a free homepage"}
-        <span className="grid size-9 place-items-center rounded-full bg-page text-ink">
-          <ArrowRight />
-        </span>
-      </a>
+      {/* Each demo page has its own button style; the behaviour is the same. */}
+      {variant === "d2" ? (
+        <a href="#apply-top" tabIndex={show ? 0 : -1} aria-hidden={!show} className="d2-btn w-full">
+          {screen === 2 ? "Finish your application" : "Apply for a free homepage"}
+          <ArrowRight className="size-4" />
+        </a>
+      ) : variant === "d1" ? (
+        <a href="#apply-top" tabIndex={show ? 0 : -1} aria-hidden={!show} className="d1-btn w-full">
+          {screen === 2 ? "Finish your application" : "Apply for a free homepage"}
+          <ArrowRight className="size-4" />
+        </a>
+      ) : variant === "demo" ? (
+        <a href="#apply-top" tabIndex={show ? 0 : -1} aria-hidden={!show} className="d-btn w-full">
+          {screen === 2 ? "Finish your application" : "Apply for a free homepage"}
+          <ArrowRight className="size-4" />
+        </a>
+      ) : (
+        <a
+          href="#apply-top"
+          tabIndex={show ? 0 : -1}
+          aria-hidden={!show}
+          className="flex min-h-12 items-center justify-between rounded-full bg-ink py-1.5 pr-1.5 pl-6 text-[0.72rem] font-semibold tracking-[0.2em] text-page uppercase"
+        >
+          {screen === 2 ? "Finish your application" : "Apply for a free homepage"}
+          <span className="grid size-9 place-items-center rounded-full bg-page text-ink">
+            <ArrowRight />
+          </span>
+        </a>
+      )}
     </div>
   )
 }

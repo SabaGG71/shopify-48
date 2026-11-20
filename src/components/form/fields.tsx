@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import type { Option } from "@/lib/options"
 
 export const inputBase =
-  "block w-full rounded-xl border border-line-strong bg-paper px-4 text-base text-ink placeholder:text-tan/80 transition-[border-color,box-shadow] outline-none focus:border-gold focus:ring-3 focus:ring-gold/20 aria-[invalid=true]:border-destructive aria-[invalid=true]:ring-destructive/15 disabled:opacity-60"
+  "block w-full rounded-xl border border-transparent bg-[#f2f1ec] px-4 text-base text-ink placeholder:text-tan/80 transition-[border-color,box-shadow,background-color] outline-none hover:bg-[#eeede7] focus:border-gold focus:bg-white focus:ring-4 focus:ring-gold/15 aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-white aria-[invalid=true]:ring-destructive/15 disabled:opacity-60"
 
 export function FieldShell({
   id,
@@ -32,7 +32,7 @@ export function FieldShell({
     <Tag className={cn("min-w-0", className)}>
       <LabelTag
         {...(as === "fieldset" ? {} : { htmlFor: id })}
-        className="mb-2 flex items-baseline justify-between gap-3 text-[0.86rem] font-semibold text-ink"
+        className="mb-2 flex items-baseline justify-between gap-3 text-[0.92rem] font-semibold text-ink"
       >
         <span>{label}</span>
         {optional ? <span className="text-[0.72rem] font-medium text-tan">Optional</span> : null}
@@ -207,9 +207,11 @@ export function ChoiceGroup<K extends string>({
               key={o.key}
               htmlFor={inputId}
               className={cn(
-                "group relative flex min-h-12 cursor-pointer items-center justify-between gap-2 rounded-xl border bg-paper px-3.5 py-2.5 text-[0.9rem] text-ink transition-colors",
-                checked ? "border-gold bg-[#fbf6ea]" : "border-line-strong hover:border-ink/35",
+                "group relative flex min-h-13 cursor-pointer items-center justify-between gap-2 rounded-xl border-2 px-3.5 py-2.5 text-[0.95rem] text-ink transition-colors",
+                checked ? "border-gold bg-brand-soft" : "border-transparent bg-[#f2f1ec] hover:bg-[#eeede7]",
                 lastFull && i === options.length - 1 && options.length % 2 === 1 && "col-span-2 sm:col-span-1",
+                // Three across a phone is tight: centre the word and let the colour show the choice.
+                columns === 3 && "max-sm:justify-center max-sm:px-2",
                 error && !checked && "border-destructive/50",
               )}
             >
@@ -226,7 +228,8 @@ export function ChoiceGroup<K extends string>({
               <span
                 className={cn(
                   "grid size-[18px] shrink-0 place-items-center rounded-full border transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-gold",
-                  checked ? "border-gold bg-gold" : "border-line-strong",
+                  checked ? "border-gold bg-gold" : "border-line-strong bg-white",
+                  columns === 3 && "max-sm:hidden",
                 )}
                 aria-hidden="true"
               >
@@ -243,7 +246,7 @@ export function ChoiceGroup<K extends string>({
 export function FormError({ children }: { children: React.ReactNode }) {
   if (!children) return null
   return (
-    <div role="alert" className="rounded-xl border border-destructive/30 bg-[#fbeee9] px-4 py-3 text-[0.86rem] leading-relaxed text-[#7a2414]">
+    <div role="alert" className="rounded-xl border border-destructive/30 bg-[#fdece7] px-4 py-3 text-[0.9rem] leading-relaxed text-[#8a1a08]">
       {children}
     </div>
   )

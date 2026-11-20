@@ -61,13 +61,13 @@ export function ApplyForm({ instance, className }: { instance: "top" | "bottom";
             if (await a.continueToTwo()) scrollToTop()
           }}
         >
-          <LabelRule right="Two minutes">
-            Apply <Ornament /> Step 1 of 2
-          </LabelRule>
-          <h2 className="display mt-5 text-[2rem] text-balance text-ink sm:text-[2.5rem]">Pick the look closest to your brand.</h2>
-          <p className="mt-2.5 max-w-xl text-[0.92rem] leading-relaxed text-soft">
-            Tap one. It sets the starting point for your free homepage.
-          </p>
+          <div className="text-center">
+            <p className="micro">Step 1 of 2 · Takes two minutes</p>
+            <h2 className="display mx-auto mt-4 max-w-[18ch] text-[2.35rem] text-balance text-ink sm:text-[3.4rem]">
+              Pick the look closest to your brand.
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-[1rem] leading-relaxed text-soft">Tap one. It sets the starting point for your free homepage.</p>
+          </div>
 
           <StylePicker
             name={id("style")}
@@ -77,10 +77,11 @@ export function ApplyForm({ instance, className }: { instance: "top" | "bottom";
             className="mt-7"
           />
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
+          <div className="mx-auto mt-12 grid max-w-xl gap-4">
             <TextField
               id={id("store_url")}
-              label="Your store's web address"
+              label={<span className="display block pb-3 text-center text-[1.75rem] text-ink sm:pb-4 sm:text-[2.2rem]">What&apos;s your store&apos;s address?</span>}
+              inputClassName="h-[60px] text-center text-[1.05rem]"
               name="url"
               placeholder="yourstore.com"
               inputMode="url"
@@ -92,11 +93,9 @@ export function ApplyForm({ instance, className }: { instance: "top" | "bottom";
               onChange={(e) => a.set("store_url", e.target.value)}
               error={a.errors.store_url}
             />
-            <CtaButton type="submit" pending={a.pending === "partial"} className="w-full sm:w-auto sm:min-w-[210px]">
+            <CtaButton type="submit" pending={a.pending === "partial"} className="w-full">
               Continue
             </CtaButton>
-          </div>
-          <div className="mt-4">
             <FormError>{a.formError}</FormError>
           </div>
         </form>
@@ -109,12 +108,12 @@ export function ApplyForm({ instance, className }: { instance: "top" | "bottom";
             await a.submit(honeypot)
           }}
         >
-          <LabelRule right="Almost done">
-            Apply <Ornament /> Step 2 of 2
-          </LabelRule>
-          <h2 className="display mt-5 text-[2rem] text-ink sm:text-[2.5rem]">A few quick questions.</h2>
+          <div className="text-center">
+            <p className="micro">Step 2 of 2 · Almost done</p>
+            <h2 className="display mt-4 text-[2.35rem] text-ink sm:text-[3.4rem]">A few quick questions.</h2>
+          </div>
 
-          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-line bg-paper/70 px-4 py-3 text-[0.86rem] text-soft">
+          <div className="mx-auto mt-6 flex max-w-2xl flex-wrap items-center gap-x-3 gap-y-1 rounded-xl bg-white px-4 py-3 text-[0.9rem] text-soft ring-1 ring-line">
             <span className="font-semibold text-ink">{labelOf(LOOKS, a.values.style_pick)}</span>
             <Ornament className="size-2" />
             <span className="truncate">{a.values.store_url}</span>
@@ -130,7 +129,7 @@ export function ApplyForm({ instance, className }: { instance: "top" | "bottom";
             </button>
           </div>
 
-          <div className="mt-7 grid gap-6">
+          <div className="mx-auto mt-8 grid max-w-2xl gap-6">
             <ChoiceGroup
               id={id("revenue")}
               label="Monthly revenue"
@@ -183,7 +182,7 @@ export function ApplyForm({ instance, className }: { instance: "top" | "bottom";
                 error={a.errors.email}
               />
             </div>
-            <div className="grid gap-6 sm:grid-cols-[1fr_1.15fr]">
+            <div className="grid gap-6">
               <TextField
                 id={id("phone")}
                 label="Phone for texts"
@@ -220,15 +219,19 @@ export function ApplyForm({ instance, className }: { instance: "top" | "bottom";
             />
           </div>
 
-          <div className="mt-6">
+          <div className="mx-auto mt-8 grid max-w-2xl gap-4">
             <FormError>{a.formError}</FormError>
-          </div>
-          <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <CtaButton type="submit" pending={a.pending === "submit"} className="w-full sm:w-auto sm:min-w-[260px]">
+            <CtaButton type="submit" pending={a.pending === "submit"} className="w-full">
               Send my application
             </CtaButton>
-            <p className="text-[0.8rem] leading-relaxed text-soft sm:max-w-xs">
-              Kent looks at every store himself. Your details are only used to review your store and reply to you.
+            <p className="text-center text-[0.86rem] font-medium text-ink">Kent looks at every store himself.</p>
+            <p className="text-center text-[0.74rem] leading-relaxed text-tan">
+              By applying you agree that LocalEyes may text, call or email you about your application at the details above. Message and
+              data rates may apply. Reply STOP to opt out. See our{" "}
+              <Link href="/privacy" className="underline underline-offset-2 hover:text-ink">
+                privacy policy
+              </Link>
+              .
             </p>
           </div>
         </form>

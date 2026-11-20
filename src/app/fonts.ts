@@ -1,22 +1,24 @@
 import localFont from "next/font/local"
 import { Anton, Fraunces, Fredoka, Instrument_Serif } from "next/font/google"
 
-/* Brand */
+/* Display: Cabinet Grotesk (bold, with character). Body: General Sans. Both Fontshare, free for commercial use. */
 export const ivy = localFont({
-  src: "./fonts/ivy-presto-headline-thin.woff2",
+  src: [
+    { path: "./fonts/cabinet-grotesk-500.woff2", weight: "500" },
+    { path: "./fonts/cabinet-grotesk-700.woff2", weight: "700" },
+    { path: "./fonts/cabinet-grotesk-800.woff2", weight: "800" },
+    { path: "./fonts/cabinet-grotesk-900.woff2", weight: "900" },
+  ],
   variable: "--font-ivy",
-  weight: "400",
   display: "swap",
-  fallback: ["Georgia", "serif"],
+  fallback: ["Arial Black", "Helvetica", "sans-serif"],
 })
 
 export const manrope = localFont({
   src: [
-    { path: "./fonts/manrope-latin-300-normal.woff2", weight: "300" },
-    { path: "./fonts/manrope-latin-400-normal.woff2", weight: "400" },
-    { path: "./fonts/manrope-latin-500-normal.woff2", weight: "500" },
-    { path: "./fonts/manrope-latin-600-normal.woff2", weight: "600" },
-    { path: "./fonts/manrope-latin-700-normal.woff2", weight: "700" },
+    { path: "./fonts/general-sans-400.woff2", weight: "400" },
+    { path: "./fonts/general-sans-500.woff2", weight: "500" },
+    { path: "./fonts/general-sans-600.woff2", weight: "600" },
   ],
   variable: "--font-manrope",
   display: "swap",
