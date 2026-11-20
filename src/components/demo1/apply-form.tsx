@@ -65,7 +65,7 @@ function Looks({ name, value, onChange, error }: { name: string; value: Look | "
 
 /**
  * The same seven fields and two screens as the main page (one shared state, the same
- * server actions), set in the /demo-1 style.
+ * server actions), set in the /demo style.
  */
 export function D1ApplyForm({ instance, className }: { instance: "top" | "bottom"; className?: string }) {
   const a = useApply()
@@ -157,6 +157,19 @@ export function D1ApplyForm({ instance, className }: { instance: "top" | "bottom
             await a.submit(honeypot)
           }}
         >
+          <button
+            type="button"
+            onClick={() => {
+              a.goTo(1)
+              scrollToTop()
+            }}
+            className="mb-5 inline-flex min-h-11 items-center gap-2 text-[0.95rem] font-semibold text-ink underline decoration-[var(--gold)] decoration-2 underline-offset-[6px] hover:decoration-ink"
+          >
+            <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+              <path d="M10 3 5 8l5 5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Back to step 1
+          </button>
           <p className="d1-mono text-tan">
             <span className="text-ink">Step 2 of 2</span>&nbsp;&nbsp;Almost done
           </p>

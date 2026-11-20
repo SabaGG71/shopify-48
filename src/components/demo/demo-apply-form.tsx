@@ -110,6 +110,19 @@ export function DemoApplyForm({ instance, className }: { instance: "top" | "bott
           }}
         >
           <div className="text-center">
+            <button
+              type="button"
+              onClick={() => {
+                a.goTo(1)
+                scrollToTop()
+              }}
+              className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-[0.95rem] font-bold text-gold ring-2 ring-[var(--line-strong)] transition-colors hover:bg-brand-soft"
+            >
+              <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                <path d="M10 3 5 8l5 5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Back to step 1
+            </button>
             <p className="d-kicker">Step 2 of 2 · Almost done</p>
             <h2 className="d-display mt-4 text-[2.55rem] text-ink sm:text-[3.8rem]">A few quick questions.</h2>
           </div>

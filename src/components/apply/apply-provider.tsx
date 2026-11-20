@@ -85,7 +85,8 @@ export function ApplyProvider({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false)
   const touched = useRef(false)
 
-  // Land where they stopped: server state first, then the local draft for anything unsaved.
+  // Fill in what they already gave us: server state first, then the local draft for anything unsaved.
+  // An unfinished application always reopens on step 1 (filled in), never mid-form.
   useEffect(() => {
     let alive = true
     captureSource()
@@ -102,7 +103,6 @@ export function ApplyProvider({ children }: { children: React.ReactNode }) {
           const merged = { ...res.values }
           if (draft) for (const k of Object.keys(EMPTY) as (keyof ApplyValues)[]) if (!merged[k] && draft[k]) (merged[k] as string) = draft[k] as string
           setValues(merged)
-          setScreen(2)
         } else if (draft) {
           setValues({ ...EMPTY, ...draft })
         }

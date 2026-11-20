@@ -61,7 +61,7 @@ export async function DemoHeader({ config }: { config: SiteConfig }) {
   return (
     <header className="demo-header relative z-20">
       <div className="mx-auto flex h-14 max-w-[1180px] items-center justify-between gap-3 px-4 sm:h-16 sm:px-8">
-        <Link href="/demo" className="flex items-baseline gap-3" aria-label="LocalEyes 48 Hour Rebuild home">
+        <Link href="/" className="flex items-baseline gap-3" aria-label="LocalEyes 48 Hour Rebuild home">
           <Wordmark className="text-[1.15rem] tracking-[0.02em] sm:text-[1.3rem]" />
           <span className="hidden text-[0.8rem] font-semibold text-white/75 md:inline">48 Hour Rebuild</span>
         </Link>

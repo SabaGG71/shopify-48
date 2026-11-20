@@ -195,7 +195,9 @@ export function ChoiceGroup<K extends string>({
   /** Let the last tile span the full row on two-column phones (odd counts). */
   lastFull?: boolean
 }) {
-  const cols = { 2: "grid-cols-2", 3: "grid-cols-3", 4: "grid-cols-2 sm:grid-cols-4", 5: "grid-cols-2 sm:grid-cols-5" }[columns]
+  // Five across only when there is room. In between: 3 then 2, on a 6 column grid so both rows fill.
+  const cols = { 2: "grid-cols-2", 3: "grid-cols-3", 4: "grid-cols-2 sm:grid-cols-4", 5: "grid-cols-2 sm:grid-cols-6 lg:grid-cols-5" }[columns]
+  const five = columns === 5 && options.length === 5
   return (
     <FieldShell id={id} label={label} hint={hint} error={error} optional={optional} className={className} as="fieldset">
       <div className={cn("grid gap-2", cols)} role="radiogroup" aria-describedby={describedBy(id, hint, error)}>
@@ -209,7 +211,8 @@ export function ChoiceGroup<K extends string>({
               className={cn(
                 "group relative flex min-h-13 cursor-pointer items-center justify-between gap-2 rounded-xl border-2 px-3.5 py-2.5 text-[0.95rem] text-ink transition-colors",
                 checked ? "border-gold bg-brand-soft" : "border-transparent bg-[#f2f1ec] hover:bg-[#eeede7]",
-                lastFull && i === options.length - 1 && options.length % 2 === 1 && "col-span-2 sm:col-span-1",
+                five && (i < 3 ? "sm:col-span-2 lg:col-span-1" : "sm:col-span-3 lg:col-span-1"),
+                lastFull && i === options.length - 1 && options.length % 2 === 1 && (five ? "col-span-2" : "col-span-2 sm:col-span-1"),
                 // Three across a phone is tight: centre the word and let the colour show the choice.
                 columns === 3 && "max-sm:justify-center max-sm:px-2",
                 error && !checked && "border-destructive/50",

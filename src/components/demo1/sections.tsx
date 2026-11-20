@@ -53,7 +53,7 @@ export async function D1Header({ config }: { config: SiteConfig }) {
   return (
     <header className="d1-header">
       <div className="mx-auto flex h-16 max-w-[1260px] items-center justify-between gap-4 px-[1.1rem] sm:px-8 lg:px-10">
-        <Link href="/demo-1" className="flex items-baseline gap-3" aria-label="LocalEyes 48 Hour Rebuild home">
+        <Link href="/demo" className="flex items-baseline gap-3" aria-label="LocalEyes 48 Hour Rebuild home">
           <span className="text-[1.25rem] font-black tracking-[-0.045em] text-ink">LocalEyes</span>
           <span className="d1-mono hidden text-tan md:inline">48 hour rebuild</span>
         </Link>
