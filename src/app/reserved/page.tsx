@@ -1,15 +1,15 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
-import { CtaLink } from "@/components/brand/cta"
 import { PurchasePixel } from "@/components/site/purchase-pixel"
 import { MessagePage } from "@/components/site/message-page"
-import { getConfig } from "@/lib/config"
+import { ThemedButtonLink } from "@/components/site/themed-shell"
 import { getRepo } from "@/lib/db/repo"
 import { createJobFromSession } from "@/lib/jobs"
 import { metaEventId } from "@/lib/meta"
 import { reportSaveFailure } from "@/lib/notify"
 import { isRebuildSession, retrieveCheckoutSession } from "@/lib/stripe"
 import type { Job } from "@/lib/types"
+import "@/app/(home)/demo.css"
 
 export const metadata: Metadata = { title: "Slot reserved | LocalEyes", robots: { index: false, follow: false } }
 
@@ -54,19 +54,18 @@ async function Reserved({ searchParams }: { searchParams: Promise<{ session_id?:
         all in.
       </p>
       <div className="mt-4">
-        <CtaLink href={`/intake/${job.intake_token}`} icon="right">
+        <ThemedButtonLink theme="home" href={`/intake/${job.intake_token}`}>
           Start my intake
-        </CtaLink>
+        </ThemedButtonLink>
       </div>
       <p className="text-[0.86rem]">We also emailed you this link, so you can finish on any device.</p>
     </>
   )
 }
 
-export default async function ReservedPage(props: { searchParams: Promise<{ session_id?: string }> }) {
-  const config = await getConfig()
+export default function ReservedPage(props: { searchParams: Promise<{ session_id?: string }> }) {
   return (
-    <MessagePage label="Slot reserved" title="You’re in. Let’s get your store moving." kentNumber={config.KENT_TEXT_NUMBER}>
+    <MessagePage theme="home" label="Slot reserved" title="You’re in. Let’s get your store moving.">
       <Suspense fallback={<p>Checking your payment…</p>}>
         <Reserved searchParams={props.searchParams} />
       </Suspense>

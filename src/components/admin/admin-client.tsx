@@ -32,6 +32,8 @@ function EyeIcon({ open }: { open: boolean }) {
 export function LoginForm() {
   const [state, action, pending] = useActionState(adminLogin, null)
   const [showPassword, setShowPassword] = useState(false)
+  // Controlled, so a wrong password does not clear it (React resets uncontrolled fields after an action).
+  const [username, setUsername] = useState("")
   if (state?.ok) {
     if (typeof window !== "undefined") window.location.reload()
   }
@@ -40,7 +42,18 @@ export function LoginForm() {
       <h1 className="text-[17px] font-semibold text-[#14161f]">48 Hour Rebuild admin</h1>
       <label className="grid gap-1.5 text-[13px] font-medium text-[#4a4f62]">
         Username
-        <input name="username" type="text" autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} autoFocus className={field} />
+        <input
+          name="username"
+          type="text"
+          autoComplete="username"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
+          autoFocus
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className={field}
+        />
       </label>
       <div className="grid gap-1.5">
         <label htmlFor="admin-password" className="text-[13px] font-medium text-[#4a4f62]">

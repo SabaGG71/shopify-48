@@ -48,7 +48,7 @@ export async function d1Slots(config: SiteConfig) {
 
 /* ---------- Header ---------- */
 
-export async function D1Header({ config, applyHref = "#apply-top" }: { config: SiteConfig; applyHref?: string }) {
+export async function D1Header({ config, applyHref = "#apply-top", showApply = true }: { config: SiteConfig; applyHref?: string; showApply?: boolean }) {
   const slots = await d1Slots(config)
   return (
     <header className="d1-header">
@@ -73,9 +73,11 @@ export async function D1Header({ config, applyHref = "#apply-top" }: { config: S
               </span>
             </p>
           ) : null}
-          <D1Link href={applyHref} size="sm" tone="lime" arrow={false}>
-            Apply
-          </D1Link>
+          {showApply ? (
+            <D1Link href={applyHref} size="sm" tone="lime" arrow={false}>
+              Apply
+            </D1Link>
+          ) : null}
         </div>
       </div>
     </header>

@@ -69,7 +69,7 @@ export default async function Demo1Page() {
 
   return (
     <div className={cn(d1Sans.variable, d1Mono.variable, "d1-root flex min-h-dvh flex-col")}>
-      <ApplyProvider>
+      <ApplyProvider basePath="/demo">
         <D1Header config={config} />
         <main id="main" className="flex-1">
           {/* 1. Headline, beside films of the real stores we rebuilt, on a lime stage */}

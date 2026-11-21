@@ -33,6 +33,8 @@ export type BookFlowProps = {
   bookingUrl: string
   confirmVideo: { url: string; captions: string }
   lookbook: LookbookEntry[]
+  /** "" on the light blue site, "/demo" on the lime one: where /booked lives. */
+  basePath?: string
 }
 
 type Stage = "questions" | "calendar"
@@ -128,6 +130,7 @@ function BookingEmbed({
 
 export function BookFlow(props: BookFlowProps) {
   const router = useRouter()
+  const basePath = props.basePath ?? ""
   const [stage, setStage] = useState<Stage>(props.initial.saved ? "calendar" : "questions")
   const [look, setLook] = useState<Look | "">(props.stylePick ?? "")
   const [lookOpen, setLookOpen] = useState(false)
@@ -174,11 +177,11 @@ export function BookFlow(props: BookFlowProps) {
         return
       }
       trackPixel("Schedule", res.eventId)
-      router.push("/booked")
+      router.push(`${basePath}/booked`)
     } catch {
       setFormError("Your time is booked, but we couldn't confirm it here. Kent will text you to confirm.")
     }
-  }, [router])
+  }, [router, basePath])
 
   return (
     <div className="mx-auto max-w-3xl">

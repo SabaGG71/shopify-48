@@ -35,8 +35,8 @@ export function D1ApplyForm({ instance = "top", className }: { instance?: "top" 
   if (a.screen === "done") {
     const where =
       a.outcome === "qualified"
-        ? { text: "You're in. Pick a time for your homepage call.", cta: "Book my call", href: a.next ?? "/book" }
-        : { text: "Thanks, your application is in. We'll be in touch by text.", cta: "See what's next", href: a.next ?? "/thanks" }
+        ? { text: "You're in. Pick a time for your homepage call.", cta: "Book my call", href: a.next ?? "/demo/book" }
+        : { text: "Thanks, your application is in. We'll be in touch by text.", cta: "See what's next", href: a.next ?? "/demo/thanks" }
     return (
       <div ref={rootRef} id={`apply-${instance}`} className={cn("scroll-mt-24", className)}>
         <p className="d1-mono text-tan">Application sent</p>

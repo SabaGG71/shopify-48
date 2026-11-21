@@ -95,7 +95,11 @@ function captureSource(): SourceInfo {
   return { ...base, ...readMetaCookies() }
 }
 
-export function ApplyProvider({ children }: { children: React.ReactNode }) {
+/**
+ * basePath: "" on the light blue "/" page, "/demo" on the lime page, so the pages after the
+ * form (/book, /thanks, /not-a-fit) open in the design the visitor applied from.
+ */
+export function ApplyProvider({ children, basePath = "" }: { children: React.ReactNode; basePath?: string }) {
   const router = useRouter()
   const [values, setValues] = useState<ApplyValues>(EMPTY)
   const [screen, setScreen] = useState<1 | 2 | "done">(1)
@@ -142,7 +146,7 @@ export function ApplyProvider({ children }: { children: React.ReactNode }) {
         if (res?.stage === "submitted") {
           setValues(res.values)
           setOutcome(res.outcome)
-          setNext(res.next)
+          setNext(res.next ? `${basePath}${res.next}` : null)
           setScreen("done")
         } else if (res?.stage === "partial") {
           const merged = { ...res.values }
@@ -156,7 +160,7 @@ export function ApplyProvider({ children }: { children: React.ReactNode }) {
     return () => {
       alive = false
     }
-  }, [])
+  }, [basePath])
 
   // Keep an unsent draft in this browser.
   useEffect(() => {
@@ -180,11 +184,11 @@ export function ApplyProvider({ children }: { children: React.ReactNode }) {
       safeStorage(() => localStorage.removeItem(TRAIL_KEY))
       trailRef.current = null
       setOutcome(outcome)
-      setNext(nextPath)
+      setNext(`${basePath}${nextPath}`)
       setScreen("done")
-      router.push(nextPath)
+      router.push(`${basePath}${nextPath}`)
     },
-    [router],
+    [router, basePath],
   )
 
   const continueToTwo = useCallback(

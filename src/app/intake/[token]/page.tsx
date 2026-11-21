@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import { IntakeFlow } from "@/components/intake/intake-flow"
-import { Container } from "@/components/landing/sections"
-import { SiteFooter, SiteHeader } from "@/components/site/chrome"
+import { ThemedContainer, ThemedShell } from "@/components/site/themed-shell"
 import { getConfig, showMissingConfig } from "@/lib/config"
 import { getRepo } from "@/lib/db/repo"
 import { hydrateDraft } from "@/lib/intake/schema"
+import "@/app/(home)/demo.css"
 
 export const metadata: Metadata = {
   title: "Your intake | LocalEyes 48 Hour Rebuild",
@@ -42,27 +42,22 @@ async function Intake({ params }: { params: Promise<{ token: string }> }) {
   )
 }
 
-export default async function IntakePage(props: { params: Promise<{ token: string }> }) {
-  const config = await getConfig()
+export default function IntakePage(props: { params: Promise<{ token: string }> }) {
   return (
-    <>
-      <SiteHeader showApply={false} />
-      <main id="main" className="flex-1 pb-16">
-        <Container>
-          <Suspense
-            fallback={
+    <ThemedShell theme="home" mainClassName="pt-4 pb-16">
+      <ThemedContainer theme="home">
+        <Suspense
+          fallback={
               <div className="mx-auto max-w-2xl animate-pulse pt-6">
                 <div className="h-1 rounded bg-cream" />
                 <div className="mt-8 h-12 w-3/4 rounded bg-cream" />
                 <div className="mt-6 aspect-video rounded-[18px] bg-cream" />
               </div>
             }
-          >
-            <Intake params={props.params} />
-          </Suspense>
-        </Container>
-      </main>
-      <SiteFooter kentNumber={config.KENT_TEXT_NUMBER} />
-    </>
+        >
+          <Intake params={props.params} />
+        </Suspense>
+      </ThemedContainer>
+    </ThemedShell>
   )
 }
