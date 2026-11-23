@@ -113,6 +113,24 @@ export function LookPicker({
     [chosenView],
   )
 
+  // Draw the card mockups (their photos and display fonts) only once the row is near the screen,
+  // so a lookbook lower down the page never slows the first paint.
+  const [near, setNear] = useState(false)
+  useEffect(() => {
+    const row = rowRef.current
+    if (!row) return
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return
+        setNear(true)
+        io.disconnect()
+      },
+      { rootMargin: "800px 0px" },
+    )
+    io.observe(row)
+    return () => io.disconnect()
+  }, [])
+
   // Pause the card previews off screen. On phones, warm a look when its card is in view.
   useEffect(() => {
     const row = rowRef.current
@@ -279,7 +297,7 @@ export function LookPicker({
               >
                 <span className="lp-face @container">
                   <span className="pointer-events-none block size-full" aria-hidden="true">
-                    <LookPreview look={l.id} inView={inView} />
+                    {near ? <LookPreview look={l.id} inView={inView} /> : null}
                   </span>
                   {isPicked ? <span className="lp-badge">Your pick</span> : null}
                 </span>

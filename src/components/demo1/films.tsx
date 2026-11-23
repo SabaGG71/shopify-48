@@ -72,6 +72,21 @@ export function HeroFilms({ films }: { films: Film[] }) {
   const visible = useRef(true)
   const handoff = useRef(0)
   const film = films[active]
+  // The films are heavy: show the posters first and fetch the video once the page has loaded,
+  // so the headline and the poster paint fast on a phone.
+  const [mediaOn, setMediaOn] = useState(false)
+  useEffect(() => {
+    let t = 0
+    const start = () => {
+      t = window.setTimeout(() => setMediaOn(true), 600)
+    }
+    if (document.readyState === "complete") start()
+    else window.addEventListener("load", start, { once: true })
+    return () => {
+      window.removeEventListener("load", start)
+      window.clearTimeout(t)
+    }
+  }, [])
 
   // The big player lives inside the page's root so it keeps the page's fonts and colours.
   useEffect(() => {
@@ -225,19 +240,19 @@ export function HeroFilms({ films }: { films: Film[] }) {
     <div ref={boxRef} className="fv">
       <div ref={playerRef} className="fv-player" style={{ visibility: expanded ? "hidden" : undefined }}>
         <video
-          key={film.slug}
+          key={`${film.slug}-${mediaOn ? "on" : "poster"}`}
           ref={videoRef}
           poster={film.poster}
           muted
           playsInline
-          autoPlay={!reduced}
-          preload="auto"
+          autoPlay={!reduced && mediaOn}
+          preload={mediaOn ? "auto" : "none"}
           onClick={open}
           onEnded={() => go(active + 1)}
           className="cursor-zoom-in"
           aria-label={`Film: ${film.name}, its old homepage, then the store we rebuilt`}
         >
-          <Sources src={film.src} />
+          {mediaOn ? <Sources src={film.src} /> : null}
         </video>
         <div className="fv-top">
           <span className="fv-chip d1-mono" data-after={after ? "" : undefined}>

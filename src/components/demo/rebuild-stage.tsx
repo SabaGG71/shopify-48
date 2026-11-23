@@ -78,10 +78,11 @@ export function RebuildStage({ stores }: { stores: StageStore[] }) {
     return () => io.disconnect()
   }, [])
 
-  // Decode every store's pair up front; a store only starts its sweep once both are ready.
+  // Decode each store's pair; a store only starts its sweep once both are ready. The front store
+  // goes first, the others once the page has loaded, so they never slow the first paint.
   useEffect(() => {
     let alive = true
-    for (const s of stores) {
+    const decode = (s: StageStore) =>
       Promise.all(
         [s.before, s.after].map((src) => {
           const img = new Image()
@@ -89,9 +90,13 @@ export function RebuildStage({ stores }: { stores: StageStore[] }) {
           return img.decode().catch(() => undefined)
         }),
       ).then(() => alive && setReady((r) => ({ ...r, [s.slug]: true })))
-    }
+    if (stores[0]) decode(stores[0])
+    const rest = () => stores.slice(1).forEach(decode)
+    if (document.readyState === "complete") rest()
+    else window.addEventListener("load", rest, { once: true })
     return () => {
       alive = false
+      window.removeEventListener("load", rest)
     }
   }, [stores])
 
@@ -227,9 +232,9 @@ export function RebuildStage({ stores }: { stores: StageStore[] }) {
                 onPointerUp={isCenter ? () => (dragging.current = null) : undefined}
                 onPointerCancel={isCenter ? () => (dragging.current = null) : undefined}
               >
-                <img src={s.after} alt="" className="rb-img" draggable={false} decoding="async" fetchPriority={k === 0 ? "high" : undefined} />
+                <img src={s.after} alt="" className="rb-img" draggable={false} decoding="async" fetchPriority={k === 0 ? "high" : "low"} loading={k === 0 ? "eager" : "lazy"} />
                 <div className="rb-before" style={{ clipPath: `inset(0 0 0 ${p}%)` }}>
-                  <img src={s.before} alt="" className="rb-img" draggable={false} decoding="async" fetchPriority={k === 0 ? "high" : undefined} />
+                  <img src={s.before} alt="" className="rb-img" draggable={false} decoding="async" fetchPriority={k === 0 ? "high" : "low"} loading={k === 0 ? "eager" : "lazy"} />
                 </div>
                 {isCenter ? (
                   <>
