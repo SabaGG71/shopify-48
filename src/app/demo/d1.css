@@ -1597,3 +1597,10 @@
     background: radial-gradient(50% 50% at 50% 50%, rgba(15, 15, 14, 0.16), rgba(15, 15, 14, 0) 70%);
   }
 }
+
+/* Phones paint the first screen sooner: sections below the apply form skip layout and paint
+   until they come near the screen. Overlays (sheet, lightbox, film player) live outside them. */
+.d1-root main > section[aria-label="Apply"] ~ section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
