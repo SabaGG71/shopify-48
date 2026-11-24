@@ -26,7 +26,7 @@ async function BookContent({ theme }: { theme: SiteTheme }) {
   if (!app) {
     return (
       <div className="mx-auto max-w-xl text-center">
-        <h1 className={theme === "demo" ? "d1-h2 text-[2.4rem] text-ink" : "d-display text-[2.4rem] text-ink"}>We couldn’t find your application.</h1>
+        <h1 className="d-display text-[2.4rem] text-ink">We couldn’t find your application.</h1>
         <p className="mt-4 text-soft">It may have been started on another phone or browser. It only takes two minutes to apply again.</p>
         <Link href={applyHrefFor(theme)} className={`mt-8 inline-flex ${textLinkClass(theme)}`}>
           Go to the apply form

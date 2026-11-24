@@ -96,7 +96,7 @@ function captureSource(): SourceInfo {
 }
 
 /**
- * basePath: "" on the light blue "/" page, "/demo" on the lime page, so the pages after the
+ * basePath: "" on the "/" page (the lime "/demo" page was removed), so the pages after the
  * form (/book, /thanks, /not-a-fit) open in the design the visitor applied from.
  */
 export function ApplyProvider({ children, basePath = "" }: { children: React.ReactNode; basePath?: string }) {

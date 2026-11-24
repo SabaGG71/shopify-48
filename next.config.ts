@@ -4,10 +4,13 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
-  // The light blue page is now "/" and the lime page is "/demo". Old links keep working.
+  // The light blue page is the only landing page, at "/". The lime /demo page was removed;
+  // its old links (and /demo-1, /demo-2) land on the same page on the main site.
   async redirects() {
     return [
-      { source: "/demo-1", destination: "/demo", permanent: false },
+      { source: "/demo", destination: "/", permanent: false },
+      { source: "/demo/:path*", destination: "/:path*", permanent: false },
+      { source: "/demo-1", destination: "/", permanent: false },
       { source: "/demo-2", destination: "/", permanent: false },
     ]
   },

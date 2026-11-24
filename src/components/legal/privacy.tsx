@@ -1,4 +1,4 @@
-/** The privacy copy, shared by /privacy (light blue) and /demo/privacy (lime). One source, two looks. */
+/** The privacy copy shown at /privacy. */
 
 export const PRIVACY_UPDATED = "November 20, 2026"
 

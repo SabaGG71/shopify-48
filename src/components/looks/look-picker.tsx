@@ -14,7 +14,7 @@ import "./looks.css"
 
 export type LookPickerProps = {
   mode: PickerMode
-  /** "demo" is the light blue "/" page, "d1" the lime "/demo" page. */
+  /** "demo" is the "/" page. "d1" was the lime /demo page, removed 2026-11-24. */
   variant: Variant
   /** Unique per instance. Every id inside is built from it. */
   idPrefix: string

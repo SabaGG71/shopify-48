@@ -33,7 +33,7 @@ export type BookFlowProps = {
   bookingUrl: string
   confirmVideo: { url: string; captions: string }
   lookbook: LookbookEntry[]
-  /** "" on the light blue site, "/demo" on the lime one: where /booked lives. */
+  /** Path prefix for /booked ("" on the main site). */
   basePath?: string
 }
 

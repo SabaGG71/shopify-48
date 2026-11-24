@@ -4,7 +4,7 @@ import { ThemedButtonLink, homeHrefFor, textLinkClass, type SiteTheme } from "@/
 import { getConfig } from "@/lib/config"
 import { formatPhoneForDisplay, normalizePhone } from "@/lib/url"
 
-/** Not a fit right now: shown at /not-a-fit (light blue) and /demo/not-a-fit (lime). */
+/** Not a fit right now: shown at /not-a-fit. */
 export async function NotAFitView({ theme }: { theme: SiteTheme }) {
   const config = await getConfig()
   return (
@@ -17,7 +17,7 @@ export async function NotAFitView({ theme }: { theme: SiteTheme }) {
       {config.STORE_SCORE_URL ? (
         <div className="mt-4 rounded-[22px] bg-paper p-6 ring-1 ring-line sm:p-8">
           <p className="text-[0.85rem] font-semibold text-tan">Free in the meantime</p>
-          <p className={theme === "demo" ? "d1-h2 mt-2 text-[1.9rem] text-ink" : "d-display mt-2 text-[1.9rem] text-ink"}>See your Store Score.</p>
+          <p className="d-display mt-2 text-[1.9rem] text-ink">See your Store Score.</p>
           <p className="mt-2 text-[0.95rem] text-soft">A quick check of what is holding your store back, with the fixes that matter most.</p>
           <ThemedButtonLink theme={theme} href={config.STORE_SCORE_URL} className="mt-6">
             Get my Store Score
@@ -33,7 +33,7 @@ export async function NotAFitView({ theme }: { theme: SiteTheme }) {
   )
 }
 
-/** Flagged for Kent to review by hand: shown at /thanks and /demo/thanks. */
+/** Flagged for Kent to review by hand: shown at /thanks. */
 export async function ThanksView({ theme }: { theme: SiteTheme }) {
   const config = await getConfig()
   const tel = normalizePhone(config.KENT_TEXT_NUMBER)
