@@ -4,6 +4,7 @@ import { getRepo } from "@/lib/db/repo"
 import { metaEventId, sendMetaEvent } from "@/lib/meta"
 import { notifyKent, sendEmail, sendSms } from "@/lib/notify"
 import { LOOKS, labelOf } from "@/lib/options"
+import { syncLeadToSheet } from "@/lib/sheets"
 import type { Application, BookingInfo, HomepageJob } from "@/lib/types"
 import { displayHost } from "@/lib/url"
 
@@ -21,6 +22,7 @@ export async function recordBooking(app: Application, booking: BookingInfo, call
     reference_stores: app.reference_stores ?? [],
     never_want: app.never_want,
     top_products: app.top_products ?? [],
+    design_notes: app.design_notes ?? null,
     name: app.name,
     email: app.email,
     phone: app.phone,
@@ -36,6 +38,7 @@ export async function recordBooking(app: Application, booking: BookingInfo, call
       ? new Date(job.call_time).toLocaleString("en-US", { timeZone: "America/New_York", dateStyle: "medium", timeStyle: "short" }) + " ET"
       : "time not confirmed yet"
     after(async () => {
+      await syncLeadToSheet(app, { callTime: job.call_time, booked: true })
       await notifyKent(
         "call_booked",
         `Call booked: ${app.name} (${displayHost(app.store_url)}), ${when}. Look: ${labelOf(LOOKS, app.style_pick)}. Homepage job is ready.`,

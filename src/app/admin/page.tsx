@@ -23,7 +23,7 @@ const DESCRIPTIONS: Record<ConfigKey, string> = {
   VSL_URL: "Main video. YouTube, Vimeo, Wistia, Loom or a direct .mp4 link.",
   VSL_POSTER_URL: "Optional still shown before the main video plays.",
   VSL_CAPTIONS_URL: "Optional .vtt captions for a direct .mp4 main video.",
-  CONFIRM_VIDEO_URL: "Video at the top of the booking page.",
+  CONFIRM_VIDEO_URL: "Video on the page they see after the call is booked.",
   CONFIRM_CAPTIONS_URL: "Optional .vtt captions for a direct .mp4 booking video.",
   INTAKE_VIDEO_URL: "Welcome video at the top of the intake.",
   INTAKE_CAPTIONS_URL: "Optional .vtt captions for a direct .mp4 intake video.",

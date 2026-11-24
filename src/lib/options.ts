@@ -40,6 +40,8 @@ export const PHONE_CHANNELS = opts([
   { key: "sms", label: "SMS" },
 ] as const)
 export type PhoneChannel = (typeof PHONE_CHANNELS)[number]["key"]
+/** What the forms offer. "sms" stays a valid key above so older applications still read. */
+export const PHONE_CHANNELS_OFFERED = PHONE_CHANNELS.filter((c) => c.key !== "sms")
 
 /* ---------- Looks ---------- */
 
@@ -51,6 +53,49 @@ export const LOOKS = opts([
   { key: "warm-and-natural", label: "Warm and natural", hint: "Earthy tones, warm food photos" },
 ] as const)
 export type Look = (typeof LOOKS)[number]["key"]
+
+/* ---------- Design notes (page 2): what they like about a reference, optional preferences ---------- */
+
+export const LIKE_TAGS = opts([
+  { key: "colors", label: "Colors" },
+  { key: "layout", label: "Layout" },
+  { key: "vibe", label: "Vibe" },
+  { key: "playfulness", label: "Playfulness" },
+  { key: "photos", label: "Photos" },
+  { key: "type", label: "Type" },
+  { key: "product-pages", label: "Product pages" },
+] as const)
+export type LikeTag = (typeof LIKE_TAGS)[number]["key"]
+
+/** "How should your store feel?" They tap up to three. */
+export const FEEL_WORDS = opts([
+  { key: "cozy", label: "Cozy" },
+  { key: "bold", label: "Bold" },
+  { key: "premium", label: "Premium" },
+  { key: "fun", label: "Fun" },
+  { key: "calm", label: "Calm" },
+  { key: "handmade", label: "Handmade" },
+  { key: "modern", label: "Modern" },
+  { key: "nostalgic", label: "Nostalgic" },
+  { key: "earthy", label: "Earthy" },
+  { key: "clean", label: "Clean" },
+  { key: "quirky", label: "Quirky" },
+  { key: "luxe", label: "Luxe" },
+] as const)
+
+export const PREF_CORNERS = opts([
+  { key: "square", label: "Square" },
+  { key: "slight", label: "Slightly round" },
+  { key: "pill", label: "Pill" },
+] as const)
+export const PREF_BUTTONS = opts([
+  { key: "solid", label: "Solid" },
+  { key: "outline", label: "Outlined" },
+] as const)
+export const PREF_THEME = opts([
+  { key: "light", label: "Light" },
+  { key: "dark", label: "Dark" },
+] as const)
 
 /* ---------- Style detail toggles (intake) ---------- */
 

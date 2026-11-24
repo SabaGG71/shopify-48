@@ -1,15 +1,17 @@
 "use server"
 
+import { after } from "next/server"
 import { recordBooking } from "@/lib/booking"
 import { calendlyEventTime, isCalendlyUrl } from "@/lib/calendly"
 import { getConfig } from "@/lib/config"
 import { getRepo } from "@/lib/db/repo"
 import { metaEventId } from "@/lib/meta"
 import { reportSaveFailure } from "@/lib/notify"
-import { LOOKS, isKey, type Look } from "@/lib/options"
+import { FEEL_WORDS, LIKE_TAGS, LOOKS, PREF_BUTTONS, PREF_CORNERS, PREF_THEME, isKey, type Look } from "@/lib/options"
 import { currentApplication } from "@/lib/session"
-import type { BookingInfo } from "@/lib/types"
-import { displayHost, normalizeUrlList } from "@/lib/url"
+import { syncLeadToSheet } from "@/lib/sheets"
+import type { BookingInfo, DesignNotes } from "@/lib/types"
+import { displayHost, normalizeUrl, normalizeUrlList } from "@/lib/url"
 
 type Fail = { ok: false; error: string; fieldErrors?: Record<string, string> }
 const SAVE_ERROR = "We couldn't save that. Please try again in a moment."
@@ -27,9 +29,36 @@ export type DesignInput = {
   reference_stores: string[]
   never_want: string
   top_products: string[]
+  /** Optional: what they like about each reference, how the store should feel, any strong preferences. */
+  design_notes?: DesignNotes | null
 }
 
-/** The three design questions. Required before the calendar shows. */
+/** Most references one application keeps (lookbook hearts plus pasted sites). */
+const REFS_MAX = 12
+
+/** Keep only known keys, and only notes about references that were kept. Null when nothing was given. */
+function cleanNotes(input: DesignNotes | null | undefined, refs: string[]): DesignNotes | null {
+  if (!input || typeof input !== "object") return null
+  const out: DesignNotes = {}
+  const likes: Record<string, string[]> = {}
+  for (const [url, tags] of Object.entries(input.reference_likes ?? {})) {
+    const n = normalizeUrl(url)
+    if (!n || !refs.includes(n) || !Array.isArray(tags)) continue
+    const kept = LIKE_TAGS.map((t) => t.key as string).filter((k) => tags.includes(k))
+    if (kept.length) likes[n] = kept
+  }
+  if (Object.keys(likes).length) out.reference_likes = likes
+  const feel = Array.isArray(input.feel) ? FEEL_WORDS.map((w) => w.key as string).filter((k) => input.feel!.includes(k)).slice(0, 3) : []
+  if (feel.length) out.feel = feel
+  const prefs: NonNullable<DesignNotes["prefs"]> = {}
+  if (isKey(PREF_CORNERS, input.prefs?.corners)) prefs.corners = input.prefs.corners
+  if (isKey(PREF_BUTTONS, input.prefs?.buttons)) prefs.buttons = input.prefs.buttons
+  if (isKey(PREF_THEME, input.prefs?.theme)) prefs.theme = input.prefs.theme
+  if (Object.keys(prefs).length) out.prefs = prefs
+  return Object.keys(out).length ? out : null
+}
+
+/** The design questions on page 2. Required before the calendar shows. */
 export async function saveDesign(input: DesignInput): Promise<{ ok: true } | Fail> {
   const app = await currentApplication().catch(() => null)
   if (!app || app.stage !== "submitted" || app.outcome !== "qualified") {
@@ -38,7 +67,7 @@ export async function saveDesign(input: DesignInput): Promise<{ ok: true } | Fai
 
   const fieldErrors: Record<string, string> = {}
   if (!isKey(LOOKS, input.style_pick)) fieldErrors.style_pick = "Pick a look."
-  const refs = normalizeUrlList(input.reference_stores, 3)
+  const refs = normalizeUrlList(input.reference_stores, REFS_MAX)
   if (!refs.length) fieldErrors.reference_stores = "Pick at least one store you love, or paste a link."
   const neverWant = (input.never_want ?? "").trim().slice(0, 400)
   if (neverWant.length < 2) fieldErrors.never_want = "Tell us one thing you'd never want on your store."
@@ -58,13 +87,15 @@ export async function saveDesign(input: DesignInput): Promise<{ ok: true } | Fai
 
   try {
     const repo = await getRepo()
-    await repo.updateApplication(app.id, {
+    const updated = await repo.updateApplication(app.id, {
       style_pick: input.style_pick as Look,
       reference_stores: refs,
       never_want: neverWant,
       top_products: products,
+      design_notes: cleanNotes(input.design_notes, refs),
       design_saved_at: new Date().toISOString(),
     })
+    after(() => syncLeadToSheet(updated).then(() => {}))
     return { ok: true }
   } catch (err) {
     await reportSaveFailure("design questions", err, { application_id: app.id })
@@ -80,7 +111,7 @@ export async function confirmBooking(input: {
 }): Promise<{ ok: true; callTime: string | null; eventId: string } | Fail> {
   const app = await currentApplication().catch(() => null)
   if (!app || app.outcome !== "qualified") return { ok: false, error: "We couldn't find your application." }
-  if (!app.design_saved_at) return { ok: false, error: "Answer the three questions above first." }
+  if (!app.design_saved_at) return { ok: false, error: "Answer the questions above first." }
 
   try {
     const config = await getConfig()

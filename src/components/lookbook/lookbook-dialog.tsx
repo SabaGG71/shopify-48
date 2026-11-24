@@ -64,6 +64,7 @@ export function LookbookDialog({
   selected,
   onChange,
   firstLook,
+  max = MAX,
 }: {
   open: boolean
   onOpenChange: (o: boolean) => void
@@ -71,6 +72,8 @@ export function LookbookDialog({
   /** Normalized URLs currently picked (lookbook stores and pasted ones). */
   selected: string[]
   onChange: (urls: string[]) => void
+  /** How many they can pick. Page 2 allows more than the intake does. */
+  max?: number
   /** Show this look's group first (the applicant's style pick). */
   firstLook?: Look | ""
 }) {
@@ -87,7 +90,7 @@ export function LookbookDialog({
 
   const lookbookUrls = new Set(entries.map((e) => normalizeUrl(e.url)))
   const own = selected.filter((u) => !lookbookUrls.has(u))
-  const full = selected.length >= MAX
+  const full = selected.length >= max
 
   const toggle = (url: string) => {
     const n = normalizeUrl(url)
@@ -100,7 +103,7 @@ export function LookbookDialog({
     const n = normalizeUrl(paste)
     if (!n) return setPasteError("That doesn't look like a web address.")
     if (selected.includes(n)) return setPaste("")
-    if (full) return setPasteError(`You can pick up to ${MAX}. Remove one first.`)
+    if (full) return setPasteError(`You can pick up to ${max}. Remove one first.`)
     onChange([...selected, n])
     setPaste("")
     setPasteError(null)
@@ -119,7 +122,7 @@ export function LookbookDialog({
             </p>
             <DialogTitle className="display mt-2 text-[1.9rem] font-normal text-ink sm:text-[2.3rem]">Stores you love</DialogTitle>
             <DialogDescription className="mt-1 text-[0.88rem] text-soft">
-              Pick up to {MAX}. All food and drink brands on Shopify.
+              Pick up to {max}. All food and drink brands on Shopify.
             </DialogDescription>
           </div>
           <button
@@ -248,7 +251,7 @@ export function LookbookDialog({
 
         <div className="flex items-center justify-between gap-4 border-t border-line bg-page px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-8">
           <p className="text-[0.84rem] text-soft">
-            <span className="font-semibold text-ink tabular">{selected.length}</span> of {MAX} picked
+            <span className="font-semibold text-ink tabular">{selected.length}</span> of {max} picked
           </p>
           <button
             type="button"

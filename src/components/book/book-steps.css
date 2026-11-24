@@ -1,0 +1,301 @@
+/* Page 2 (/book): the design questions as short steps in one card. Built only from the token
+   names both designs define (ink, soft, tan, gold, brand-soft, line, paper), so the same card
+   re-themes itself on the light blue site and the lime one. No url() in this file. */
+
+.bk-card {
+  width: 720px;
+  max-width: 100%;
+  margin: 20px auto 0;
+  text-align: left;
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 20px;
+  padding: 20px 24px 22px;
+  box-shadow: 0 14px 40px -22px rgba(14, 27, 51, 0.35);
+  scroll-margin-top: 16px;
+}
+.bk-prog {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.bk-prog ol {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bk-prog li {
+  height: 5px;
+  flex: 1;
+  border-radius: 9px;
+  background: var(--line);
+}
+.bk-prog li[data-on] {
+  background: var(--gold);
+}
+.bk-prog span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tan);
+  white-space: nowrap;
+}
+.bk-q {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  font-size: 26px;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--ink);
+}
+.bk-qsub {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--soft);
+  text-align: center;
+  margin-top: 5px;
+  text-wrap: balance;
+}
+.bk-body {
+  margin-top: 16px;
+}
+.bk-in {
+  display: block;
+  width: 100%;
+  height: 48px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 13px;
+  background: #fff;
+  padding: 0 16px;
+  font-size: 16px;
+  color: var(--ink);
+  outline: 0;
+}
+.bk-in::placeholder {
+  color: var(--tan);
+}
+.bk-in:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px var(--brand-soft);
+}
+.bk-in[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.bk-row {
+  display: flex;
+  gap: 8px;
+}
+.bk-row > .bk-in {
+  flex: 1;
+  min-width: 0;
+}
+.bk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  border-radius: 13px;
+  background: var(--gold);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  padding: 0 24px;
+  white-space: nowrap;
+}
+.bk-btn:hover {
+  background: var(--gold-deep);
+}
+.bk-btn[data-ghost] {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line-strong);
+  font-size: 15px;
+  padding: 0 16px;
+}
+.bk-btn[data-ghost]:hover {
+  background: var(--brand-soft);
+}
+.bk-btn:disabled {
+  opacity: 0.75;
+  pointer-events: none;
+}
+.bk-btn:focus-visible,
+.bk-chip:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+.bk-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.bk-chip {
+  height: 36px;
+  border: 1.5px solid var(--line-strong);
+  background: #fff;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 0 13px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.bk-chip[data-sm] {
+  height: 30px;
+  font-size: 12.5px;
+  padding: 0 11px;
+}
+.bk-chip[data-lg] {
+  height: 44px;
+  font-size: 15px;
+  padding: 0 18px;
+}
+.bk-chip:hover {
+  border-color: var(--gold);
+}
+.bk-chip[aria-pressed="true"],
+.bk-chip[aria-checked="true"] {
+  border-color: var(--gold);
+  background: var(--brand-soft);
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+.bk-chip:disabled {
+  opacity: 0.45;
+}
+.bk-refs {
+  max-height: 148px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  margin-bottom: 8px;
+}
+.bk-ref {
+  border: 1.5px solid var(--line);
+  border-radius: 13px;
+  padding: 9px 12px 10px;
+  background: var(--brand-soft);
+}
+.bk-ref + .bk-ref {
+  margin-top: 8px;
+}
+.bk-ref header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.bk-ref header small {
+  font-weight: 500;
+  font-size: 12.5px;
+  color: var(--tan);
+}
+.bk-ref header button {
+  margin-left: auto;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--soft);
+}
+.bk-ref header button:hover {
+  background: #fff;
+  color: var(--ink);
+}
+.bk-ref .bk-chips {
+  margin-top: 7px;
+}
+.bk-pref {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1.5px solid var(--line);
+}
+.bk-pref > span {
+  width: 72px;
+  flex: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.bk-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--tan);
+}
+.bk-foot > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.bk-back,
+.bk-link {
+  color: var(--soft);
+  font-weight: 600;
+  font-size: 14px;
+  min-height: 44px;
+}
+.bk-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.bk-back:hover,
+.bk-link:hover {
+  color: var(--ink);
+}
+.bk-err {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--destructive);
+}
+.bk-note {
+  margin-top: 10px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--tan);
+  text-align: center;
+}
+.bk-look {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: var(--soft);
+}
+.bk-look b {
+  color: var(--ink);
+}
+
+@media (max-width: 760px) {
+  .bk-card {
+    padding: 16px 14px 18px;
+  }
+  .bk-q {
+    font-size: 22px;
+  }
+  .bk-pref {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .bk-foot {
+    flex-wrap: wrap;
+  }
+}

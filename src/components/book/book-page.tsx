@@ -53,6 +53,7 @@ async function BookContent({ theme }: { theme: SiteTheme }) {
         reference_stores: app.reference_stores ?? [],
         never_want: app.never_want ?? "",
         top_products: app.top_products ?? [],
+        design_notes: app.design_notes ?? null,
         saved: Boolean(app.design_saved_at),
       }}
       bookingUrl={calendlyPrefill(config.BOOKING_URL, {
@@ -72,7 +73,7 @@ async function BookContent({ theme }: { theme: SiteTheme }) {
 /** Page 2 for qualified applicants, in the design they applied from. */
 export function BookPage({ theme }: { theme: SiteTheme }) {
   return (
-    <ThemedShell theme={theme} mainClassName="pt-8 pb-20 sm:pt-12">
+    <ThemedShell theme={theme} mainClassName="pt-6 pb-20 sm:pt-7">
       <ThemedContainer theme={theme}>
         <Suspense fallback={<Skeleton />}>
           <BookContent theme={theme} />

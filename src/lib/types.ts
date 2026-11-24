@@ -18,6 +18,17 @@ export type SourceInfo = {
   user_agent?: string | null
 }
 
+/**
+ * Optional design detail from page 2. reference_likes maps a reference store URL to the
+ * LIKE_TAGS keys they tapped for it. prefs holds only the preferences they chose to give.
+ */
+export type DesignNotes = {
+  reference_likes?: Record<string, string[]>
+  /** Up to three FEEL_WORDS keys: how the store should feel. */
+  feel?: string[]
+  prefs?: { corners?: string; buttons?: string; theme?: string }
+}
+
 export type Application = {
   id: string
   created_at: string
@@ -46,6 +57,7 @@ export type Application = {
   never_want: string | null
   top_products: string[] | null
   design_saved_at: string | null
+  design_notes: DesignNotes | null
   // The lookbook: free text when no look fits, looks opened and live stores visited (first-seen order)
   style_other: string | null
   styles_viewed: string[] | null
@@ -80,6 +92,7 @@ export type HomepageJob = {
   reference_stores: string[]
   never_want: string | null
   top_products: string[]
+  design_notes: DesignNotes | null
   name: string | null
   email: string | null
   phone: string | null

@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useRef, useState } from "react"
 import { useApply } from "@/components/apply/apply-provider"
 import { ChoiceGroup, FormError, SelectField, TextArea, TextField } from "@/components/form/fields"
-import { NICHES, PHONE_CHANNELS, REVENUE_BANDS } from "@/lib/options"
+import { NICHES, PHONE_CHANNELS_OFFERED, REVENUE_BANDS } from "@/lib/options"
 import { useFocusFirstError } from "@/lib/use-focus-first-error"
 import { cn } from "@/lib/utils"
 import { LookPicker } from "@/components/looks/look-picker"
@@ -137,10 +137,10 @@ export function DemoApplyForm({ instance = "top", className }: { instance?: "top
                 <ChoiceGroup
                   id={id("channel")}
                   label="Text me on"
-                  options={PHONE_CHANNELS}
+                  options={PHONE_CHANNELS_OFFERED}
                   value={a.values.phone_channel}
                   onChange={(v) => a.set("phone_channel", v)}
-                  columns={3}
+                  columns={2}
                   error={a.errors.phone_channel}
                 />
               </div>

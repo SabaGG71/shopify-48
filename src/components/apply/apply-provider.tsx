@@ -19,6 +19,9 @@ type Ctx = {
   lookOpened: (look: Look) => void
   /** Record that a store's live site was visited from the lookbook. */
   storeVisited: (slug: string) => void
+  /** Lookbook stores they hearted (slugs). Saved as reference stores when the application is sent. */
+  liked: string[]
+  toggleLiked: (slug: string) => void
   screen: 1 | 2 | "done"
   goTo: (s: 1 | 2) => void
   errors: FieldErrors
@@ -49,6 +52,7 @@ const EMPTY: ApplyValues = {
 const DRAFT_KEY = "le48:apply-draft"
 const SOURCE_KEY = "le48:source"
 const TRAIL_KEY = "le48:look-trail"
+const LIKED_KEY = "le48:liked-stores"
 const TRAIL_MAX = 30
 
 function readTrail(): LookTrail {
@@ -109,6 +113,14 @@ export function ApplyProvider({ children, basePath = "" }: { children: React.Rea
   const [outcome, setOutcome] = useState<Outcome | null>(null)
   const [next, setNext] = useState<string | null>(null)
   const [ready, setReady] = useState(false)
+  const [liked, setLiked] = useState<string[]>([])
+  const toggleLiked = useCallback<Ctx["toggleLiked"]>((slug) => {
+    setLiked((prev) => {
+      const next = prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug].slice(0, TRAIL_MAX)
+      safeStorage(() => localStorage.setItem(LIKED_KEY, JSON.stringify(next)))
+      return next
+    })
+  }, [])
   const touched = useRef(false)
   // The lookbook trail never renders, so a ref is enough. Loaded lazily on the client.
   const trailRef = useRef<LookTrail | null>(null)
@@ -140,6 +152,8 @@ export function ApplyProvider({ children, basePath = "" }: { children: React.Rea
     let alive = true
     captureSource()
     const draft = safeStorage(() => JSON.parse(localStorage.getItem(DRAFT_KEY) || "null") as Partial<ApplyValues> | null)
+    const savedLikes = safeStorage(() => JSON.parse(localStorage.getItem(LIKED_KEY) || "null") as unknown)
+    if (Array.isArray(savedLikes)) setLiked(savedLikes.filter((x): x is string => typeof x === "string").slice(0, TRAIL_MAX))
     resumeApply()
       .then((res) => {
         if (!alive || touched.current) return
@@ -182,6 +196,7 @@ export function ApplyProvider({ children, basePath = "" }: { children: React.Rea
     (outcome: Outcome | null, nextPath: string) => {
       safeStorage(() => localStorage.removeItem(DRAFT_KEY))
       safeStorage(() => localStorage.removeItem(TRAIL_KEY))
+      safeStorage(() => localStorage.removeItem(LIKED_KEY))
       trailRef.current = null
       setOutcome(outcome)
       setNext(`${basePath}${nextPath}`)
@@ -247,7 +262,7 @@ export function ApplyProvider({ children, basePath = "" }: { children: React.Rea
       setPending("submit")
       setFormError(null)
       try {
-        const res = await submitApplication({ ...values, website: honeypot, source: captureSource(), trail: getTrail() })
+        const res = await submitApplication({ ...values, website: honeypot, source: captureSource(), trail: getTrail(), liked_stores: liked })
         if (!res.ok) {
           const fe = res.fieldErrors ?? {}
           setErrors(fe)
@@ -265,7 +280,7 @@ export function ApplyProvider({ children, basePath = "" }: { children: React.Rea
         setPending(null)
       }
     },
-    [values, getTrail, finish],
+    [values, getTrail, finish, liked],
   )
 
   const goTo = useCallback((s: 1 | 2) => {
@@ -274,8 +289,8 @@ export function ApplyProvider({ children, basePath = "" }: { children: React.Rea
   }, [])
 
   const ctx = useMemo<Ctx>(
-    () => ({ values, set, lookOpened, storeVisited, screen, goTo, errors, formError, pending, continueToTwo, submit, outcome, next, ready }),
-    [values, set, lookOpened, storeVisited, screen, goTo, errors, formError, pending, continueToTwo, submit, outcome, next, ready],
+    () => ({ values, set, lookOpened, storeVisited, liked, toggleLiked, screen, goTo, errors, formError, pending, continueToTwo, submit, outcome, next, ready }),
+    [values, set, lookOpened, storeVisited, liked, toggleLiked, screen, goTo, errors, formError, pending, continueToTwo, submit, outcome, next, ready],
   )
 
   return <ApplyContext.Provider value={ctx}>{children}</ApplyContext.Provider>

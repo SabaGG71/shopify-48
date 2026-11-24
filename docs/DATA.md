@@ -24,7 +24,8 @@ Created when a qualified applicant books the call. One per application. This is 
 | `application_id` | uuid of the row in `applications` |
 | `store_url` | URL |
 | `style_pick` | look key |
-| `reference_stores` | list of URLs (lookbook picks and pasted ones), 1 to 3 |
+| `reference_stores` | list of URLs (lookbook stores they hearted or picked, and pasted ones), 1 to 12 |
+| `design_notes` | optional detail, or `null`: `{ reference_likes, feel, prefs }` (see below) |
 | `never_want` | text |
 | `top_products` | list of product URLs from their store, 1 to 3 |
 | `name`, `email`, `phone`, `phone_channel` | contact |
@@ -59,7 +60,8 @@ Example from a real test run: [sample-intake.json](sample-intake.json)
 | | `density` | `airy`, `balanced`, `compact` |
 | | `photo_style` | `product-on-plain`, `lifestyle`, `mixed` |
 | | `color_mode` | `light`, `dark` |
-| | `reference_stores` | list of URLs or null |
+| | `reference_stores` | list of URLs or null. Lookbook stores they hearted on the apply form land here when the application is sent |
+| | `design_notes` | `{ reference_likes, feel, prefs }` or null (see below) |
 | | `never_want` | text or null |
 | sells | `top_products` | list of URLs, up to 5 |
 | | `margin_products` | list of URLs or null |
@@ -86,7 +88,7 @@ Example from a real test run: [sample-intake.json](sample-intake.json)
 | | `base_revenue` | number |
 | | `base_screenshot` | files or null. The four numbers can be null if they uploaded this instead |
 | contact | `phone` | E.164 |
-| | `phone_channel` | `imessage`, `whatsapp`, `sms` |
+| | `phone_channel` | `imessage`, `whatsapp` (`sms` only on applications from before Nov 24 2026, the forms no longer offer it) |
 | | `approver_name`, `approver_email` | text |
 | | `blackout_dates` | list of `{ "start": "YYYY-MM-DD", "end": "YYYY-MM-DD" }`, up to 3, or null |
 | | `notes` | text or null |
@@ -106,7 +108,7 @@ Example from a real test run: [sample-intake.json](sample-intake.json)
 | Look (`style_pick`) | `loud-and-bold`, `editorial-and-moody`, `clean-minimal`, `playful-and-illustrated`, `warm-and-natural` (same keys as Kent's lookbook.json) |
 | `revenue_band` | `under-5k`, `5k-20k`, `20k-50k`, `50k-150k`, `over-150k` |
 | `niche` | `tea-and-matcha`, `chocolate-and-sweets`, `sauces-and-pantry`, `bakery`, `snacks`, `drinks`, `coffee`, `other-food-and-drink`, `something-else` |
-| `phone_channel` | `imessage`, `whatsapp`, `sms` |
+| `phone_channel` | `imessage`, `whatsapp` (`sms` only on applications from before Nov 24 2026, the forms no longer offer it) |
 
 ## 4. Other tables
 
@@ -117,3 +119,13 @@ Example from a real test run: [sample-intake.json](sample-intake.json)
 - `site_config`: Kent's settings (prices, links, videos, lookbook, proof stores). Edited in /admin.
 - `alerts`: every alert sent or attempted to Kent, with delivery results.
 - Uploads: Vercel Blob, under `jobs/<job_id>/<field>/`, 50 MB per file.
+
+## `design_notes`: what they like, in their own taps
+
+Saved on `applications` at page 2 (/book) and copied to `homepage_jobs` when the call is booked. Every part is optional, and a part nobody answered is left out. Treat it as taste, not a spec: Kent designs what he thinks is best and these only steer it.
+
+| Key | Value |
+| --- | --- |
+| `reference_likes` | object: a URL from `reference_stores` mapped to the list of things they like about that site. Keys: `colors`, `layout`, `vibe`, `playfulness`, `photos`, `type`, `product-pages` |
+| `feel` | up to three words for how the store should feel. Keys: `cozy`, `bold`, `premium`, `fun`, `calm`, `handmade`, `modern`, `nostalgic`, `earthy`, `clean`, `quirky`, `luxe` |
+| `prefs` | only the preferences they chose to give: `corners` (`square`, `slight`, `pill`), `buttons` (`solid`, `outline`), `theme` (`light`, `dark`). A missing key means no preference |

@@ -18,7 +18,7 @@ import {
   FONTS_MODES,
   LOOK_DEFAULTS,
   LOOKS,
-  PHONE_CHANNELS,
+  PHONE_CHANNELS_OFFERED,
   REVIEWS_APPS,
   SUBSCRIPTION_STATUS,
   TOGGLE_FIELDS,
@@ -766,7 +766,7 @@ export function IntakeFlow(props: IntakeFlowProps) {
                 onChange={(e) => set("phone", e.target.value)}
                 error={errors.phone}
               />
-              <Segmented id="phone_channel" label="Text me on" options={PHONE_CHANNELS} value={draft.phone_channel} onChange={(v) => set("phone_channel", v)} error={errors.phone_channel} />
+              <Segmented id="phone_channel" label="Text me on" options={PHONE_CHANNELS_OFFERED} value={draft.phone_channel} onChange={(v) => set("phone_channel", v)} error={errors.phone_channel} />
             </div>
             <div className="grid gap-6 sm:grid-cols-2">
               <TextField id="approver_name" label="Who approves the preview" autoComplete="name" value={draft.approver_name} onChange={(e) => set("approver_name", e.target.value)} error={errors.approver_name} />

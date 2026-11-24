@@ -196,7 +196,7 @@ export function VideoPlayer({
         <button
           type="button"
           onClick={startWithSound}
-          className="absolute inset-0 flex items-end justify-start bg-gradient-to-t from-black/35 via-transparent to-transparent p-4 sm:p-5"
+          className="absolute inset-0 flex items-start justify-end bg-gradient-to-b from-black/25 via-transparent to-transparent p-3 sm:p-4"
           aria-label={`Play video with sound: ${title}`}
         >
           <PlayBadge label="Watch with sound" />

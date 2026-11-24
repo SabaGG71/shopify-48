@@ -3,9 +3,10 @@
 import { after } from "next/server"
 import { getConfig } from "@/lib/config"
 import { getRepo } from "@/lib/db/repo"
-import { LOOK_IDS, STORE_SLUGS } from "@/lib/lookbook"
+import { LOOKBOOK, LOOK_IDS, STORE_SLUGS } from "@/lib/lookbook"
 import { sendMetaEvent, metaEventId } from "@/lib/meta"
 import { notifyKent, reportSaveFailure } from "@/lib/notify"
+import { syncLeadToSheet } from "@/lib/sheets"
 import {
   LOOKS,
   NICHES,
@@ -22,7 +23,7 @@ import { prequalify, qualify, REASON_TEXT } from "@/lib/qualify"
 import { currentApplication, newToken, requestInfo, setAppCookie } from "@/lib/session"
 import { checkShopify, type ShopifyCheck } from "@/lib/shopify-check"
 import type { Application, Outcome, SourceInfo } from "@/lib/types"
-import { displayHost, formatPhoneForDisplay, isEmail, normalizePhone, normalizeStoreUrl } from "@/lib/url"
+import { displayHost, formatPhoneForDisplay, isEmail, normalizePhone, normalizeStoreUrl, normalizeUrl } from "@/lib/url"
 
 export type ApplyValues = {
   style_pick: Look | ""
@@ -121,6 +122,7 @@ function blankApplication(token: string): Omit<Application, "id" | "created_at" 
     never_want: null,
     top_products: null,
     design_saved_at: null,
+    design_notes: null,
     style_other: null,
     styles_viewed: null,
     stores_clicked: null,
@@ -147,6 +149,23 @@ function trailPatch(app: Application | null, trail: TrailInput | undefined) {
     styles_viewed: mergeTrail(app?.styles_viewed, trail?.styles_viewed, LOOK_IDS),
     stores_clicked: mergeTrail(app?.stores_clicked, trail?.stores_clicked, STORE_SLUGS),
   }
+}
+
+const STORE_URL_BY_SLUG = new Map(LOOKBOOK.flatMap((l) => l.stores.map((s) => [s.slug, s.url] as const)))
+/** Most references one application keeps (lookbook hearts plus pasted sites). */
+const REFS_MAX = 12
+
+/** Lookbook stores they hearted become reference stores, ahead of anything already saved. */
+function likedToRefs(existing: string[] | null | undefined, liked: unknown): string[] | null {
+  const urls: string[] = []
+  if (Array.isArray(liked)) {
+    for (const slug of liked) {
+      const url = typeof slug === "string" ? normalizeUrl(STORE_URL_BY_SLUG.get(slug)) : null
+      if (url && !urls.includes(url)) urls.push(url)
+    }
+  }
+  for (const u of existing ?? []) if (!urls.includes(u)) urls.push(u)
+  return urls.length ? urls.slice(0, REFS_MAX) : null
 }
 
 type ContactInput = {
@@ -337,7 +356,9 @@ export type SubmitResult =
  * Step two: the look (or "none of these", in their words), what they sell and what isn't
  * working. Qualifies, saves the lookbook trail, alerts Kent.
  */
-export async function submitApplication(input: ApplyValues & { website?: string; source?: SourceInfo; trail?: TrailInput }): Promise<SubmitResult> {
+export async function submitApplication(
+  input: ApplyValues & { website?: string; source?: SourceInfo; trail?: TrailInput; liked_stores?: string[] },
+): Promise<SubmitResult> {
   // Honeypot: real people never see this field.
   if (input.website) return { ok: true, outcome: "review", next: "/thanks", events: { lead: null, qualifiedLead: null } }
 
@@ -389,6 +410,7 @@ export async function submitApplication(input: ApplyValues & { website?: string;
       niche: input.niche as Niche,
       main_problem: problem,
       ...trailPatch(app, input.trail),
+      reference_stores: likedToRefs(app.reference_stores, input.liked_stores),
       is_shopify: check.is_shopify,
       shopify_signal: check.shopify_signal,
       store_checked_at: new Date().toISOString(),
@@ -413,6 +435,7 @@ export async function submitApplication(input: ApplyValues & { website?: string;
   }
   const saved = app
   after(async () => {
+    await syncLeadToSheet(saved)
     const who = `${saved.name} (${displayHost(saved.store_url)})`
     const lookText = saved.style_pick
       ? labelOf(LOOKS, saved.style_pick)

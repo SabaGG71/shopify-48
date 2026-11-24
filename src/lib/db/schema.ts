@@ -1,6 +1,6 @@
 import { sql } from "drizzle-orm"
 import { bigserial, boolean, index, integer, jsonb, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core"
-import type { BookingInfo, PaymentInfo, SourceInfo } from "@/lib/types"
+import type { BookingInfo, DesignNotes, PaymentInfo, SourceInfo } from "@/lib/types"
 
 /**
  * Neon Postgres schema (Drizzle). Column names are snake_case and match the
@@ -47,6 +47,8 @@ export const applications = pgTable(
     stores_clicked: jsonb("stores_clicked").$type<string[]>(),
     /** When the Meta Lead event went out. Set once, so Lead fires once per application. */
     lead_at: ts("lead_at"),
+    /** Page 2: what they like about each reference store, and optional preferences. */
+    design_notes: jsonb("design_notes").$type<DesignNotes>(),
   },
   (t) => [index("applications_created_idx").on(t.created_at), index("applications_email_idx").on(sql`lower(${t.email})`)],
 )
@@ -65,6 +67,7 @@ export const homepageJobs = pgTable("homepage_jobs", {
   reference_stores: jsonb("reference_stores").$type<string[]>().notNull().default([]),
   never_want: text("never_want"),
   top_products: jsonb("top_products").$type<string[]>().notNull().default([]),
+  design_notes: jsonb("design_notes").$type<DesignNotes>(),
   name: text("name"),
   email: text("email"),
   phone: text("phone"),

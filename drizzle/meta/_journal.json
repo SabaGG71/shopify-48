@@ -15,6 +15,13 @@
       "when": 1795194020963,
       "tag": "0001_lookbook_fields",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795506881184,
+      "tag": "0002_design_notes",
+      "breakpoints": true
     }
   ]
 }

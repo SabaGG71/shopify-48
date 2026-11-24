@@ -6,10 +6,10 @@ Landing page, apply form, booking step and full intake for the LocalEyes 48 Hour
 
 | Path | What it is |
 | --- | --- |
-| `/` | Landing page, light blue: headline, video, apply form (step 1 contact, store and revenue, step 2 pick a look), before and afters, "Five looks. Real stores." (the lookbook in browse mode), what you get, guarantees, how it works, price, fine print, final call to action |
+| `/` | Landing page, light blue, pared back: headline, video, the apply form as six short steps (store, revenue, name and email, phone, pick a direction, what you sell), the Green Kettle showcase, what you get, and a short FAQ (how it works, what is included, guarantees, price, fine print). Step five opens the direction explorer: real stores scrolling on desktop and phone, one direction to pick, any number of stores to heart |
 | `/demo` | The same funnel in the lime design (films, the 0h to 48h scrubber, the Lake Effect redline). `/demo-1` redirects here and `/demo-2` redirects to `/` |
 | `/demo/privacy` | The privacy notice in the lime design. The lime page links here |
-| `/book` | Page 2, qualified applicants only: video, three design questions, then the booking calendar (Calendly, prefilled with name, email, store URL, phone and the lead id) |
+| `/book` | Page 2, qualified applicants only: video, five short design steps (sites they love and what they like about each, how the store should feel, optional preferences, one thing they never want, best sellers), then the booking calendar (Calendly, prefilled with name, email, store URL, phone and the lead id) |
 | `/booked` | After a booking: call time, the booked page video, and the reserve option. Calendly's redirect lands here too |
 | `/thanks` | Flagged for Kent to review by hand (coffee, something else, store we could not check) |
 | `/not-a-fit` | Not a fit right now. Shows a Store Score link once `STORE_SCORE_URL` is set |
@@ -31,7 +31,7 @@ To test the intake without a real payment, apply with a qualified store, then in
 
 ## Launch checklist
 
-1. **Database.** Neon is already set up: `npm run db:migrate` created the tables (`applications`, `homepage_jobs`, `jobs`, `site_config`, `alerts`). After a schema change: `npm run db:generate`, then `npm run db:migrate`. `npm run db:studio` opens a table browser.
+1. **Database.** Neon is already set up: `npm run db:migrate` created the tables. **Run it again before deploying the pared-back landing page**: migration `0002_design_notes` adds one `design_notes` column to `applications` and `homepage_jobs`, and saves fail without it. Tables: (`applications`, `homepage_jobs`, `jobs`, `site_config`, `alerts`). After a schema change: `npm run db:generate`, then `npm run db:migrate`. `npm run db:studio` opens a table browser.
 2. **File storage.** In Vercel, create a Blob store and connect it to the project. That adds `BLOB_READ_WRITE_TOKEN`.
 3. **Vercel.** Import the repo, then set the env vars from `.env.example`. Needs a Pro team for a commercial site.
 4. **Settings in /admin.** Already in Neon: price and price note, reserve link, booking link, slot counter (7 a week, counted from real payments), checklist, fine print, lookbook, proof stores. Still to add when Kent sends them: the four videos and `KENT_TEXT_NUMBER`. Nothing price related is in the code.
@@ -39,6 +39,7 @@ To test the intake without a real payment, apply with a qualified store, then in
 6. **Calendly.** `CALENDLY_TOKEN` goes in Vercel. Send Kent the booked page URL for the event's redirect: `https://<site>/booked` (with "pass event details" on). Then run `node --env-file=.env.local scripts/calendly-webhook.mjs https://<site>` once: it subscribes new booking, cancel and no-show, and prints `CALENDLY_WEBHOOK_SIGNING_KEY` for Vercel.
 7. **Meta.** Set `NEXT_PUBLIC_META_PIXEL_ID` and `META_CAPI_TOKEN` in Vercel only (they are off locally so tests never send fake events). Use `META_TEST_EVENT_CODE` from Events Manager to watch `Lead`, `QualifiedLead`, `Schedule` and `Purchase` arrive, then remove it.
 8. **Alerts.** Kent wants email: set `KENT_ALERT_EMAIL` in Vercel (Resend is set up, localeyesgrowth.com is verified). It is off locally so tests never email Kent. A no-show gets one rebook text if Twilio is added, otherwise one email.
+9. **Google Sheet.** Optional copy of every lead for Kent, one row per application, updated on apply, design answers and call booked. Paste `docs/google-sheet-sync.gs` into the sheet (Extensions > Apps Script), deploy as a web app, then set `SHEETS_WEBHOOK_URL` and `SHEETS_WEBHOOK_SECRET` in Vercel. Empty means off. The database stays the source of truth.
 
 ## How the rules from the brief are met
 
