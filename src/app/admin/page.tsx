@@ -28,6 +28,7 @@ const DESCRIPTIONS: Record<ConfigKey, string> = {
   INTAKE_VIDEO_URL: "Welcome video at the top of the intake.",
   INTAKE_CAPTIONS_URL: "Optional .vtt captions for a direct .mp4 intake video.",
   COLLAB_HOWTO_VIDEO_URL: "The 20 second clip on finding the collaborator request code.",
+  QUESTIONS_CALL_URL: "Calendly link behind \"Questions? Book a call with Kent\" on the landing page. Empty uses the booking link above.",
   STORE_SCORE_URL: "Store Score link on the not a fit page. Leave empty to hide it.",
   KENT_TEXT_NUMBER: "Number shown for texting Kent.",
   SLOT_COUNTER_ON: "true or false. Shows the slot counter only when true.",

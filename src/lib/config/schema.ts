@@ -65,6 +65,8 @@ export const configSchema = z.object({
   INTAKE_CAPTIONS_URL: optionalUrl,
   COLLAB_HOWTO_VIDEO_URL: optionalUrl,
   STORE_SCORE_URL: optionalUrl,
+  /** "Questions? Book a call with Kent" link. Empty falls back to BOOKING_URL. */
+  QUESTIONS_CALL_URL: optionalUrl,
   KENT_TEXT_NUMBER: z.string().trim().default(""),
   SLOT_COUNTER_ON: boolish,
   SLOTS_PER_WEEK: optionalNumber,

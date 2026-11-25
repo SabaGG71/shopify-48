@@ -1020,6 +1020,21 @@ select.hx-in {
 .hx-faq li + li {
   margin-top: 6px;
 }
+.hx-ask {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--soft);
+}
+.hx-ask a {
+  font-weight: 700;
+  color: var(--hx-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.hx-ask a:hover {
+  color: var(--ink);
+}
 .hx-footer {
   border-top: 1.5px solid var(--hx-line);
   padding: 22px 0 28px;

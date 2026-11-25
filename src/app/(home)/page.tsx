@@ -60,6 +60,7 @@ export default async function HomePage() {
   const perWeek = config.SLOT_COUNTER_ON && config.SLOTS_PER_WEEK ? config.SLOTS_PER_WEEK : null
   const left = await slotsLeft(perWeek, config.SLOTS_LEFT)
   const tel = normalizePhone(config.KENT_TEXT_NUMBER)
+  const questionsUrl = config.QUESTIONS_CALL_URL || config.BOOKING_URL
 
   const video = config.VSL_URL ? (
     <div className="hx-video">
@@ -175,6 +176,14 @@ export default async function HomePage() {
                   </Faq>
                 ))}
               </div>
+              {questionsUrl ? (
+                <p className="hx-ask">
+                  Questions?{" "}
+                  <a href={questionsUrl} target="_blank" rel="noopener">
+                    Book a call with Kent
+                  </a>
+                </p>
+              ) : null}
             </div>
           </section>
         </main>
@@ -184,7 +193,15 @@ export default async function HomePage() {
             <a href="https://www.localeyesgrowth.com" className="font-semibold text-ink">
               localeyesgrowth.com
             </a>
-            {tel ? <a href={`sms:${tel}`}>Questions? Text Kent at {formatPhoneForDisplay(tel)}</a> : <span>Questions? Reply to any text from Kent.</span>}
+            {questionsUrl ? (
+              <a href={questionsUrl} target="_blank" rel="noopener">
+                Questions? Book a call with Kent
+              </a>
+            ) : tel ? (
+              <a href={`sms:${tel}`}>Questions? Text Kent at {formatPhoneForDisplay(tel)}</a>
+            ) : (
+              <span>Questions? Reply to any text from Kent.</span>
+            )}
             <Link href="/privacy">Privacy</Link>
             <a href="https://www.instagram.com/localeyesseo">@localeyesseo</a>
           </div>
