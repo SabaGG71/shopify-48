@@ -39,7 +39,7 @@ To test the intake without a real payment, apply with a qualified store, then in
 6. **Calendly.** `CALENDLY_TOKEN` goes in Vercel. Send Kent the booked page URL for the event's redirect: `https://<site>/booked` (with "pass event details" on). Then run `node --env-file=.env.local scripts/calendly-webhook.mjs https://<site>` once: it subscribes new booking, cancel and no-show, and prints `CALENDLY_WEBHOOK_SIGNING_KEY` for Vercel.
 7. **Meta.** Set `NEXT_PUBLIC_META_PIXEL_ID` and `META_CAPI_TOKEN` in Vercel only (they are off locally so tests never send fake events). Use `META_TEST_EVENT_CODE` from Events Manager to watch `Lead`, `QualifiedLead`, `Schedule` and `Purchase` arrive, then remove it.
 8. **Alerts.** Kent wants email: set `KENT_ALERT_EMAIL` in Vercel (Resend is set up, localeyesgrowth.com is verified). It is off locally so tests never email Kent. A no-show gets one rebook text if Twilio is added, otherwise one email.
-9. **Google Sheet.** Optional copy of every lead for Kent, one row per application, updated on apply, design answers and call booked. Paste `docs/google-sheet-sync.gs` into the sheet (Extensions > Apps Script), deploy as a web app, then set `SHEETS_WEBHOOK_URL` and `SHEETS_WEBHOOK_SECRET` in Vercel. Empty means off. The database stays the source of truth.
+9. **Google Sheet.** Optional copy of every lead for Kent, one row per application, updated on apply, design answers and call booked. Paste `docs/google-sheet-sync.gs` into the sheet (Extensions > Apps Script), run `makeSecret` once, deploy as a web app, then set `SHEETS_WEBHOOK_URL` and `SHEETS_WEBHOOK_SECRET` in Vercel (steps are at the top of that file). Empty means off. The database stays the source of truth.
 
 ## How the rules from the brief are met
 

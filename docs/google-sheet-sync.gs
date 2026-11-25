@@ -3,16 +3,24 @@
  *
  * Setup, once:
  * 1. Open the Google Sheet. Extensions > Apps Script. Paste this whole file over what is there.
- * 2. Set SECRET below to any long random phrase. Put the same phrase in Vercel as SHEETS_WEBHOOK_SECRET.
+ * 2. Pick "makeSecret" in the function list and press Run (approve the Google prompt). It makes a
+ *    random secret and stores it in Project Settings > Script properties, under SECRET.
  * 3. Deploy > New deployment > type "Web app". Execute as: Me. Who has access: Anyone.
- * 4. Copy the web app URL (ends in /exec) into Vercel as SHEETS_WEBHOOK_URL, then redeploy the site.
+ * 4. In Vercel set SHEETS_WEBHOOK_URL to the web app URL (ends in /exec) and
+ *    SHEETS_WEBHOOK_SECRET to the SECRET value from Script properties, then redeploy the site.
  *
  * The site sends one lead at a time. The row is found by the ID column and updated, or added
  * if it is new. The header row is written by the site, so new columns appear on their own.
  * After editing this file, use Deploy > Manage deployments > Edit > New version (the URL stays the same).
  */
-const SECRET = "change-me"
 const TAB = "Leads"
+
+/** Run once. Keeps an existing secret, so running it again changes nothing. */
+function makeSecret() {
+  const props = PropertiesService.getScriptProperties()
+  if (!props.getProperty("SECRET")) props.setProperty("SECRET", Utilities.getUuid() + Utilities.getUuid())
+  return "SECRET is set. Copy it from Project Settings > Script properties."
+}
 
 function doPost(e) {
   const out = (o) => ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON)
@@ -22,7 +30,8 @@ function doPost(e) {
   } catch (err) {
     return out({ ok: false, error: "bad json" })
   }
-  if (!SECRET || SECRET === "change-me" || body.secret !== SECRET) return out({ ok: false, error: "unauthorized" })
+  const SECRET = PropertiesService.getScriptProperties().getProperty("SECRET")
+  if (!SECRET || body.secret !== SECRET) return out({ ok: false, error: "unauthorized" })
   if (!body.id || !Array.isArray(body.columns) || !Array.isArray(body.values)) return out({ ok: false, error: "bad payload" })
 
   const lock = LockService.getScriptLock()
