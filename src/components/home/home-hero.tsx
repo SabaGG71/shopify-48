@@ -2,6 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import type { ApplyValues } from "@/app/actions/apply"
 import { useApply } from "@/components/apply/apply-provider"
@@ -150,6 +151,15 @@ export function HomeHero({ nicheLabel, video }: { nicheLabel: string; video: Rea
   }
 
   const done = a.screen === "done"
+  // Someone who already qualified and comes back goes straight to where they left off
+  // (the design questions, the open calendar, or their booked page). No button to press.
+  // Add ?preview to the address to stay on this page, for looking at it after a test run.
+  const router = useRouter()
+  const jumpTo = done && a.outcome === "qualified" ? a.next : null
+  useEffect(() => {
+    if (!jumpTo || new URLSearchParams(window.location.search).has("preview")) return
+    router.replace(jumpTo)
+  }, [jumpTo, router])
   const going = step > 1 && !done
   // The video hides once the form is under way, so stop it or the sound plays on unseen.
   useEffect(() => {
@@ -183,7 +193,7 @@ export function HomeHero({ nicheLabel, video }: { nicheLabel: string; video: Rea
           <div ref={cardRef} id="apply-top" className="hx-card" data-boxed="">
             <h2 className="hx-q">Your application is in.</h2>
             <p className="hx-qsub">
-              {a.outcome === "qualified" ? "You're in. Pick a time for your homepage call." : "Thanks. We'll be in touch by text."}
+              {a.outcome === "qualified" ? "You're in. Taking you to your homepage call." : "Thanks. We'll be in touch by text."}
             </p>
             <p className="mt-4 text-center">
               <Link href={a.next ?? "/thanks"} className="hx-btn">
